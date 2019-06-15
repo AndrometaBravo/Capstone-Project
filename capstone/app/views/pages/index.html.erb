@@ -1,0 +1,6 @@
+<%= react_component("App", {
+    logged_in: user_signed_in?,
+    sign_out:  destroy_user_session_path,
+    sign_in: new_user_session_path,
+    current_user: current_user
+} ) %>

@@ -1,0 +1,65 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.top{
+    height: 130px;
+}
+///////////////////nav//////////////////////////
+.navbar{
+    background-color: red;
+    position: fixed;
+    top: 0;
+    left:0;
+    overflow: hidden;
+    height: 100px;
+    width: 100%;
+    opacity: 0.4;
+    padding-top:40px;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "home about learn signInOut username"
+}
+    .navbar:hover{
+        opacity: 1;
+        z-index: 5;
+    }
+    nav a{
+        padding: 30px;
+    }
+
+    .navbar .home{
+        grid-area: home;
+
+    }
+    .navbar .about{
+        grid-area:about;
+    }
+    .navbar .learn{
+        grid-area: learn;
+    }
+    .navbar .signInOut{
+        grid-area:signInOut;
+    }
+    .navbar .username{
+        grid-area:username;
+    }
+
+///////////////////home//////////////////////////
+
+.homePage{
+
+}
+
+
+///////////////////AboutUs//////////////////////////
+
+.aboutPage{
+
+}
+
+///////////////////learnmore//////////////////////////
