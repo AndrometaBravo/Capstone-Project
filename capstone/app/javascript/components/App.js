@@ -17,6 +17,7 @@ class App extends React.Component {
                 sign_out = {sign_out}
                 current_user = {current_user}
             />
+            <div className = "top"></div>
            <Routes
 
            />

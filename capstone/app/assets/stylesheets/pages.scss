@@ -59,7 +59,208 @@
 ///////////////////AboutUs//////////////////////////
 
 .aboutPage{
-
+    background-color: #f2f2f2;
 }
+    .aboutPage .travisdiv{
+        margin-top: 10px;
+        background-color: green;
+        height: 300px;
+        width: 100%;
+        right: 0;
+
+        border-style: none;
+
+        display: grid;
+        grid-template-columns: 200px 150px auto;
+        grid-template-rows: auto;
+        grid-template-areas:
+        "picdiv space bio"
+    }
+        .travisdiv .picdiv{
+            grid-area: picdiv;
+            margin-right: 200px;
+            margin-top: 10px;
+        }
+            .travisdiv .shadow{
+                height: 280px;
+                width: 280px;
+                background-color: black;
+                position: absolute;
+                border-radius: 50%;
+                margin-left: 10px;
+                opacity: .6;
+
+            }
+            .travisdiv .travispic{
+                height: 270px;
+                width: 270px;
+                position: absolute;
+                border-style: none;
+                border-radius: 50%;
+                background-color: white;
+                z-index: 3;
+                margin-left: 18px;
+                margin-top: 5px;
+            }
+        .travisdiv .space{
+            grid-area: space;
+        }
+        .travisdiv .bio{
+            grid-area: bio;
+            text-align: right;
+            background-color: white;
+            height:260px;
+            margin-top: 20px;
+
+        }
+
+        .aboutPage .milesdiv{
+            background-color: blue;
+            height: 300px;
+            width: 100%;
+            right: 0;
+            border-style: none;
+            margin-top: 5px;
+
+            display: grid;
+            grid-template-columns: 75% 55px 200px;
+            grid-template-rows: auto;
+            grid-template-areas:
+            "bio space picdiv"
+        }
+            .milesdiv .picdiv{
+                grid-area: picdiv;
+                margin-top: 10px;
+            }
+                .milesdiv .shadow{
+                    height: 280px;
+                    width: 280px;
+                    background-color: black;
+                    position: absolute;
+                    border-radius: 50%;
+                    opacity: .6;
+
+                }
+                .milesdiv .milespic{
+                    height: 270px;
+                    width: 270px;
+                    position: absolute;
+                    border-style: none;
+                    border-radius: 50%;
+                    background-color: white;
+                    z-index: 3;
+                    margin-top: 5px;
+                }
+            .milesdiv .space{
+                grid-area: space;
+            }
+            .milesdiv .bio{
+                grid-area: bio;
+                text-align: left;
+                background-color: white;
+                height:260px;
+                margin-top: 20px;
+
+            }
+
+            .aboutPage .sebastiandiv{
+                margin-top: 10px;
+                background-color: red;
+                height: 300px;
+                width: 100%;
+                right: 0;
+
+                border-style: none;
+
+                display: grid;
+                grid-template-columns: 200px 150px auto;
+                grid-template-rows: auto;
+                grid-template-areas:
+                "picdiv space bio"
+            }
+                .sebastiandiv .picdiv{
+                    grid-area: picdiv;
+                    margin-right: 200px;
+                    margin-top: 10px;
+                }
+                    .sebastiandiv .shadow{
+                        height: 280px;
+                        width: 280px;
+                        background-color: black;
+                        position: absolute;
+                        border-radius: 50%;
+                        margin-left: 10px;
+                        opacity: .6;
+
+                    }
+                    .sebastiandiv .sebastianpic{
+                        height: 270px;
+                        width: 270px;
+                        position: absolute;
+                        border-style: none;
+                        border-radius: 50%;
+                        background-color: white;
+                        z-index: 3;
+                        margin-left: 18px;
+                        margin-top: 5px;
+                    }
+                .sebastiandiv .space{
+                    grid-area: space;
+                }
+                .sebastiandiv .bio{
+                    grid-area: bio;
+                    text-align: right;
+                    background-color: white;
+                    height:260px;
+                    margin-top: 20px;
+
+                }
+
+                .aboutPage .chrisdiv{
+                    background-color: purple;
+                    height: 300px;
+                    width: 100%;
+                    right: 0;
+                    border-style: none;
+                    margin-top: 10px;
+
+                    display: grid;
+                    grid-template-columns: 75% 55px 200px;
+                    grid-template-rows: auto;
+                    grid-template-areas:
+                    "bio space picdiv"
+                }
+                    .chrisdiv .picdiv{
+                        grid-area: picdiv;
+                        margin-top: 10px;
+                    }
+                        .chrisdiv .shadow{
+                            height: 280px;
+                            width: 280px;
+                            background-color: black;
+                            position: absolute;
+                            border-radius: 50%;
+                            opacity: .6;
+                        }
+                        .chrisdiv .chrispic{
+                            height: 270px;
+                            width: 270px;
+                            position: absolute;
+                            border-style: none;
+                            border-radius: 50%;
+                            background-color: white;
+                            z-index: 3;
+                            margin-top: 5px;
+                        }
+                    .chrisdiv .space{
+                        grid-area: space;
+                    }
+                    .chrisdiv .bio{
+                        grid-area: bio;
+                        text-align: left;
+                        background-color: white;
+                        height:260px;
+                        margin-top: 20px;
+                    }
 
 ///////////////////learnmore//////////////////////////
