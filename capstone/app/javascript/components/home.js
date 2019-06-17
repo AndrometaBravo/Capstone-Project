@@ -8,6 +8,7 @@ class Home extends React.Component {
     return (
         <div id = "homePage">
             <h1>Home</h1>
+            <p>adding geolocation feature here</p>
         </div>
        );
      }
