@@ -1,0 +1,15 @@
+current directory: /Users/chrisnorton/Desktop/Capstone-Project/capstone/vendor/bundle/gems/bindex-0.7.0/ext/skiptrace
+/Users/chrisnorton/.rvm/rubies/ruby-2.6.3/bin/ruby -I /Users/chrisnorton/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20190617-82287-1pk0um8.rb extconf.rb
+creating Makefile
+
+current directory: /Users/chrisnorton/Desktop/Capstone-Project/capstone/vendor/bundle/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/chrisnorton/Desktop/Capstone-Project/capstone/vendor/bundle/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/cruby.bundle
+
+current directory: /Users/chrisnorton/Desktop/Capstone-Project/capstone/vendor/bundle/gems/bindex-0.7.0/ext/skiptrace
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20190617-82287-19gt3k7/skiptrace

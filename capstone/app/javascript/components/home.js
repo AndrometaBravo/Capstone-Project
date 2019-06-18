@@ -1,14 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
+import App from "./App"
+import SimpleMap from './simpleMap'
 
 
 
 class Home extends React.Component {
   render () {
     return (
-        <div id = "homePage">
-            <h1>Home</h1>
-        </div>
+<SimpleMap/>
        );
      }
    }
