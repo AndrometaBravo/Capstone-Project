@@ -6,7 +6,7 @@ import Navbar from './nav'
 import Routes from './routes'
 
 
-class App extends React.Component {
+export default class App extends React.Component {
   render () {
       const {logged_in, sign_in, sign_out, current_user } = this.props
     return (
@@ -25,4 +25,3 @@ class App extends React.Component {
        );
      }
    }
-export default App

@@ -1,14 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
 import App from "./App"
-import SimpleMap from './simpleMap'
+import MapContainer from './mapcontainer'
 
 
 
 class Home extends React.Component {
   render () {
     return (
-<SimpleMap/>
+<MapContainer/>
        );
      }
    }
