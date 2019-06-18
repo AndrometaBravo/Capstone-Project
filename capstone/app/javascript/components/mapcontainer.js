@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
+import MapIcon from './mapIcon'
 
 export class MapContainer extends Component {
   constructor(props) {
@@ -42,6 +43,7 @@ this.state = {
 }
 
   render() {
+    let {username, userStatus} = this.props
 
     return (
       <Map
@@ -58,14 +60,14 @@ this.state = {
         <Marker onClick={this.onMarkerClick}
                 onMouseover={this.onMouseoverMarker}
                 onMouseout={this.onMouseoverMarker}
-                name={'Dummy User'} />
+                name={username} />
 
 
                 <InfoWindow
                   marker={this.state.activeMarker}
                   visible={this.state.showingInfoWindow}>
-                    <div>
-                      <h1>{this.state.selectedPlace.name}</h1>
+                    <div className = "mapIcon">
+                      <MapIcon/>
                     </div>
                 </InfoWindow>
       </Map>
