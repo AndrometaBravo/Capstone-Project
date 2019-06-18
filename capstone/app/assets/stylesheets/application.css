@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
  /* Always set the map height explicitly to define the size of the div
   * element that contains the map. */
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
@@ -69,4 +70,13 @@ border-color: #cccccc;
   grid-column-end: 2;
   grid-row-start: 2;
   grid-row-end: 3;
+}
+
+.biofield #user_bio{
+    width: 250px;
+    height: 150px;
+    resize: none;
+    background: url(./usericon.png) right bottom no-repeat;
+    font-size: 18px;
+
 }
