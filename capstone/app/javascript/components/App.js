@@ -5,11 +5,14 @@ import { BrowserRouter as  Router, Route } from 'react-router-dom'
 import Navbar from './nav'
 import Routes from './routes'
 
+import './App.css'
+
 
 class App extends React.Component {
   render () {
       const {logged_in, sign_in, sign_out, current_user } = this.props
     return (
+        
         <Router>
             <Navbar
                 logged_in = {logged_in}
@@ -19,10 +22,11 @@ class App extends React.Component {
             />
             <div className = "top"></div>
            <Routes
-
            />
          </Router>
+         
        );
      }
    }
+   
 export default App
