@@ -96,11 +96,18 @@ text-align: center;
   color: white;
 }
 .feed-top-nav{
+  background-color: #f2f2f2;
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
   height:50px;
-  display: flex;
   padding:10px;
   width: 100%;
   box-shadow: 0px 0px 10px grey;
+  position: relative;
+  z-index: 3;
+  grid-area: feed-top-nav;
+}
+#cog-dropdown{
 }
 .iconWindow {
   text-align: center;
@@ -128,3 +135,61 @@ text-align: center;
     font-size: 18px;
 
 }
+.Map{
+  display: hidden;
+}
+.grid-container {
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 500px 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "Feed Map-Container Map-Container Map-Container" "Feed Map-Container Map-Container Map-Container" "Feed Map-Container Map-Container Map-Container";
+}
+
+.Feed {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: "feed-top-nav feed-top-nav feed-top-nav" "Feed-Posts Feed-Posts Feed-Posts";
+  grid-area: Feed;
+}
+
+.Feed-Posts {
+  grid-area: Feed-Posts;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.Map-Container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
+  grid-template-areas: ". . . ." ". . . ." ". . . ." ". . . Filter-Area""Comment-Box Comment-Box . Filter-Area";
+  grid-area: Map-Container;
+  overflow: hidden;
+}
+
+.Comment-Box {
+  grid-area: Comment-Box;
+  margin: 20px;
+  border-radius: 20px;
+  z-index: 1;
+  background: white;
+  padding: 20px;
+}
+.Filter-Area {
+  grid-area: Comment-Box;
+  margin: 20px;
+  border-radius: 20px;
+  z-index: 1;
+  background: white;
+  padding: 20px;
+}
+.New-Post-Box{
+}
+.post-text{
+  color: black;
+  z-index: 5;
+}
+.Filter-Area { grid-area: Filter-Area; }
