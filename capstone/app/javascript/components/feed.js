@@ -1,11 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
-
 import { Container, ListGroup } from 'react-bootstrap'
 
-
 class CloudFeed extends React.Component {
-
 
   render() {
     let{posts}=this.props
@@ -19,14 +16,37 @@ class CloudFeed extends React.Component {
                 return (
 
                 <ListGroup.Item key={index}>
+                
+                <hr/>
 
                 <a align="left" href=""><img className="feed-avatar" id="postfeed" src ={post.picture_url} alt=''/></a>
 
-                <h3><span className=''>Current Location: <br/>Gaslamp Starbucks</span></h3>
+                <br/>
+                
+                <p><font color = 'orange'><strong>{post.username}</strong></font> ({post.user_id}) ... @Starbucks:
+                
+                <br/>
+                <br/>
+                
+                {post.post}<font color = 'orange'></font> ({post.post_status})</p>
 
-                <p><font color = 'orange'>{post.username}</font> [<font color = 'orange'>{post.user_id}</font>] is working on: <font color = 'orange'>{post.post}</font><font color = 'orange'></font> [<font color = 'orange'>{post.post_status}</font>]</p>
+                <div class = 'row'>
+                <div class = 'col-4'>
+        
+                <p align="left">posted: <font color = 'orange'>{post.created_at}</font></p>
+                
+                </div>
+                <div class = 'col-4'>
+                
+                <p align="center">project: <font color = 'orange'>{post.tags}</font></p>
+                
+                </div>
+                <div class = 'col-4'>
+                
+                <p align="right">[ <a href=""><font color = 'orange'>comment</font></a> ]</p>
 
-                <p align="right">(send a <font color = 'orange'></font> <a href=""><font color = 'orange'>reply</font></a> or <a href=""><font color = 'orange'>collaboration request</font></a>...)</p>
+                </div>
+                </div>
 
                 <hr/>
                 </ListGroup.Item>
@@ -36,7 +56,7 @@ class CloudFeed extends React.Component {
 
                 </ListGroup>
                 <br/>
-                <a className="nav-link active" href=""><font color = 'orange'>NEW POST</font></a>
+                <p align="center"><a className="nav-link active" href=""><font color = 'orange'>NEW POST</font></a></p>
 
                 </Container>
 
@@ -44,6 +64,5 @@ class CloudFeed extends React.Component {
   }
 
 }
-
 
 export default CloudFeed
