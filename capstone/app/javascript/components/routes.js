@@ -15,10 +15,10 @@ class Routes extends React.Component {
       const {logged_in, sign_in, sign_out, current_user } = this.props
     return (
         <Switch>
-             <Route path="/" exact component= {() => <Home />} />
+             <Route path="/" exact component= {() => <Home  />} />
              <Route path="/about" component= {() => <AboutUs />} />
              <Route path="/more" component={() => <LearnMore />} />
-             <Route path="/userprofile" component={() => <Profile />} />
+             <Route path="/userprofile/:id" component={() => <Profile />} />
          </Switch>
        );
      }

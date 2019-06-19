@@ -20,7 +20,10 @@ class Profile extends Component {
     <div className = "profilepage">
         <div className = "header">
             <div className = "profilebuffer"></div>
-            <div className = "profilepicdiv"></div>
+            <div className = "profilepicdiv">
+                <button id = "inputs"> Change Profile Pic</button>
+            </div>
+            <div className = "picoverlay"></div>
             <h1>Username</h1>
             <div className = "blank"></div>
             <div className = "buttons">
@@ -47,7 +50,18 @@ class Profile extends Component {
             />
         </div>
         <div className = "body">
-            feed goes here
+        <div>
+            <div className = "post">
+                <h3>POST Something</h3>
+                <textarea placeholder = "Tell me about your day"></textarea>
+                <br/>
+                <button>Submit</button>
+            </div>
+            <div className = "feed">
+                <h3>Feed:</h3>
+            </div>
+
+        </div>
         </div>
         <div className = 'im'>
             <Imbar

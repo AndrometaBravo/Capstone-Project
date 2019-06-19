@@ -351,7 +351,7 @@
     /* info */
     .info{
         grid-area: info;
-        background-color: #66ccff;
+        background-color: #8000ff;
     }
         .userinfo{
 
@@ -360,7 +360,7 @@
 
             }
                 .about textarea{
-                    color: orange;
+                    color: black;
                     width: 90%;
                     height: 100px;
                     resize: none;
@@ -372,7 +372,6 @@
                 }
 
                     .about textarea:focus{
-                        background: url(./editaway.png) center;
                         border: 1px solid #888;
                         cursor: text;
                     }
@@ -397,7 +396,7 @@
     /* photos */
     .photos{
         grid-area: photos;
-        background-color: #66ccff;
+        background-color: #8000ff;
     }
         .photos img{
             width: 30%;
@@ -408,7 +407,7 @@
 
     .friends{
         grid-area: friends;
-        background-color: #66ccff;
+        background-color: #8000ff;
     }
         .friends img{
             width: 30%;
@@ -440,8 +439,6 @@
                 resize: none;
                 font-size: 18px;
                 overflow: auto;
-                background-color:#000;
-                color:#FFF;
             }
             .post textarea:focus{
                 background-color:#FFF;
@@ -468,7 +465,7 @@
     }
         .im div{
             width:90%;
-            background-color:orange;
+            background-color: #8000ff;
             padding-right: 15%;
         }
         .im img{
