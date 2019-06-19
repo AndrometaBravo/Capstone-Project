@@ -6,7 +6,7 @@ export class MapContainer extends Component {
     console.log("ran marker click");
   }
   render() {
-    let{ myLocation }=this.props
+    let{ myLocation, feed }=this.props
     return (
       <Map
         google={this.props.google}
@@ -17,7 +17,17 @@ export class MapContainer extends Component {
       }}
       >
         <Marker onClick={this.onMarkerClick}
-                name={'Current location'} />
+                name={'My Location'}
+                title={'hello?'}
+        />
+      { feed.map((value,index)=>{
+          return(
+            <Marker
+            position={{lat: feed[index].lat, lng: feed[index].lng}}
+            />
+          )
+        })
+      }
       </Map>
     );
   }
