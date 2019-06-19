@@ -10,6 +10,7 @@ class App extends React.Component {
   render () {
       const {logged_in, sign_in, sign_out, current_user } = this.props
     return (
+        
         <Router>
             <Navbar
                 logged_in = {logged_in}
@@ -25,7 +26,9 @@ class App extends React.Component {
                current_user = {current_user}
            />
          </Router>
+         
        );
      }
    }
+   
 export default App
