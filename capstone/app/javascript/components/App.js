@@ -6,10 +6,11 @@ import Navbar from './nav'
 import Routes from './routes'
 
 
-class App extends React.Component {
+export default class App extends React.Component {
   render () {
       const {logged_in, sign_in, sign_out, current_user } = this.props
     return (
+
         <Router>
             <Navbar
                 logged_in = {logged_in}
@@ -19,10 +20,13 @@ class App extends React.Component {
             />
             <div className = "top"></div>
            <Routes
-
+               logged_in = {logged_in}
+               sign_in = {sign_in}
+               sign_out = {sign_out}
+               current_user = {current_user}
            />
          </Router>
+
        );
      }
    }
-export default App

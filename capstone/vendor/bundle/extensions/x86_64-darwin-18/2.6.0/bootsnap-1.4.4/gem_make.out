@@ -1,0 +1,15 @@
+current directory: /Users/chrisnorton/Desktop/Capstone-Project/capstone/vendor/bundle/gems/bootsnap-1.4.4/ext/bootsnap
+/Users/chrisnorton/.rvm/rubies/ruby-2.6.3/bin/ruby -I /Users/chrisnorton/.rvm/rubies/ruby-2.6.3/lib/ruby/site_ruby/2.6.0 -r ./siteconf20190617-82287-vvxvcu.rb extconf.rb
+creating Makefile
+
+current directory: /Users/chrisnorton/Desktop/Capstone-Project/capstone/vendor/bundle/gems/bootsnap-1.4.4/ext/bootsnap
+make "DESTDIR=" clean
+
+current directory: /Users/chrisnorton/Desktop/Capstone-Project/capstone/vendor/bundle/gems/bootsnap-1.4.4/ext/bootsnap
+make "DESTDIR="
+compiling bootsnap.c
+linking shared-object bootsnap/bootsnap.bundle
+
+current directory: /Users/chrisnorton/Desktop/Capstone-Project/capstone/vendor/bundle/gems/bootsnap-1.4.4/ext/bootsnap
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 bootsnap.bundle ./.gem.20190617-82287-4j8juo/bootsnap

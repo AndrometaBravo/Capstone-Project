@@ -102,6 +102,23 @@ text-align: center;
   width: 100%;
   box-shadow: 0px 0px 10px grey;
 }
+.iconWindow {
+  text-align: center;
+  border-style: solid;
+  border-width: thin;
+}
+
+.mapIcon {
+  background-color: white;
+}
+.Available{
+  color: green;
+  font-weight: bold;
+}
+.Unavailable {
+  color: red;
+
+}
 
 .biofield #user_bio{
     width: 250px;

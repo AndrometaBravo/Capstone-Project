@@ -10,4 +10,14 @@ class User < ApplicationRecord
          validates :age, presence: true
 
          validates :username, uniqueness: true
+
+        has_many :sent,
+                 :class_name => "UserStatus",
+                 :foreign_key  => "sent_id"
+
+        has_many :received,
+                 :class_name => "UserStatus",
+                 :foreign_key  => "received_id"
+
+         has_many :posts
 end

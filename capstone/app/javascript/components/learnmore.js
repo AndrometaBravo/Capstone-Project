@@ -1,8 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-
-
 class LearnMore extends React.Component {
   render () {
     return (
@@ -13,4 +11,5 @@ class LearnMore extends React.Component {
        );
      }
    }
+   
 export default LearnMore
