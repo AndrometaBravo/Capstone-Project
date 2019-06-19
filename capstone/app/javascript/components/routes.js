@@ -7,6 +7,7 @@ import { Switch, Route } from 'react-router-dom'
 import Home from './home'
 import AboutUs from './aboutus'
 import LearnMore from './learnmore'
+import Profile from './profile'
 
 import CloudFeed from './feed'
 
@@ -119,17 +120,14 @@ class Routes extends React.Component {
 
     return (
         <Switch>
-        
-        
-        
+
              <Route path="/" exact component= {() => <Home />} />
              <Route path="/about" component= {() => <AboutUs />} />
              <Route path="/more" component={() => <LearnMore />} />
-             
+             <Route path="/userprofile/:id" component={() => <Profile />} />
+
              <Route exact path="/feed" render={(props) => <CloudFeed posts={this.state.posts}/> } />
 
-
-             
          </Switch>
        );
      }

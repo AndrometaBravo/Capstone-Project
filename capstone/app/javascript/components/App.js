@@ -5,8 +5,6 @@ import { BrowserRouter as  Router, Route } from 'react-router-dom'
 import Navbar from './nav'
 import Routes from './routes'
 
-import './App.css'
-
 
 class App extends React.Component {
   render () {
@@ -22,6 +20,10 @@ class App extends React.Component {
             />
             <div className = "top"></div>
            <Routes
+               logged_in = {logged_in}
+               sign_in = {sign_in}
+               sign_out = {sign_out}
+               current_user = {current_user}
            />
          </Router>
          

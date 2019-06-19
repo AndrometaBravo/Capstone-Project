@@ -37,4 +37,8 @@
 yarn-debug.log*
 .yarn-integrity
 
+<<<<<<< HEAD
 /config/database.yml
+=======
+/config/database.yml
+>>>>>>> c588127936ab5311d34ff2642369f2e62e4dac88

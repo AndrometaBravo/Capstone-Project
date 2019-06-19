@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+
+.biofield #user_bio{
+    width: 250px;
+    height: 150px;
+    resize: none;
+    background: url(./usericon.png) right bottom no-repeat;
+    font-size: 18px;
+}
