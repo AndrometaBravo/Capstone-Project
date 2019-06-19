@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Button} from 'reactstrap';
 
 
 export default class MapIcon extends Component {
@@ -19,6 +20,7 @@ render () {
             <img src = {avatar}/>
             <div><b>{username}</b></div>
             <div className= {userStatus}>{userStatus}</div>
+             <div><Button color="green">Meet</Button>{''}</div>
         </div>
       )}
     }

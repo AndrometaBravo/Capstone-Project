@@ -14,7 +14,9 @@
  *= require_self
  */
 .iconWindow {
-  text-align: center
+  text-align: center;
+  border-style: solid;
+  border-width: thin;
 }
 
 .mapIcon {
@@ -22,6 +24,7 @@
 }
 .Available{
   color: green;
+  font-weight: bold;
 }
 .Unavailable {
   color: red;
