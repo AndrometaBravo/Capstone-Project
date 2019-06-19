@@ -35,12 +35,12 @@ class Navbar extends React.Component {
                   </a>
 
                     <a className = "username">
-                    {logged_in && current_user.email}
+                    {logged_in && current_user.username}
                     </a>
 
              </nav>
        );
      }
    }
-   
+
 export default Navbar

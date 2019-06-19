@@ -52,7 +52,7 @@ class Routes extends React.Component {
              <Route path="/more" component={() => <LearnMore />} />
              <Route path="/userprofile/:id" component={() => <Profile />} />
 
-             <Route exact path="/feed" render={(props) => <CloudFeed posts={this.state.posts}/> } />
+             <Route exact path="/feed" render={(props) => <CloudFeed posts={posts}/> } />
 
          </Switch>
        );
