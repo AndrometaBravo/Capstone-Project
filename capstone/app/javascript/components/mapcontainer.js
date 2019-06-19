@@ -66,7 +66,7 @@ this.state = {
                 <InfoWindow
                   marker={this.state.activeMarker}
                   visible={this.state.showingInfoWindow}>
-                    <div className = "mapIcon">
+                    <div className = "map">
                       <MapIcon/>
                     </div>
                 </InfoWindow>

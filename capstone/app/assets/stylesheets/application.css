@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
 .iconWindow {
   text-align: center;
   border-style: solid;
@@ -28,4 +29,12 @@
 }
 .Unavailable {
   color: red;
+}
+
+.biofield #user_bio{
+    width: 250px;
+    height: 150px;
+    resize: none;
+    background: url(./usericon.png) right bottom no-repeat;
+    font-size: 18px;
 }
