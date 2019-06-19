@@ -19,7 +19,10 @@ class App extends React.Component {
             />
             <div className = "top"></div>
            <Routes
-
+               logged_in = {logged_in}
+               sign_in = {sign_in}
+               sign_out = {sign_out}
+               current_user = {current_user}
            />
          </Router>
        );
