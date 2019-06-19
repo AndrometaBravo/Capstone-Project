@@ -36,5 +36,10 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
 /config/database.yml
+<<<<<<< HEAD
 /config/environments/development.rb
+=======
+/config/environments/development.rb
+>>>>>>> 4d1509c84808e8a458fd732dcf1f29280760ba00

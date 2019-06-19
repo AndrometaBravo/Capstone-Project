@@ -12,10 +12,10 @@
  *
  *= require_tree .
  *= require_self
- */
-
- /* Always set the map height explicitly to define the size of the div
-  * element that contains the map. */
+ *
+ * Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
+  
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
  #map-holder{
@@ -24,15 +24,18 @@
    height: 100%;
    overflow: hidden;
  }
+ 
  /* Optional: Makes the sample page fill the window. */
  html, body {
    height: 100%;
    margin: 0;
    padding: 0;
  }
+ 
 #fake-feed{
   background-color:
 }
+
 .feedcard{
 display: grid;
 grid-template-columns: auto auto auto auto;
@@ -42,6 +45,7 @@ border-style: solid;
 border-radius: 15px;
 border-color: #cccccc;
 }
+
 .feed-avatar{
   border-radius: 50%;
   width: 80px;
@@ -52,25 +56,30 @@ border-color: #cccccc;
   grid-row-end: 3;
   margin: auto;
 }
+
 .feed-avatar-small{
   display: flex;
   width:30px;
   height:30px;
   border-radius: 50%;
 }
+
 #feed-username{
   display: inline-block;
  vertical-align: middle;
  line-height: normal;
 }
+
 .feed-name{
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 3;
   grid-row-end: 4;
 }
+
 .feed-icon{
 }
+
 .feed-post-text{
   grid-column-start: 3;
   grid-column-end: 5;
@@ -79,9 +88,11 @@ border-color: #cccccc;
   padding: 10px;
   justify-content: center;
 }
+
 .feed-status{
 text-align: center;
 }
+
 .feed-btn{
   grid-column-start: 1;
   grid-column-end: 3;
@@ -89,12 +100,14 @@ text-align: center;
   grid-row-end: 5;
   margin: auto;
 }
+
 .meet-btn{
   height: 20px;
   border-radius: 10px;
   background-color: green;
   color: white;
 }
+
 .feed-top-nav{
   background-color: #f2f2f2;
   display: grid;
@@ -109,6 +122,7 @@ text-align: center;
 }
 #cog-dropdown{
 }
+
 .iconWindow {
   text-align: center;
   border-style: solid;
@@ -118,13 +132,14 @@ text-align: center;
 .mapIcon {
   background-color: white;
 }
+
 .Available{
   color: green;
   font-weight: bold;
 }
+
 .Unavailable {
   color: red;
-
 }
 
 .biofield #user_bio{
@@ -133,7 +148,13 @@ text-align: center;
     resize: none;
     background: url(./usericon.png) right bottom no-repeat;
     font-size: 18px;
+}
 
+#postfeed {
+  padding: 5px;
+  background-color: #f2f2f2;
+  border: 3px solid LightGray;
+  opacity: 1
 }
 .Map{
   display: hidden;
