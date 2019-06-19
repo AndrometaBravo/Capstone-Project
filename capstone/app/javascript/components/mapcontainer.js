@@ -33,6 +33,7 @@ this.state = {
         })
 
    };
+   addOpenInfoWindowListeners()
  // } else {
  //    this.setState({
  //        selectedPlace: {},

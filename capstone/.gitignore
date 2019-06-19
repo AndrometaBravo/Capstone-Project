@@ -37,8 +37,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-<<<<<<< HEAD
-/config/database.yml  
-=======
+/config/environments/development.rb
 /config/database.yml
->>>>>>> master
