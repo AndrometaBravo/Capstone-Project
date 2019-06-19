@@ -14,6 +14,94 @@
  *= require_self
  */
 
+ /* Always set the map height explicitly to define the size of the div
+  * element that contains the map. */
+@import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
+ #map-holder{
+   display: grid;
+   grid-template-columns: 500px auto;
+   height: 100%;
+   overflow: hidden;
+ }
+ /* Optional: Makes the sample page fill the window. */
+ html, body {
+   height: 100%;
+   margin: 0;
+   padding: 0;
+ }
+#fake-feed{
+  background-color:
+}
+.feedcard{
+display: grid;
+grid-template-columns: auto auto auto auto;
+padding: 20px;
+margin: 20px;
+border-style: solid;
+border-radius: 15px;
+border-color: #cccccc;
+}
+.feed-avatar{
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  margin: auto;
+}
+.feed-avatar-small{
+  display: flex;
+  width:30px;
+  height:30px;
+  border-radius: 50%;
+}
+#feed-username{
+  display: inline-block;
+ vertical-align: middle;
+ line-height: normal;
+}
+.feed-name{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+.feed-icon{
+}
+.feed-post-text{
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 5;
+  padding: 10px;
+  justify-content: center;
+}
+.feed-status{
+text-align: center;
+}
+.feed-btn{
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  margin: auto;
+}
+.meet-btn{
+  height: 20px;
+  border-radius: 10px;
+  background-color: green;
+  color: white;
+}
+.feed-top-nav{
+  height:50px;
+  display: flex;
+  padding:10px;
+  width: 100%;
+  box-shadow: 0px 0px 10px grey;
+}
 .iconWindow {
   text-align: center;
   border-style: solid;
@@ -29,6 +117,7 @@
 }
 .Unavailable {
   color: red;
+
 }
 
 .biofield #user_bio{
@@ -37,4 +126,5 @@
     resize: none;
     background: url(./usericon.png) right bottom no-repeat;
     font-size: 18px;
+
 }
