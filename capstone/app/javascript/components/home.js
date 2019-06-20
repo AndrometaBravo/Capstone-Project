@@ -8,6 +8,7 @@ import { faCoffee, faCog } from '@fortawesome/free-solid-svg-icons'
 import{Card, CardImg, Button, CardTitle, CardBody, CardSubtitle, CardText} from 'reactstrap'
 import MapContainer from './mapcontainer'
 import CloudFeed from  './feed'
+import UserModal from './userModal'
 
 
 class Home extends React.Component {

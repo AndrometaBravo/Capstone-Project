@@ -1,52 +1,57 @@
 import React, { Component } from 'react';
 import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import MapIcon from './mapIcon'
+import MapIcon from './mapIcon';
+import UserModal from './userModal'
 
 export class MapContainer extends Component {
   constructor(props) {
   super(props)
 this.state = {
-      selectedPlace: {
+      selectedPlace: {},
       name: "Petco Park San Diego",
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
+      modal:false
         }
       }
 
-  }
+  toggle = () => {
+    let {modal} = this.state
+    this.setState(prevState => ({
+          modal: !prevState.modal
+        }));
+    }
+
+
   onMarkerClick(props, marker, e) {
-        console.log("Map Clicked")
+        console.log("Marker Clicked")
       }
+  onMapClicked(props, marker, e) {
+    console.log("Map Clicked")
+  }
   onMouseoverMarker=(props, marker, e) => {
         if (event.type == 'mouseover') {
             this.setState({
                  selectedPlace: props,
                  activeMarker: marker,
                  showingInfoWindow: true
-       })
+                  })
    }else if (event.type =='mouseout') {
      this.setState({
           selectedPlace: props,
           activeMarker: marker,
           showingInfoWindow: false
-        })
-
+            })
+      }
    };
-   addOpenInfoWindowListeners()
- // } else {
- //    this.setState({
- //        selectedPlace: {},
- //        activeMarker: {},
- //        showingInfoWindow: false
- //      })
-
-}
-
   render() {
     let {username, userStatus} = this.props
 
+
     return (
+      <div>
+      <div>
       <Map
           google={this.props.google}
           onDragend={this.centerMoved}
@@ -58,7 +63,7 @@ this.state = {
                 }}
           onClick={this.onMapClicked}>
 
-        <Marker onClick={this.onMarkerClick}
+        <Marker onClick={this.toggle}
                 onMouseover={this.onMouseoverMarker}
                 onMouseout={this.onMouseoverMarker}
                 name={username} />
@@ -72,6 +77,10 @@ this.state = {
                     </div>
                 </InfoWindow>
       </Map>
+      <UserModal isOpen={this.state.modal} toggle = {this.toggle}/>
+      </div>
+      </div>
+
     );
   }
 }
