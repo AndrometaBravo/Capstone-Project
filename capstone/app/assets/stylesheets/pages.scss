@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .top{
+  display: none;
     height: 130px;
 }
 ///////////////////nav//////////////////////////
@@ -21,7 +22,8 @@
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
-    "home about learn signInOut username"
+    "home about learn signInOut username";
+    display: none;
 }
     .navbar:hover{
         opacity: 1;
@@ -51,7 +53,6 @@
 ///////////////////home//////////////////////////
 
 .homePage{
-
 }
 
 
