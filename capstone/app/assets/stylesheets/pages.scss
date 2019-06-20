@@ -21,7 +21,7 @@
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
-    "home about learn signInOut username"
+    "home profile about learn signInOut username"
 }
     .navbar:hover{
         opacity: 1;
@@ -34,6 +34,10 @@
     .navbar .home{
         grid-area: home;
 
+    }
+
+    .navbar .profile{
+        grid-area: profile;
     }
     .navbar .about{
         grid-area:about;

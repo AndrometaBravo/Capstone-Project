@@ -16,6 +16,12 @@ class Navbar extends React.Component {
                  </a>
 
                  <a
+                    className = "profile"
+                    href= {logged_in && `/userprofile/${current_user.id}` || sign_in}>
+                    Profile
+                 </a>
+
+                 <a
                      className = "about"
                      href="/about">
                      About Us

@@ -39,20 +39,18 @@ class Routes extends React.Component {
 
   render () {
 
-      const {logged_in, sign_in, sign_out, current_user } = this.props
-
+      const {logged_in, sign_in, sign_out, current_user, users} = this.props
       let { posts } = this.state
 
 
     return (
         <Switch>
 
-             <Route path="/" component={() => <Home posts={posts}/>} />
-             <Route path="/about" component= {() => <AboutUs />} />
-             <Route path="/more" component={() => <LearnMore />} />
-             <Route path="/userprofile/:id" component={() => <Profile />} />
-
-             <Route exact path="/feed" render={(props) => <CloudFeed posts={posts}/> } />
+             <Route exact path="/" component={() => <Home posts={posts}/>} />
+             <Route exact path="/about" component= {() => <AboutUs />} />
+             <Route exact path="/more" component={() => <LearnMore />} />
+             <Route exact path="/userprofile/:id" component={(props) => <Profile {...props}/>} />
+             <Route exact path="/feed" component={() => <CloudFeed posts={posts}/> } />
 
          </Switch>
        );
