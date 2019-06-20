@@ -58,8 +58,8 @@ class Home extends React.Component {
     return (
         <div id="map-holder">
           <div id="fake-feed">
-          <FeedTopNav />
-          <CloudFeed posts={posts}/>
+              <FeedTopNav />
+              <CloudFeed posts={posts}/>
           </div>
           <MapContainer
             myLocation={myLocation}

@@ -22,7 +22,7 @@ class CloudFeed extends React.Component {
 
                 <a align="left" href=""><img className="feed-avatar" id="postfeed" src ={post.picture_url} alt=''/></a>
 
-                <h3><span className=''>Current Location: <br/>Gaslamp Starbucks</span></h3>
+                <h3><span className='location'>Current Location: <br/>Gaslamp Starbucks</span></h3>
 
                 <p><font color = 'orange'>{post.username}</font> [<font color = 'orange'>{post.user_id}</font>] is working on: <font color = 'orange'>{post.post}</font><font color = 'orange'></font> [<font color = 'orange'>{post.post_status}</font>]</p>
 

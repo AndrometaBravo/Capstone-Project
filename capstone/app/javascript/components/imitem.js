@@ -16,10 +16,10 @@ class Imitem extends Component {
       return (
         <div className = "imitem">
             <div>
-                <Link to = {`/userprofile/${friends[index]}`}><img src = ""></img></Link>
+                <Link to = {`/userprofile/${friends[index+1]}`}><img src = ""></img></Link>
             </div>
             <div>
-                <p>username{friends[index].username}</p>
+                <p>username{friends[index+1].username}</p>
             </div>
         </div>
 

@@ -4,59 +4,9 @@
 .top{
     height: 130px;
 }
-///////////////////nav//////////////////////////
-.navbar{
-    background-color: red;
-    position: fixed;
-    top: 0;
-    left:0;
-    overflow: hidden;
-    height: 100px;
-    width: 100%;
-    opacity: 0.4;
-    padding-top:40px;
-    z-index: 2;
 
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas:
-    "home profile about learn signInOut username"
-}
-    .navbar:hover{
-        opacity: 1;
-        z-index: 5;
-    }
-    nav a{
-        padding: 30px;
-    }
 
-    .navbar .home{
-        grid-area: home;
 
-    }
-
-    .navbar .profile{
-        grid-area: profile;
-    }
-    .navbar .about{
-        grid-area:about;
-    }
-    .navbar .learn{
-        grid-area: learn;
-    }
-    .navbar .signInOut{
-        grid-area:signInOut;
-    }
-    .navbar .username{
-        grid-area:username;
-    }
-
-///////////////////home//////////////////////////
-
-.homePage{
-
-}
 
 
 ///////////////////AboutUs//////////////////////////
@@ -266,14 +216,170 @@
                         margin-top: 20px;
                     }
 
+//end of about
+
+
+///////////////////feed//////////////////////////
+
+#postfeed{
+    padding: 5px;
+    background-color: #f2f2f2;
+    border: 3px solid LightGray;
+    opacity: 1;
+}
+    .feed-avatar{
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        margin: auto;
+    }
+    .location{
+
+    }
+//acn we change this name
+// .nav-link active{}
+
+
+//end of feed
+
+
+
+
+
+
+
+///////////////////home//////////////////////////
+
+#map-holder{
+    display: grid;
+    grid-template-columns: 500px auto;
+    height: 100%;
+    overflow: hidden;
+}
+    #fake-feed{
+
+    }
+
+        ///////////////feed top nav/////////////
+
+        .feed-top-nav{
+            height:50px;
+            display: flex;
+            padding:10px;
+            width: 100%;
+            box-shadow: 0px 0px 10px grey;
+
+        }
+            .feed-avatar-small{
+                display: flex;
+                width:30px;
+                height:30px;
+                border-radius: 50%;
+            }
+            #feed-username{
+               display: inline-block;
+               vertical-align: middle;
+               line-height: normal;
+            }
+
+
+        //end of feed top nav
+
+        //////////////////////cloudfeed//////////
+
+
+
+        //end of cloud feed
+
+
+    ///////////////////MapContainer//////////////////////////
+
+
+    //end of MapContainer
+
+
+//end of home
+
+
 ///////////////////learnmore//////////////////////////
 
 
 
 
 
+//end of learnmore
+
+////////////////////mapicon/////////////
+
+.iconWindow{
+    text-align: center;
+    border-style: solid;
+    border-width: thin;
+}
+    .Available{
+      color: green;
+      font-weight: bold;
+    }
+    .Unavailable {
+      color: red;
+    }
+
+//end of mapicon
 
 
+///////////////////nav//////////////////////////
+.navbar{
+    background-color: red;
+    position: fixed;
+    top: 0;
+    left:0;
+    overflow: hidden;
+    height: 100px;
+    width: 100%;
+    opacity: 0.4;
+    padding-top:40px;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "home profile about learn signInOut username"
+}
+    .navbar:hover{
+        opacity: 1;
+        z-index: 5;
+    }
+    nav a{
+        padding: 30px;
+    }
+
+    .navbar .home{
+        grid-area: home;
+
+    }
+
+    .navbar .profile{
+        grid-area: profile;
+    }
+    .navbar .about{
+        grid-area:about;
+    }
+    .navbar .learn{
+        grid-area: learn;
+    }
+    .navbar .signInOut{
+        grid-area:signInOut;
+    }
+    .navbar .username{
+        grid-area:username;
+    }
+
+//end of navbar
 
 
 //////////////////profile page//////////////////////////////
@@ -328,7 +434,7 @@
             .picoverlay{
                 font-size: 20px;
                 background-color: black;
-                opacity: .2;
+                opacity: .8;
                 height: 200px;
                 width: 200px;
                 position: absolute;
@@ -341,7 +447,7 @@
             bottom: 0;
 
         }
-        .blank{
+        .header .blank{
             grid-area: blank;
         }
         .header .buttons{
@@ -352,14 +458,14 @@
 
 
     /* info */
-    .info{
+    .profilepage .info{
         grid-area: info;
         background-color: #8000ff;
     }
-        .userinfo{
+        .profilepage .userinfo{
 
         }
-            .about{
+            .profilepage .about{
 
             }
                 .about textarea{
@@ -481,3 +587,5 @@
         .im p{
             font-size: 15px;
         }
+
+//end of profile page

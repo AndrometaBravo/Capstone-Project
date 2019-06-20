@@ -1,10 +1,15 @@
-#postfeed {
-  padding: 5px;
-  background-color: #f2f2f2;
-  border: 3px solid LightGray;
-  opacity: 1
-}
 
+/* where do these go??
+   can we add div name before ??
+
+example ->   .divName body{}   #divName img
+
+this will prevent overlapping css
+   and styles where we dont want them
+
+
+add to app/assets/stylesheets/pages.scss
+*/
 img {
   width: auto;
   max-width: 100%;
@@ -25,15 +30,3 @@ body {
   background-color: #f2f2f2;
   margin: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
