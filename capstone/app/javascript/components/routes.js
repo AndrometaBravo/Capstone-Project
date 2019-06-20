@@ -29,7 +29,66 @@ class Routes extends React.Component {
           post_status: '0',
           picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
           created_at: "",
-        }
+        },
+        {
+        user_id: '1',
+        username: 'MilesUser',
+        firstnamme: 'Miles',
+        lat: 32.708910,
+        lng:-117.159447,
+        tags: 'React on Rails',
+        post: 'lets meetup and build something',
+        post_status: '0',
+        picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
+        created_at: "",
+      },
+      {
+      user_id: '1',
+      username: 'MilesUser',
+      firstnamme: 'Miles',
+      lat: 32.708910,
+      lng:-117.159447,
+      tags: 'React on Rails',
+      post: 'lets meetup and build something',
+      post_status: '0',
+      picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
+      created_at: "",
+    },
+    {
+    user_id: '1',
+    username: 'MilesUser',
+    firstnamme: 'Miles',
+    lat: 32.708910,
+    lng:-117.159447,
+    tags: 'React on Rails',
+    post: 'lets meetup and build something',
+    post_status: '0',
+    picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
+    created_at: "",
+  },
+  {
+  user_id: '1',
+  username: 'MilesUser',
+  firstnamme: 'Miles',
+  lat: 32.708910,
+  lng:-117.159447,
+  tags: 'React on Rails',
+  post: 'lets meetup and build something',
+  post_status: '0',
+  picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
+  created_at: "",
+},  {
+  user_id: '1',
+  username: 'MilesUser',
+  firstnamme: 'Miles',
+  lat: 32.708910,
+  lng:-117.159447,
+  tags: 'React on Rails',
+  post: 'lets meetup and build something',
+  post_status: '0',
+  picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
+  created_at: "",
+}
         ]
 
     }
@@ -49,6 +108,7 @@ class Routes extends React.Component {
              <Route exact path="/" component={() => <Home posts={posts}/>} />
              <Route exact path="/about" component= {() => <AboutUs />} />
              <Route exact path="/more" component={() => <LearnMore />} />
+
              <Route exact path="/userprofile/:id" component={(props) => <Profile {...props}/>} />
              <Route exact path="/feed" component={() => <CloudFeed posts={posts}/> } />
 

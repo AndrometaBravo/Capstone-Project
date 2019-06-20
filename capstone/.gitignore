@@ -36,5 +36,6 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
 /config/database.yml
 /config/environments/development.rb

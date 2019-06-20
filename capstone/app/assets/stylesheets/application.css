@@ -12,12 +12,18 @@
  *
  *= require_tree .
  *= require_self
- */
+ *
+ * Always set the map height explicitly to define the size of the div
+ * element that contains the map. */
 
- /* Always set the map height explicitly to define the size of the div
-  * element that contains the map. */
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
+
+ #map-holder{
+   display: grid;
+   grid-template-columns: 500px auto;
+   height: 100%;
+   overflow: hidden;
 
  /* Optional: Makes the sample page fill the window. */
 
@@ -34,13 +40,19 @@ this will prevent conflicting css... see App.css
    padding: 0;
  }
 
+
  /* nocolor? */
+
+
+
 #fake-feed{
   background-color:
 }
 
 
+
 /* cant find these */
+
 .feedcard{
 display: grid;
 grid-template-columns: auto auto auto auto;
@@ -51,14 +63,18 @@ border-radius: 15px;
 border-color: #cccccc;
 }
 
+
+
 .feed-name{
   grid-column-start: 1;
   grid-column-end: 3;
   grid-row-start: 3;
   grid-row-end: 4;
 }
+
 .feed-icon{
 }
+
 .feed-post-text{
   grid-column-start: 3;
   grid-column-end: 5;
@@ -67,9 +83,11 @@ border-color: #cccccc;
   padding: 10px;
   justify-content: center;
 }
+
 .feed-status{
 text-align: center;
 }
+
 .feed-btn{
   grid-column-start: 1;
   grid-column-end: 3;
@@ -77,6 +95,7 @@ text-align: center;
   grid-row-end: 5;
   margin: auto;
 }
+
 .meet-btn{
   height: 20px;
   border-radius: 10px;
@@ -85,9 +104,17 @@ text-align: center;
 }
 
 
+
+#cog-dropdown{
+}
+
+
+
 .mapIcon {
   background-color: white;
 }
+
+
 
 .biofield #user_bio{
     width: 250px;
@@ -95,5 +122,69 @@ text-align: center;
     resize: none;
     background: url(./usericon.png) right bottom no-repeat;
     font-size: 18px;
-
 }
+
+#postfeed {
+  padding: 5px;
+  background-color: #f2f2f2;
+  border: 3px solid LightGray;
+  opacity: 1
+}
+.Map{
+  display: hidden;
+}
+.grid-container {
+  height: 100vh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 500px 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-areas: "Feed Map-Container Map-Container Map-Container" "Feed Map-Container Map-Container Map-Container" "Feed Map-Container Map-Container Map-Container";
+}
+
+.Feed {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: "feed-top-nav feed-top-nav feed-top-nav" "Feed-Posts Feed-Posts Feed-Posts";
+  grid-area: Feed;
+}
+
+.Feed-Posts {
+  grid-area: Feed-Posts;
+  height: 100vh;
+  overflow: scroll;
+}
+
+.Map-Container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
+  grid-template-areas: ". . . ." ". . . ." ". . . ." ". . . Filter-Area""Comment-Box Comment-Box . Filter-Area";
+  grid-area: Map-Container;
+  overflow: hidden;
+}
+
+.Comment-Box {
+  grid-area: Comment-Box;
+  margin: 20px;
+  border-radius: 20px;
+  z-index: 1;
+  background: white;
+  padding: 20px;
+}
+.Filter-Area {
+  grid-area: Comment-Box;
+  margin: 20px;
+  border-radius: 20px;
+  z-index: 1;
+  background: white;
+  padding: 20px;
+}
+.New-Post-Box{
+}
+.post-text{
+  color: black;
+  z-index: 5;
+}
+.Filter-Area { grid-area: Filter-Area; }

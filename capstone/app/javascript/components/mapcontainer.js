@@ -44,13 +44,17 @@ this.state = {
 
   render() {
     let {username, userStatus} = this.props
-
+    const style = {
+      width: '100%',
+      height: '100%'
+    }
     return (
       <Map
           google={this.props.google}
           onDragend={this.centerMoved}
           google={this.props.google}
           zoom={14}
+          style={style}
           initialCenter={{
                 lat: 32.709582,
                 lng: -117.157973
