@@ -10,6 +10,9 @@ import AboutUs from './aboutus'
 import Profile from './profile'
 import LearnMore from './learnmore'
 
+import { getPosts } from '../api/index.js'
+
+
 class Routes extends React.Component {
 
     constructor(props) {
@@ -17,81 +20,18 @@ class Routes extends React.Component {
     this.state = {
       posts: [
           
-       {
-         user_id: '88',
-         username: 'Marty McFly',
-         firstnamme: 'Miles',
-         lat: 32.717422,
-         lng:-117.162773,
-         tags: 'React',
-         post: 'Hey Doc this coffee sucks, go grab Einstein and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-         post_status: '2',
-         picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/marty-mcfly-512.png",
-         created_at: "5pm",
-       },
-       {
-         user_id: '88',
-         username: 'Doc Brown',
-         firstnamme: 'Miles',
-         lat: 32.717422,
-         lng:-117.162773,
-         tags: 'Rails',
-         post: 'Hey Marty this coffee sucks, grab Einstein and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-         post_status: '2',
-         picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/doc-512.png",
-         created_at: "6pm",
-       },
-       {
-         user_id: '88',
-         username: 'Einstein',
-         firstnamme: 'Miles',
-         lat: 32.717422,
-         lng:-117.162773,
-         tags: 'JS',
-         post: 'Bark Bark this coffee sucks, grab some kibble and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-         post_status: '2',
-         picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/delorean-03-512.png",
-         created_at: "7pm",
-       },
-       {
-         user_id: '88',
-         username: 'Marty McFly',
-         firstnamme: 'Miles',
-         lat: 32.717422,
-         lng:-117.162773,
-         tags: 'React',
-         post: 'Hey Doc this coffee sucks, go grab Einstein and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-         post_status: '2',
-         picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/marty-mcfly-512.png",
-         created_at: "5pm",
-       },
-       {
-         user_id: '88',
-         username: 'Doc Brown',
-         firstnamme: 'Miles',
-         lat: 32.717422,
-         lng:-117.162773,
-         tags: 'Rails',
-         post: 'Hey Marty this coffee sucks, grab Einstein and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-         post_status: '2',
-         picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/doc-512.png",
-         created_at: "6pm",
-       },
-       {
-         user_id: '88',
-         username: 'Einstein',
-         firstnamme: 'Miles',
-         lat: 32.717422,
-         lng:-117.162773,
-         tags: 'JS',
-         post: 'Bark Bark this coffee sucks, grab some kibble and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-         post_status: '2',
-         picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/delorean-03-512.png",
-         created_at: "7pm",
-       },
-       
+
       ]
     }
+  }
+
+  componentWillMount() {
+    getPosts()
+      .then(APIposts => {
+        this.setState({
+          posts: APIposts
+        })
+      })
   }
 
   render () {

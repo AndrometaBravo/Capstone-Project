@@ -40,64 +40,49 @@ class CloudPost extends React.Component {
     return (
 
       <Container>
-    
+          
         <div>
         <center>
         <br/>
         <br/>
+        <br/>
+        <br/>
 
-            <form>
+            <form id="postfeed">
+            <br/>
             
             <p><font color = 'orange'>Please tell us about your project!</font></p>
-            
-            <input type='number' name='user_id' onChange={this.handleChange} value={this.state.form.user_id} placeholder=" user id ..."/>
 
-            <br/>
-            <br/>
-
-            <input type='text' name='username' onChange={this.handleChange} value={this.state.form.username} placeholder=" username ..."/>
-
-            <br/>
-            <br/>
-
-            <input type='text' name='firstnamme' onChange={this.handleChange} value={this.state.form.firstnamme} placeholder=" firstname ..."/>
+            <input type='text' name='project type' onChange={this.handleChange} value={this.state.form.tags} placeholder=" project type ..."/>
 
             <br/>
             <br/>
             
-            <input type='number' name='lat' onChange={this.handleChange} value={this.state.form.lat} placeholder=" lat ..."/>
-
-            <br/>
-            <br/>
-
-            <input type='number' name='lng' onChange={this.handleChange} value={this.state.form.lng} placeholder=" lng ..."/>
+            <input type='text' name='post content' onChange={this.handleChange} value={this.state.form.post} placeholder=" post content ..."/>
 
             <br/>
             <br/>
             
-            <input type='text' name='tags' onChange={this.handleChange} value={this.state.form.tags} placeholder=" tags ..."/>
+            <input type='number' name='privacy level' onChange={this.handleChange} value={this.state.form.post_status} placeholder=" privacy level ..."/>
+
+            <br/>
+            <br/>
+
+            <input type='number' name='lat' onChange={this.handleChange} value={this.state.form.lat} placeholder=" latitude ..."/>
+
+            <br/>
+            <br/>
+
+            <input type='number' name='lng' onChange={this.handleChange} value={this.state.form.lng} placeholder=" longitude ..."/>
 
             <br/>
             <br/>
             
-            <input type='text' name='post' onChange={this.handleChange} value={this.state.form.post} placeholder=" post ..."/>
-
-            <br/>
-            <br/>
-
-            <input type='number' name='post_status' onChange={this.handleChange} value={this.state.form.post_status} placeholder=" post status ..."/>
-
-            <br/>
-            <br/>
-
-            <input type='text' name='created_at' onChange={this.handleChange} value={this.state.form.created_at} placeholder=" created at ..."/>
-
-            <br/>
-            <br/>
-
             <button type="submit" onClick={this.handleNewPost} class="btn btn-secondary btn-sm">CREATE POST</button>
               
-            <a className="nav-link active" href="/"><font color = 'orange'>view feed</font></a>
+            <br/>
+
+            <p align="center">[ <a className="" href="/feed"><font color = 'orange'>view feed</font></a> ]</p>
 
             </form>
             

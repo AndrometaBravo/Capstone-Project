@@ -20,11 +20,11 @@ class CloudFeed extends React.Component {
           
           <hr/>
 
-          <a align="left" href=""><img className="feed-avatar" id="postfeed" src ={post.picture_url} alt=''/></a>
+          <a align="left" href=""><img className="feed-avatar" id="postfeed" src ="https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/delorean-03-512.png" alt=''/></a>
 
           <br/>
           
-          <p><font color = 'orange'><strong>{post.username}</strong></font> ({post.user_id}) ... @Downtown (<font color = 'orange'>{post.lat}</font>/<font color = 'orange'>{post.lng}</font>)
+          <p><font color = 'orange'><strong>Marty McFly</strong></font> (88) ... @Downtown (<font color = 'orange'>{post.lat}</font>/<font color = 'orange'>{post.lng}</font>)
           
           <br/>
           <br/>
@@ -34,12 +34,12 @@ class CloudFeed extends React.Component {
           <div class = 'row'>
           <div class = 'col-4'>
   
-          <p align="left">posted: <font color = 'orange'>{post.created_at}</font></p>
+          <p align="left">posted:<br/><font color = 'orange'>{post.created_at}</font></p>
           
           </div>
           <div class = 'col-4'>
           
-          <p align="center">project: <font color = 'orange'>{post.tags}</font></p>
+          <p align="center">project: <font color = 'orange'>React</font></p>
           
           </div>
           <div class = 'col-4'>
@@ -60,13 +60,10 @@ class CloudFeed extends React.Component {
 
           <p align="center">[ <a className="" href="/post"><font color = 'orange'>new post</font></a> ]</p>
 
-          <br/>
-          <br/>
           </Container>
           
     )
   }
-
 }
 
 export default CloudFeed
