@@ -62,7 +62,7 @@ class Routes extends React.Component {
              <Route exact path="/" component={() => <Home statusFilter={statusFilter} posts={posts} myLocation={myLocation}/>} />
              <Route exact path="/about" component= {() => <AboutUs />} />
              <Route exact path="/more" component={() => <LearnMore />} />
-             <Route exact path="/userprofile/:id" component={(props) => <Profile {...props} users = {users} current_user = {current_user} edit_user = {edit_user}/>} />
+             <Route exact path="/userprofile/:id" component={(props) => <Profile {...props} users = {users} current_user = {current_user} edit_user = {edit_user} posts = {posts}/>} />
              <Route exact path="/feed" component={() => <CloudFeed posts={posts}/> } />
              <Route exact path="/post" component={() => <CloudPost handleNewPost={this.handleNewPost}/> } />
 

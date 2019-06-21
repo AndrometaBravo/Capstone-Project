@@ -4,10 +4,15 @@ import ReactDOM from 'react-dom'
 import {oneUser} from '../api/api'
 import {myFriends} from '../api/api'
 
+import {createPost} from '../api/index'
+
 // parts
 import Imbar from "./imbar"
 import Userinfo from "./userinfo"
 import Photos from "./photos"
+import CloudFeed from "./feed"
+import CloudPost from "./post"
+import Friendpic from './friendpic'
 
 class Profile extends Component {
     constructor(props){
@@ -18,7 +23,6 @@ class Profile extends Component {
 
         }
     }
-
 
     componentWillMount() {
         let id = this.props.match.params.id
@@ -44,7 +48,7 @@ class Profile extends Component {
 
 
     render(){
-        const {users, current_user, edit_user} = this.props
+        const {users, current_user, edit_user, posts} = this.props
         const {user, friends} = this.state
         console.log(friends);
         console.log(user);
@@ -84,22 +88,24 @@ class Profile extends Component {
         <div className = "friends">
             <hr/>
             <h3>Friends</h3>
-            <Photos
+            <Friendpic
+                friends = {friends}
             />
         </div>
         <div className = "body">
-        <div>
-            <div className = "post">
-                <h3>POST Something</h3>
-                <textarea placeholder = "Tell me about your day"></textarea>
-                <br/>
-                <button>Submit</button>
-            </div>
-            <div className = "feed">
-                <h3>Feed:</h3>
-            </div>
+            <div>
+                { current_user.id == user.id &&
+                <CloudPost
+                    posts = {posts}
+                    current_user = {current_user}
+                    handleNewPost = {this.handleNewPost}
+                 />}
 
-        </div>
+                <CloudFeed
+                    posts = {posts}
+                 />
+
+            </div>
         </div>
         <div className = 'im'>
             <Imbar
