@@ -13,6 +13,22 @@ class Users::SessionsController < Devise::SessionsController
       render json: user
   end
 
+  def friends
+      i = 0
+      friends = []
+      UserStatus.where(:status == 1).length.times do
+          if current_user.id == UserStatus.where(:status == 1)[i].recipient_id
+              friends << UserStatus.where(:status == 1)[i].sender
+              i = i + 1
+          elsif current_user.id == UserStatus.where(:status == 1)[i].sender_id
+              friends << UserStatus.where(:status == 1)[i].recipient
+              i = i + 1
+          end
+      end
+      # friend = status.username
+      render json: friends
+  end
+
   # GET /resource/sign_in
   def new
     super

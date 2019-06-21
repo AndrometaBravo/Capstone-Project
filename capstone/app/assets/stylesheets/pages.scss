@@ -238,7 +238,7 @@
     .location{
 
     }
-//acn we change this name
+//can we change this name --- yes
 // .nav-link active{}
 
 
@@ -397,7 +397,6 @@
     .header{
         grid-area: header;
         color:white;
-        z-index: -2;
         position: relative;
         background: url(./banner.jpg);
         display: grid;
@@ -432,7 +431,7 @@
             .picoverlay{
                 font-size: 20px;
                 background-color: black;
-                opacity: .8;
+                opacity: .5;
                 height: 200px;
                 width: 200px;
                 position: absolute;
@@ -452,7 +451,12 @@
             grid-area: buttons;
             position: absolute;
             bottom: 0;
+
         }
+            .buttons button{
+                z-index: 5;
+                cursor: pointer;
+            }
 
 
     /* info */
@@ -570,19 +574,20 @@
         display: flex;
         border-top:solid;
     }
-        .im div{
+        .imitem div{
             width:90%;
             background-color: #8000ff;
             padding-right: 15%;
         }
-        .im img{
-            width: 50px;
-            height:50px;
-            margin-left: 10px;
-            margin-top: 20px;
-            background-color: red;
+        .imitem img{
+            width: 60px;
+            height:60px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 0% 50% 50% 0%;
+            background: url(./profilepic.jpeg);
         }
-        .im p{
+        .imitem p{
             font-size: 15px;
         }
 

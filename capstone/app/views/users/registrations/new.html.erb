@@ -9,6 +9,38 @@
   </div>
 
   <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username, autocomplete: "username" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname, autocomplete: "firstname" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname, autocomplete: "lastname" %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :gender %><br />
+    <%= f.select :gender, ["Male", 'Female', "Other"], include_blank: true%>
+
+  </div>
+
+  <div class="field">
+    <%= f.label :age %><br />
+    <%= f.number_field :age, autocomplete: "age" %>
+  </div>
+
+  <div class="biofield">
+    <%= f.label :bio %><br />
+    <%= f.text_area :bio, autocomplete: "bio" %>
+  </div>
+
+  <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
@@ -26,4 +58,4 @@
   </div>
 <% end %>
 
-<%= render "users/shared/links" %>
+<%= render "devise/shared/links" %>

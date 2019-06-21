@@ -1,3 +1,7 @@
+
+//////// users fetches/////////////
+
+
 let getUsers = function() {
 	return fetch('/allusers.json')
 		.then((resp) => {
@@ -22,4 +26,17 @@ let oneUser = function(id) {
 
 export  {
 	oneUser
+}
+
+let myFriends = function() {
+	return fetch(`/friends.json`)
+		.then((resp) => {
+			let json = resp.json()
+			console.log(json);
+			return json
+		})
+}
+
+export  {
+	myFriends
 }

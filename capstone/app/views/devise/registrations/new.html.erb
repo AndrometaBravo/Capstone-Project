@@ -14,6 +14,17 @@
   </div>
 
   <div class="field">
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname, autocomplete: "firstname" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname, autocomplete: "lastname" %>
+  </div>
+
+
+  <div class="field">
     <%= f.label :gender %><br />
     <%= f.select :gender, ["Male", 'Female', "Other"], include_blank: true%>
 

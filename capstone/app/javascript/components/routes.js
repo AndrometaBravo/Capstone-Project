@@ -98,7 +98,7 @@ class Routes extends React.Component {
 
   render () {
 
-      const {logged_in, sign_in, sign_out, current_user, users} = this.props
+      const {logged_in, sign_in, sign_out, current_user, users, edit_user} = this.props
       let { posts } = this.state
 
 
@@ -109,7 +109,7 @@ class Routes extends React.Component {
              <Route exact path="/about" component= {() => <AboutUs />} />
              <Route exact path="/more" component={() => <LearnMore />} />
 
-             <Route exact path="/userprofile/:id" component={(props) => <Profile {...props}/>} />
+             <Route exact path="/userprofile/:id" component={(props) => <Profile {...props} users = {users} current_user = {current_user} edit_user = {edit_user}/>} />
              <Route exact path="/feed" component={() => <CloudFeed posts={posts}/> } />
 
          </Switch>

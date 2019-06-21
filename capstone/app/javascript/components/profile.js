@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom'
 
 import {oneUser} from '../api/api'
-
+import {myFriends} from '../api/api'
 
 // parts
 import Imbar from "./imbar"
@@ -13,7 +13,9 @@ class Profile extends Component {
     constructor(props){
         super(props)
         this.state = {
-            user: ""
+            user: "",
+            friends: []
+
         }
     }
 
@@ -23,6 +25,9 @@ class Profile extends Component {
         oneUser(id).then(APIusers => {
             this.setState({user: APIusers});
         })
+        myFriends().then(APIfriends => {
+            this.setState({friends: APIfriends});
+        })
     }
 
     componentDidUpdate(prevProps) {
@@ -31,27 +36,36 @@ class Profile extends Component {
           oneUser(id).then(APIusers => {
               this.setState({user: APIusers});
           })
+          myFriends().then(APIfriends => {
+              this.setState({friends: APIfriends});
+          })
         }
     }
 
 
     render(){
-        const {users} = this.props
-        const {user} = this.state
+        const {users, current_user, edit_user} = this.props
+        const {user, friends} = this.state
+        console.log(friends);
         console.log(user);
+        console.log(friends.includes(user));
+
     return (
     <div className = "profilepage">
         <div className = "header">
             <div className = "profilebuffer"></div>
             <div className = "profilepicdiv">
                 <button id = "inputs"> Change Profile Pic</button>
+                <div className = "picoverlay"></div>
             </div>
-            <div className = "picoverlay"></div>
             <h1>{user.username}</h1>
             <div className = "blank"></div>
             <div className = "buttons">
-                <button>We don't</button>
-                <button>Do anything</button>
+                { current_user.id != user.id && <button>Send a friend Request</button> || current_user.id != user.id && <button>Send a friend Request</button>}
+                {current_user.id != user.id && <button>Send a Message</button>}
+                {current_user.id == user.id && <button><a href = {edit_user}>Edit Profile</a></button>}
+                {current_user.id == user.id && <button>Other Button</button>}
+
             </div>
         </div>
 
@@ -89,6 +103,9 @@ class Profile extends Component {
         </div>
         <div className = 'im'>
             <Imbar
+                users = {users}
+                current_user = {current_user}
+                friends = {friends}
             />
         </div>
 
