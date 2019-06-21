@@ -12,7 +12,12 @@ this.state = {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      modal:false
+      modal:false,
+      profile: {
+        avatar: "https://www.learnacademy.org/app/uploads/2019/02/matt-200x200.jpg",
+        username: "codePro123",
+        userStatus: "Available"
+      }
         }
       }
 
@@ -76,13 +81,19 @@ this.state = {
 
                 <InfoWindow
                   marker={this.state.activeMarker}
-                  visible={this.state.showingInfoWindow}>
+                  visible={this.state.showingInfoWindow}
+                  >
                     <div className = "map">
-                      <MapIcon/>
+                      <MapIcon profile={this.state.profile}/>
                     </div>
                 </InfoWindow>
       </Map>
-      <UserModal isOpen={this.state.modal} toggle = {this.toggle}/>
+
+      <UserModal
+          isOpen={this.state.modal}
+          toggle = {this.toggle}
+          profile = {this.state.profile}
+      />
       </div>
       </div>
 

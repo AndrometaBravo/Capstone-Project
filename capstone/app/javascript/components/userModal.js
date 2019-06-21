@@ -1,15 +1,34 @@
 import React, {Component} from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import MapContainer from './mapcontainer'
 
 export default class UserModal extends Component {
 
 render(){
   console.log("modal rendered");
+  let {username, avatar, userStatus}= this.props.profile
   return(
       <div id='usermodal'>
-      <Modal isOpen = {this.props.isOpen} toggle = {this.props.toggle}>
+      <Modal
+      size = 'xl'
+      isOpen = {this.props.isOpen}
+      toggle = {this.props.toggle}
+      className = {this.props.className}
+      centered>
+      <ModalHeader>
+          <div align = 'center'>
+                {username}
+          </div>
+      </ModalHeader>
           <ModalBody>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            <div>
+                <div id='modalavatar'>
+                    <img src={avatar}/>
+                </div>
+            <div className = {userStatus}>
+                <b>{userStatus}</b>
+            </div>
+          </div>
           </ModalBody>
       </Modal>
         </div>
