@@ -25,7 +25,7 @@ class Home extends React.Component {
   render () {
     let{ feed, currentLocation }=this.state
     let{ renderProfiles }=this
-    const{ posts, myLocation }=this.props
+    const{ posts, myLocation, statusFilter }=this.props
     if(myLocation){
       console.log(myLocation)
     }
@@ -34,7 +34,7 @@ class Home extends React.Component {
           <div className="Feed">
           <FeedTopNav />
             <div className="Feed-Posts">
-              <CloudFeed posts={posts}/>
+              <CloudFeed posts={posts} statusFilter={statusFilter}/>
             </div>
           </div>
           <div className="Map-Container">
@@ -49,15 +49,16 @@ class Home extends React.Component {
           <div className="Filter-Area">
           <p>Filter</p>
           { myLocation.length != 0 &&
-            <p>Lat: {myLocation.location.lat} 
+            <p>Lat: {myLocation.location.lat}
             Lng: {myLocation.location.lng}</p>
           }
           <ul className="list-group">
                 <li className="list-group-item d-flex justify-content-between align-items-center">
-                  <span className="badge badge-primary badge-pill">14</span>
+                Total Posts
+                  <span className="badge badge-primary badge-pill">{posts.length}</span>
                 </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">
-              My current Lng:
+
               <span className="badge badge-primary badge-pill">2</span>
             </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">

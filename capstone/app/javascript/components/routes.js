@@ -17,6 +17,7 @@ class Routes extends React.Component {
     constructor(props) {
     super(props)
     this.state = {
+      postsFilter:[],
       myLocation: [],
       posts: [
             {
@@ -27,7 +28,7 @@ class Routes extends React.Component {
            lng:-117.159447,
            tags: 'React',
            post: 'Hey Doc this coffee sucks, go grab Einstein and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-           post_status: '2',
+           post_status: 1,
            picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/marty-mcfly-512.png",
            created_at: "5pm",
          },
@@ -39,7 +40,7 @@ class Routes extends React.Component {
            lng:-117.159447,
            tags: 'Rails',
            post: 'Hey Marty this coffee sucks, grab Einstein and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-           post_status: '2',
+           post_status: 2,
            picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/doc-512.png",
            created_at: "6pm",
          },{
@@ -50,7 +51,7 @@ class Routes extends React.Component {
            lng:-117.159447,
            tags: 'JS',
            post: 'Bark Bark this coffee sucks, grab some kibble and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-           post_status: '2',
+           post_status: 3,
            picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/delorean-03-512.png",
            created_at: "7pm",
          },{
@@ -61,7 +62,7 @@ class Routes extends React.Component {
            lng:-117.159447,
            tags: 'React',
            post: 'Hey Doc this coffee sucks, go grab Einstein and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-           post_status: '2',
+           post_status: 3,
            picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/marty-mcfly-512.png",
            created_at: "5pm",
          },
@@ -73,7 +74,7 @@ class Routes extends React.Component {
            lng:-117.159447,
            tags: 'Rails',
            post: 'Hey Marty this coffee sucks, grab Einstein and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-           post_status: '2',
+           post_status: 1,
            picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/doc-512.png",
            created_at: "6pm",
          },{
@@ -84,7 +85,7 @@ class Routes extends React.Component {
            lng:-117.159447,
            tags: 'JS',
            post: 'Bark Bark this coffee sucks, grab some kibble and pick me up! Cloud Culture is a location-based collaboration platform for remote web workers, students and computer coders ...',
-           post_status: '2',
+           post_status: 2,
            picture_url: "https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/delorean-03-512.png",
            created_at: "7pm",
          }
@@ -97,24 +98,24 @@ class Routes extends React.Component {
     this.setState({ myLocation: ApiLocation })
     })
   }
-
+  statusFilter=()=>{
+    console.log("ran status filter");
+  }
 
   render () {
 
       const {logged_in, sign_in, sign_out, current_user } = this.props
-
-      let { posts, myLocation } = this.state
-
-
+      let { posts, myLocation} = this.state
+      let{ statusFilter }=this
     return (
         <Switch>
 
-             <Route exact path="/" component={() => <Home posts={posts} myLocation={myLocation}/>} />
+             <Route exact path="/" component={() => <Home statusFilter={statusFilter} posts={posts} myLocation={myLocation}/>} />
              <Route exact path="/about" component= {() => <AboutUs />} />
              <Route exact path="/more" component={() => <LearnMore />} />
              <Route path="/userprofile/:id" component={() => <Profile />} />
 
-             <Route exact path="/feed" render={(props) => <CloudFeed posts={this.state.posts}/> } />
+             <Route exact path="/feed" component={() => <CloudFeed posts={posts}/> } />
 
          </Switch>
        );
