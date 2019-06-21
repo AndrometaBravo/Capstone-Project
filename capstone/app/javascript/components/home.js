@@ -33,12 +33,14 @@ class Home extends React.Component {
       console.log(myLocation)
     }
     return (
+
         <div className="grid-container">
           <div className="Feed">
           <FeedTopNav />
             <div className="Feed-Posts">
               <CloudFeed posts={posts} statusFilter={statusFilter}/>
             </div>
+
           </div>
           <div className="Map-Container">
           <MapContainer

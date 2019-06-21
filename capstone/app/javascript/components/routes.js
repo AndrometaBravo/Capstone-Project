@@ -10,7 +10,6 @@ import CloudFeed from './feed'
 import CloudPost from './post'
 import AboutUs from './aboutus'
 import Profile from './profile'
-import CloudFeed from './feed'
 import LearnMore from './learnmore'
 
 import { getPosts } from '../api/index.js'
@@ -27,6 +26,7 @@ class Routes extends React.Component {
       postsFilter:[],
       myLocation: [],
       posts: []
+
     }
   }
 
@@ -38,6 +38,7 @@ class Routes extends React.Component {
           posts: APIposts
         })
       })
+  }
 
   componentDidMount=()=>{
     getLocation().then(ApiLocation => {
@@ -50,11 +51,10 @@ class Routes extends React.Component {
   }
 
   render () {
-
-      const {logged_in, sign_in, sign_out, current_user } = this.props  
-      let { posts } = this.state
+      const {logged_in, sign_in, sign_out, current_user, users, edit_user} = this.props
       let { posts, myLocation} = this.state
-      let{ statusFilter }=this
+      let { statusFilter } = this
+
 
     return (
         <Switch>
@@ -62,9 +62,9 @@ class Routes extends React.Component {
              <Route exact path="/" component={() => <Home statusFilter={statusFilter} posts={posts} myLocation={myLocation}/>} />
              <Route exact path="/about" component= {() => <AboutUs />} />
              <Route exact path="/more" component={() => <LearnMore />} />
-             <Route path="/userprofile/:id" component={() => <Profile />} />
+             <Route exact path="/userprofile/:id" component={(props) => <Profile {...props} users = {users} current_user = {current_user} edit_user = {edit_user}/>} />
              <Route exact path="/feed" component={() => <CloudFeed posts={posts}/> } />
-             <Route exact path="/post" render={(props) => <CloudPost handleNewPost={this.handleNewPost}/> } />
+             <Route exact path="/post" component={() => <CloudPost handleNewPost={this.handleNewPost}/> } />
 
          </Switch>
        )

@@ -12,14 +12,14 @@ class Imitem extends Component {
 
 
     render(){
-        const {index, friends} = this.props
+        const {index, friends, friend, users} = this.props
       return (
         <div className = "imitem">
             <div>
-                <Link to = {`/userprofile/${friends[index]}`}><img src = ""></img></Link>
+                <Link to = {`/userprofile/${friend.id}`}><img src = ""></img></Link>
             </div>
             <div>
-                <p>username{friends[index].username}</p>
+                <p>{friend.username}</p>
             </div>
         </div>
 

@@ -1,60 +1,11 @@
 // Place all the styles related to the Pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .top{
-  display: none;
+    display: none;
     height: 130px;
 }
-///////////////////nav//////////////////////////
-.navbar{
-    background-color: red;
-    position: fixed;
-    top: 0;
-    left:0;
-    overflow: hidden;
-    height: 100px;
-    width: 100%;
-    opacity: 0.4;
-    padding-top:40px;
-    z-index: 2;
-
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas:
-    "home about learn signInOut username";
-    display: none;
-}
-    .navbar:hover{
-        opacity: 1;
-        z-index: 5;
-    }
-    nav a{
-        padding: 30px;
-    }
-
-    .navbar .home{
-        grid-area: home;
-
-    }
-    .navbar .about{
-        grid-area:about;
-    }
-    .navbar .learn{
-        grid-area: learn;
-    }
-    .navbar .signInOut{
-        grid-area:signInOut;
-    }
-    .navbar .username{
-        grid-area:username;
-    }
-
-///////////////////home//////////////////////////
-
-.homePage{
-}
-
 
 ///////////////////AboutUs//////////////////////////
 
@@ -263,14 +214,170 @@
                         margin-top: 20px;
                     }
 
+//end of about
+
+
+///////////////////feed//////////////////////////
+
+#postfeed{
+    padding: 5px;
+    background-color: #f2f2f2;
+    border: 3px solid LightGray;
+    opacity: 1;
+}
+    .feed-avatar{
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        margin: auto;
+    }
+    .location{
+
+    }
+//can we change this name --- yes
+// .nav-link active{}
+
+
+//end of feed
+
+
+
+
+
+
+
+///////////////////home//////////////////////////
+
+#map-holder{
+    display: grid;
+    grid-template-columns: 500px auto;
+    height: 100%;
+    overflow: hidden;
+}
+    #fake-feed{
+
+    }
+
+        ///////////////feed top nav/////////////
+
+        .feed-top-nav{
+            height:50px;
+            display: flex;
+            padding:10px;
+            width: 100%;
+            box-shadow: 0px 0px 10px grey;
+
+        }
+            .feed-avatar-small{
+                display: flex;
+                width:30px;
+                height:30px;
+                border-radius: 50%;
+            }
+            #feed-username{
+               display: inline-block;
+               vertical-align: middle;
+               line-height: normal;
+            }
+
+
+        //end of feed top nav
+
+        //////////////////////cloudfeed//////////
+
+
+
+        //end of cloud feed
+
+
+    ///////////////////MapContainer//////////////////////////
+
+
+    //end of MapContainer
+
+
+//end of home
+
+
 ///////////////////learnmore//////////////////////////
 
 
 
 
 
+//end of learnmore
+
+////////////////////mapicon/////////////
+
+.iconWindow{
+    text-align: center;
+    border-style: solid;
+    border-width: thin;
+}
+    .Available{
+      color: green;
+      font-weight: bold;
+    }
+    .Unavailable {
+      color: red;
+    }
+
+//end of mapicon
 
 
+///////////////////nav//////////////////////////
+.navbar{
+    background-color: red;
+    position: fixed;
+    top: 0;
+    left:0;
+    overflow: hidden;
+    height: 100px;
+    width: 100%;
+    opacity: 0.4;
+    padding-top:40px;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "home profile about learn signInOut username"
+}
+    .navbar:hover{
+        opacity: 1;
+        z-index: 5;
+    }
+    nav a{
+        padding: 30px;
+    }
+
+    .navbar .home{
+        grid-area: home;
+
+    }
+
+    .navbar .profile{
+        grid-area: profile;
+    }
+    .navbar .about{
+        grid-area:about;
+    }
+    .navbar .learn{
+        grid-area: learn;
+    }
+    .navbar .signInOut{
+        grid-area:signInOut;
+    }
+    .navbar .username{
+        grid-area:username;
+    }
+
+//end of navbar
 
 
 //////////////////profile page//////////////////////////////
@@ -290,7 +397,6 @@
     .header{
         grid-area: header;
         color:white;
-        z-index: -2;
         position: relative;
         background: url(./banner.jpg);
         display: grid;
@@ -325,7 +431,7 @@
             .picoverlay{
                 font-size: 20px;
                 background-color: black;
-                opacity: .2;
+                opacity: .5;
                 height: 200px;
                 width: 200px;
                 position: absolute;
@@ -338,25 +444,30 @@
             bottom: 0;
 
         }
-        .blank{
+        .header .blank{
             grid-area: blank;
         }
         .header .buttons{
             grid-area: buttons;
             position: absolute;
             bottom: 0;
+
         }
+            .buttons button{
+                z-index: 5;
+                cursor: pointer;
+            }
 
 
     /* info */
-    .info{
+    .profilepage .info{
         grid-area: info;
         background-color: #8000ff;
     }
-        .userinfo{
+        .profilepage .userinfo{
 
         }
-            .about{
+            .profilepage .about{
 
             }
                 .about textarea{
@@ -463,18 +574,21 @@
         display: flex;
         border-top:solid;
     }
-        .im div{
+        .imitem div{
             width:90%;
             background-color: #8000ff;
             padding-right: 15%;
         }
-        .im img{
-            width: 50px;
-            height:50px;
-            margin-left: 10px;
-            margin-top: 20px;
-            background-color: red;
+        .imitem img{
+            width: 60px;
+            height:60px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            border-radius: 0% 50% 50% 0%;
+            background: url(./profilepic.jpeg);
         }
-        .im p{
+        .imitem p{
             font-size: 15px;
         }
+
+//end of profile page

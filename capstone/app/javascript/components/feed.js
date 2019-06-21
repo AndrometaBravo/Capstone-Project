@@ -28,64 +28,58 @@ class CloudFeed extends React.Component {
     let {statusFilterArr}=this.state
     return (
 
+        <Container>
+        <ListGroup id="postfeed">
 
-          <Container>
-          <br/>
-          <ListGroup id="postfeed">
+        {posts.map((post, index) =>{
 
-          {posts.map((post, index) =>{
+        return (
 
-          return (
+        <ListGroup.Item key={index}>
 
-          <ListGroup.Item key={index}>
-          
-          <hr/>
+        <hr/>
 
-          <a align="left" href=""><img className="feed-avatar" id="postfeed" src ="https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/delorean-03-512.png" alt=''/></a>
+        <a align="left" href=""><img className="feed-avatar" id="postfeed" src ={post.picture_url} alt=''/></a>
 
-          <br/>
-          
-          <p><font color = 'orange'><strong>Marty McFly</strong></font> (88) ... @Downtown (<font color = 'orange'>{post.lat}</font>/<font color = 'orange'>{post.lng}</font>)
-          
-          <br/>
-          <br/>
-          
-          {post.post}<font color = 'orange'></font> ({post.post_status})</p>
+        <br/>
 
-          <div class = 'row'>
-          <div class = 'col-4'>
-  
-          <p align="left">posted:<br/><font color = 'orange'>{post.created_at}</font></p>
-          
-          </div>
-          <div class = 'col-4'>
-          
-          <p align="center">project: <font color = 'orange'>React</font></p>
-          
-          </div>
-          <div class = 'col-4'>
-          
-          <p align="right">[ <a href="/post"><font color = 'orange'>new post</font></a> ]</p>
+        <p><font color = 'orange'><strong>{post.username}</strong></font> ({post.user_id}) ... @Starbucks:
 
-          </div>
-          </div>
+        <br/>
+        <br/>
 
-          <hr/>
-          </ListGroup.Item>
+        {post.post}<font color = 'orange'></font> ({post.post_status})</p>
 
-          )
-          })}
+        <div class = 'row'>
+        <div class = 'col-4'>
 
-          </ListGroup>
-          <br/>
+        <p align="left">posted: <font color = 'orange'>{post.created_at}</font></p>
 
-          <p align="center">[ <a className="" href="/post"><font color = 'orange'>new post</font></a> ]</p>
+        </div>
+        <div class = 'col-4'>
 
-          </Container>
-          
+        <p align="center">project: <font color = 'orange'>{post.tags}</font></p>
 
-    )
-  }
-}
+        </div>
+        <div class = 'col-4'>
 
+        <p align="right">[ <a href=""><font color = 'orange'>comment</font></a> ]</p>
+
+        </div>
+        </div>
+
+        <hr/>
+        </ListGroup.Item>
+
+        )
+        })}
+
+        </ListGroup>
+        <br/>
+        <p align="center"><a className="nav-link active" href=""><font color = 'orange'>NEW POST</font></a></p>
+
+
+        </Container>
+)
+}}
 export default CloudFeed

@@ -20,4 +20,5 @@ class User < ApplicationRecord
                  :foreign_key  => "received_id"
 
          has_many :posts
+         has_many :tags
 end
