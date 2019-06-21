@@ -1,12 +1,33 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Container, ListGroup } from 'react-bootstrap'
+import { Container, ListGroup, Button, ButtonGroup } from 'react-bootstrap'
 
 class CloudFeed extends React.Component {
-
+  constructor(props){
+    super(props)
+    this.state={
+      statusFilterArr:[1,2,3],
+      cSelected: [] ,
+    }
+  }
+  handleFilterChange=(filterNum)=>{
+    let{ statusFilterArr }=this.state
+    if (statusFilterArr.includes(filterNum)){
+      function checkval(num){
+        console.log(statusFilterArr);
+        return num != filterNum
+      }
+      this.setState({statusFilterArr : statusFilterArr.filter(checkval)})
+    }else{
+    statusFilterArr.push(filterNum)
+  }
+    this.setState(statusFilterArr)
+  }
   render() {
     let{posts}=this.props
+    let {statusFilterArr}=this.state
     return (
+
 
           <Container>
           <br/>
@@ -62,6 +83,7 @@ class CloudFeed extends React.Component {
 
           </Container>
           
+
     )
   }
 }
