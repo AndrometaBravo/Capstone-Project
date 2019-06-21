@@ -30,9 +30,13 @@ class CloudFeed extends React.Component {
 
         <Container>
         <ListGroup id="postfeed">
-
+        <ButtonGroup>
+         <Button color="primary" onClick={() => this.handleFilterChange(1)} active={this.state.cSelected.includes(1)}>One</Button>
+         <Button color="primary" onClick={() => this.handleFilterChange(2)} active={this.state.cSelected.includes(2)}>Two</Button>
+         <Button color="primary" onClick={() => this.handleFilterChange(3)} active={this.state.cSelected.includes(3)}>Three</Button>
+       </ButtonGroup>
         {posts.map((post, index) =>{
-
+          if(statusFilterArr.includes(post.post_status)){
         return (
 
         <ListGroup.Item key={index}>
@@ -50,18 +54,18 @@ class CloudFeed extends React.Component {
 
         {post.post}<font color = 'orange'></font> ({post.post_status})</p>
 
-        <div class = 'row'>
-        <div class = 'col-4'>
+        <div className = 'row'>
+        <div className = 'col-4'>
 
         <p align="left">posted: <font color = 'orange'>{post.created_at}</font></p>
 
         </div>
-        <div class = 'col-4'>
+        <div className = 'col-4'>
 
         <p align="center">project: <font color = 'orange'>{post.tags}</font></p>
 
         </div>
-        <div class = 'col-4'>
+        <div className = 'col-4'>
 
         <p align="right">[ <a href=""><font color = 'orange'>comment</font></a> ]</p>
 
@@ -72,6 +76,7 @@ class CloudFeed extends React.Component {
         </ListGroup.Item>
 
         )
+        }
         })}
 
         </ListGroup>
