@@ -10,7 +10,6 @@ import CloudFeed from './feed'
 import CloudPost from './post'
 import AboutUs from './aboutus'
 import Profile from './profile'
-import CloudFeed from './feed'
 import LearnMore from './learnmore'
 
 import { getPosts } from '../api/index.js'
