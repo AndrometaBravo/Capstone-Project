@@ -28,47 +28,64 @@ class CloudFeed extends React.Component {
     let {statusFilterArr}=this.state
     return (
 
-                <Container>
-                <ButtonGroup>
-            <Button color="primary" onClick={() => this.handleFilterChange(1)} active={this.state.cSelected.includes(1)}>Available</Button>
-            <Button color="primary" onClick={() => this.handleFilterChange(2)} active={this.state.cSelected.includes(2)}>Working</Button>
-            <Button color="primary" onClick={() => this.handleFilterChange(3)} active={this.state.cSelected.includes(3)}>Away</Button>
-          </ButtonGroup>
-                <ListGroup id="postfeed">
-                {posts.map((post, index) =>{
-                //post filtering
-                if(statusFilterArr.includes(post.post_status)){
-                return (
-                  <ListGroup.Item key={index}>
-                  <hr/>
-                  <a align="left" href=""><img className="feed-avatar" id="postfeed" src ={post.picture_url} alt=''/></a>
-                  <br/>
-                  <p><font color = 'orange'><strong>{post.username}</strong></font> ({post.user_id}) ... @Starbucks:
-                  <br/>
-                  <br/>
-                  {post.post}<font color = 'orange'></font> ({post.post_status})</p>
-                  <div className = 'row'>
-                  <div className = 'col-4'>
-                  <p align="left">posted: <font color = 'orange'>{post.created_at}</font></p>
-                  </div>
-                  <div className = 'col-4'>
-                  <p align="center">project: <font color = 'orange'>{post.tags}</font></p>
-                  </div>
-                  <div className = 'col-4'>
-                  <p align="right">[ <a href=""><font color = 'orange'>comment</font></a> ]</p>
-                  </div>
-                  </div>
-                  <hr/>
-                  </ListGroup.Item>
-                )}
-                })}
-                </ListGroup>
-                <br/>
-                <p align="center"><a className="nav-link active" href=""><font color = 'orange'>NEW POST</font></a></p>
-                </Container>
+
+          <Container>
+          <br/>
+          <ListGroup id="postfeed">
+
+          {posts.map((post, index) =>{
+
+          return (
+
+          <ListGroup.Item key={index}>
+          
+          <hr/>
+
+          <a align="left" href=""><img className="feed-avatar" id="postfeed" src ="https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/delorean-03-512.png" alt=''/></a>
+
+          <br/>
+          
+          <p><font color = 'orange'><strong>Marty McFly</strong></font> (88) ... @Downtown (<font color = 'orange'>{post.lat}</font>/<font color = 'orange'>{post.lng}</font>)
+          
+          <br/>
+          <br/>
+          
+          {post.post}<font color = 'orange'></font> ({post.post_status})</p>
+
+          <div class = 'row'>
+          <div class = 'col-4'>
+  
+          <p align="left">posted:<br/><font color = 'orange'>{post.created_at}</font></p>
+          
+          </div>
+          <div class = 'col-4'>
+          
+          <p align="center">project: <font color = 'orange'>React</font></p>
+          
+          </div>
+          <div class = 'col-4'>
+          
+          <p align="right">[ <a href="/post"><font color = 'orange'>new post</font></a> ]</p>
+
+          </div>
+          </div>
+
+          <hr/>
+          </ListGroup.Item>
+
+          )
+          })}
+
+          </ListGroup>
+          <br/>
+
+          <p align="center">[ <a className="" href="/post"><font color = 'orange'>new post</font></a> ]</p>
+
+          </Container>
+          
+
     )
   }
-
 }
 
 export default CloudFeed
