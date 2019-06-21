@@ -1,14 +1,14 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Container } from 'react-bootstrap'
+import { Container, Input, Form } from 'react-bootstrap'
 
 class CloudPost extends React.Component {
-  
+
   constructor(props) {
     super(props)
     this.state = {
         form: {
-          
+
            user_id: '',
            username: '',
            firstnamme: '',
@@ -19,7 +19,7 @@ class CloudPost extends React.Component {
            post_status: '',
            picture_url: '',
            created_at: '',
-           
+
           }
       }
   }
@@ -36,11 +36,11 @@ class CloudPost extends React.Component {
 
 
   render() {
-    
+
     return (
 
       <Container>
-          
+
         <div>
         <center>
         <br/>
@@ -48,47 +48,47 @@ class CloudPost extends React.Component {
         <br/>
         <br/>
 
-            <form id="postfeed">
+            <Form id="postfeed">
             <br/>
-            
+
             <p><font color = 'orange'>Please tell us about your project!</font></p>
 
-            <input type='text' name='project type' onChange={this.handleChange} value={this.state.form.tags} placeholder=" project type ..."/>
-
-            <br/>
-            <br/>
-            
-            <input type='text' name='post content' onChange={this.handleChange} value={this.state.form.post} placeholder=" post content ..."/>
-
-            <br/>
-            <br/>
-            
-            <input type='number' name='privacy level' onChange={this.handleChange} value={this.state.form.post_status} placeholder=" privacy level ..."/>
+            <Input type='text' name='project type' onChange={this.handleChange} value={this.state.form.tags} placeholder=" project type ..."/>
 
             <br/>
             <br/>
 
-            <input type='number' name='lat' onChange={this.handleChange} value={this.state.form.lat} placeholder=" latitude ..."/>
+            <Input type='text' name='post content' onChange={this.handleChange} value={this.state.form.post} placeholder=" post content ..."/>
 
             <br/>
             <br/>
 
-            <input type='number' name='lng' onChange={this.handleChange} value={this.state.form.lng} placeholder=" longitude ..."/>
+            <Input type='number' name='privacy level' onChange={this.handleChange} value={this.state.form.post_status} placeholder=" privacy level ..."/>
 
             <br/>
             <br/>
-            
-            <button type="submit" onClick={this.handleNewPost} class="btn btn-secondary btn-sm">CREATE POST</button>
-              
+
+            <Input type='number' name='lat' onChange={this.handleChange} value={this.state.form.lat} placeholder=" latitude ..."/>
+
+            <br/>
+            <br/>
+
+            <Input type='number' name='lng' onChange={this.handleChange} value={this.state.form.lng} placeholder=" longitude ..."/>
+
+            <br/>
+            <br/>
+
+            <button type="submit" onClick={this.handleNewPost} className="btn btn-secondary btn-sm">CREATE POST</button>
+
             <br/>
 
             <p align="center">[ <a className="" href="/feed"><font color = 'orange'>view feed</font></a> ]</p>
 
-            </form>
-            
+            </Form>
+
         </center>
-        </div>        
-    
+        </div>
+
       </Container>
 
     )
