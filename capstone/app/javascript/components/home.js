@@ -8,37 +8,41 @@ import { faCoffee, faCog } from '@fortawesome/free-solid-svg-icons'
 import{Card, CardImg, Button, CardTitle, CardBody, CardSubtitle, CardText} from 'reactstrap'
 import MapContainer from './mapcontainer'
 import CloudFeed from  './feed'
+
 import NewPostBox from './newPostBox'
+import{ geolocated } from 'react-geolocated'
+import UserModal from './userModal'
 
 
 class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
-
     }
   }
-  componentDIdMount=()=>{
-
+  componentDidMount(){
   }
   menuShow=()=>{
     console.log("menu show");
   }
   render () {
-    let{ myLocation, feed }=this.state
+    let{ feed, currentLocation }=this.state
     let{ renderProfiles }=this
-    let{ posts }=this.props
+    const{ posts, myLocation, statusFilter }=this.props
+    if(myLocation){
+      console.log(myLocation)
+    }
     return (
         <div className="grid-container">
           <div className="Feed">
           <FeedTopNav />
             <div className="Feed-Posts">
-              <CloudFeed posts={posts}/>
+              <CloudFeed posts={posts} statusFilter={statusFilter}/>
             </div>
           </div>
           <div className="Map-Container">
           <MapContainer
-            myLocation={myLocation}
+            // myLocation={myLocation}
             feed={feed}
           />
           <div className="Comment-Box">
@@ -47,13 +51,17 @@ class Home extends React.Component {
           </div>
           <div className="Filter-Area">
           <p>Filter</p>
+          { myLocation.length != 0 &&
+            <p>Lat: {myLocation.location.lat}
+            Lng: {myLocation.location.lng}</p>
+          }
           <ul className="list-group">
+                <li className="list-group-item d-flex justify-content-between align-items-center">
+                Total Posts
+                  <span className="badge badge-primary badge-pill">{posts.length}</span>
+                </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">
-              Cras
-              <span className="badge badge-primary badge-pill">14</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-              Dapibus ac facilisis in
+
               <span className="badge badge-primary badge-pill">2</span>
             </li>
             <li className="list-group-item d-flex justify-content-between align-items-center">
