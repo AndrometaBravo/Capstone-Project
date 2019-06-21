@@ -34,8 +34,6 @@ class Routes extends React.Component {
 
   render () {
       const {logged_in, sign_in, sign_out, current_user, users, edit_user} = this.props
-      let { posts } = this.state
-
       let { posts, myLocation} = this.state
       let { statusFilter } = this
     return (
