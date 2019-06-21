@@ -8,8 +8,11 @@ import { faCoffee, faCog } from '@fortawesome/free-solid-svg-icons'
 import{Card, CardImg, Button, CardTitle, CardBody, CardSubtitle, CardText} from 'reactstrap'
 import MapContainer from './mapcontainer'
 import CloudFeed from  './feed'
+
 import NewPostBox from './newPostBox'
 import{ geolocated } from 'react-geolocated'
+import UserModal from './userModal'
+
 
 class Home extends React.Component {
   constructor(props){
