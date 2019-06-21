@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: 'users/sessions' }
 
+  devise_for :users, controllers: { sessions: 'users/sessions' }
+  get '*path', to: 'pages#index', constraints: ->(request){ request.format.html? }
 
   devise_scope :user do
       get 'allusers' => 'users/sessions#index'
@@ -8,8 +9,10 @@ Rails.application.routes.draw do
       get 'friends' => 'users/sessions#friends'
   end
 
-  get '*path', to: 'pages#index', constraints: ->(request){ request.format.html? }
+  get 'feed' => 'posts#index'
 
 
-root to: 'pages#index'
+
+  root to: 'pages#index'
+
 end

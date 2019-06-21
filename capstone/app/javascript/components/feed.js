@@ -78,6 +78,7 @@ class CloudFeed extends React.Component {
         <br/>
         <p align="center"><a className="nav-link active" href=""><font color = 'orange'>NEW POST</font></a></p>
 
+
         </Container>
 )
 }}
