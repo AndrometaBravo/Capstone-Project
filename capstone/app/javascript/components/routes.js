@@ -2,13 +2,13 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Nav, NavItem, NavLink} from 'reactstrap'
 import { Switch, Route } from 'react-router-dom'
+import{ getLocation } from './API'
 
 // routes
 import Home from './home'
 import AboutUs from './aboutus'
 import LearnMore from './learnmore'
 import Profile from './profile'
-
 import CloudFeed from './feed'
 
 
@@ -17,95 +17,31 @@ class Routes extends React.Component {
     constructor(props) {
     super(props)
     this.state = {
-      posts: [
-          {
-          user_id: '1',
-          username: 'MilesUser',
-          firstnamme: 'Miles',
-          lat: 32.708910,
-          lng:-117.159447,
-          tags: 'React on Rails',
-          post: 'lets meetup and build something',
-          post_status: '0',
-          picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
-          created_at: "",
-        },
-        {
-        user_id: '1',
-        username: 'MilesUser',
-        firstnamme: 'Miles',
-        lat: 32.708910,
-        lng:-117.159447,
-        tags: 'React on Rails',
-        post: 'lets meetup and build something',
-        post_status: '0',
-        picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
-        created_at: "",
-      },
-      {
-      user_id: '1',
-      username: 'MilesUser',
-      firstnamme: 'Miles',
-      lat: 32.708910,
-      lng:-117.159447,
-      tags: 'React on Rails',
-      post: 'lets meetup and build something',
-      post_status: '0',
-      picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
-      created_at: "",
-    },
-    {
-    user_id: '1',
-    username: 'MilesUser',
-    firstnamme: 'Miles',
-    lat: 32.708910,
-    lng:-117.159447,
-    tags: 'React on Rails',
-    post: 'lets meetup and build something',
-    post_status: '0',
-    picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
-    created_at: "",
-  },
-  {
-  user_id: '1',
-  username: 'MilesUser',
-  firstnamme: 'Miles',
-  lat: 32.708910,
-  lng:-117.159447,
-  tags: 'React on Rails',
-  post: 'lets meetup and build something',
-  post_status: '0',
-  picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
-  created_at: "",
-},  {
-  user_id: '1',
-  username: 'MilesUser',
-  firstnamme: 'Miles',
-  lat: 32.708910,
-  lng:-117.159447,
-  tags: 'React on Rails',
-  post: 'lets meetup and build something',
-  post_status: '0',
-  picture_url: "https://www.evolutionsociety.org/userdata/news_picupload/pic_sid189-0-norm.jpg",
-  created_at: "",
-}
-        ]
+      postsFilter:[],
+      myLocation: [],
+      posts: []
 
     }
   }
-
-
+  componentDidMount=()=>{
+    getLocation().then(ApiLocation => {
+    this.setState({ myLocation: ApiLocation })
+    })
+  }
+  statusFilter=()=>{
+    console.log("ran status filter");
+  }
 
   render () {
-
       const {logged_in, sign_in, sign_out, current_user, users, edit_user} = this.props
       let { posts } = this.state
 
-
+      let { posts, myLocation} = this.state
+      let { statusFilter } = this
     return (
         <Switch>
 
-             <Route exact path="/" component={() => <Home posts={posts}/>} />
+             <Route exact path="/" component={() => <Home statusFilter={statusFilter} posts={posts} myLocation={myLocation}/>} />
              <Route exact path="/about" component= {() => <AboutUs />} />
              <Route exact path="/more" component={() => <LearnMore />} />
 

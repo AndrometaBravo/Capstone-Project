@@ -26,6 +26,7 @@
    overflow: hidden;
 }
 
+
  /* Optional: Makes the sample page fill the window. */
 
  /* can we be more spacific?
@@ -40,17 +41,6 @@ this will prevent conflicting css... see App.css
    margin: 0;
    padding: 0;
  }
-
-
- /* nocolor? */
-
-
-
-#fake-feed{
-  background-color:
-}
-
-
 
 /* cant find these */
 
@@ -173,6 +163,8 @@ text-align: center;
   z-index: 1;
   background: white;
   padding: 20px;
+  box-shadow: 0px 5px 15px grey;
+
 }
 .Filter-Area {
   grid-area: Comment-Box;
@@ -181,8 +173,10 @@ text-align: center;
   z-index: 1;
   background: white;
   padding: 20px;
+  box-shadow: 0px 0px 10px grey;
 }
 .New-Post-Box{
+
 }
 .post-text{
   color: black;
