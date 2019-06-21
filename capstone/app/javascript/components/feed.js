@@ -6,20 +6,20 @@ class CloudFeed extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      statusFilterArr:[1,2,3],
+      statusFilterArr:[],
       cSelected: [] ,
     }
   }
   handleFilterChange=(filterNum)=>{
     let{ statusFilterArr }=this.state
     if (statusFilterArr.includes(filterNum)){
-      function checkval(num){
-        console.log(statusFilterArr);
-        return num != filterNum
-      }
-      this.setState({statusFilterArr : statusFilterArr.filter(checkval)})
-    }else{
-    statusFilterArr.push(filterNum)
+        function checkval(num){
+          console.log(statusFilterArr);
+          return num != filterNum
+        }
+    this.setState({statusFilterArr : statusFilterArr.filter(checkval)})
+    }else
+    {statusFilterArr.push(filterNum)
   }
     this.setState(statusFilterArr)
   }
