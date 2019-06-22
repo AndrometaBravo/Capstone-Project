@@ -35,6 +35,21 @@ user2.firstname = 'Jane'
 user2.lastname = 'Dogh'
 user2.save!
 
+user3 = User.new
+user3.email = 'testing@example.com'
+user3.password = 'valid_password'
+user3.password_confirmation = 'valid_password'
+user3.username = 'TestUser3'
+user3.gender = 'female'
+user3.age = 31
+user3.bio = 'im a fullstack web developer currently working freelance'
+user3.picture_url = 'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg'
+user3.lat = 32.712247
+user3.lng = -117.158009
+user3.firstname = 'howy'
+user3.lastname = 'Dogh'
+user3.save!
+
 Post.create(
   user_id: 1,
   post: 'this is like a really cool coffee shop anyone down to chat about how to setup react in rails??',

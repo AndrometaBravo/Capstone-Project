@@ -26,7 +26,7 @@ class Routes extends React.Component {
       postsFilter:[],
       myLocation: [],
       posts: []
-      
+
 
     }
   }

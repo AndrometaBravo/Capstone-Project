@@ -10,3 +10,17 @@ let getLocation = function(){
 export{
   getLocation
 }
+
+let getCloseUsers = function(){
+  return fetch('/allusers',{
+    method: 'GET'
+  })
+  .then(function(response) {
+    let json = response.json()
+    return json
+
+  })
+}
+export{
+  getCloseUsers
+}

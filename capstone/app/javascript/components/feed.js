@@ -6,7 +6,7 @@ class CloudFeed extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      statusFilterArr:[],
+      statusFilterArr:[1,2,3],
       cSelected: [] ,
     }
   }

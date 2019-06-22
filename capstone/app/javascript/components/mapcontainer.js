@@ -14,9 +14,12 @@ this.state = {
       selectedPlace: {},
       modal:false,
       profile: {
-        avatar: "https://www.learnacademy.org/app/uploads/2019/02/matt-200x200.jpg",
-        username: "codePro123",
-        userStatus: "Available"
+        picture_url: "",
+        username: "",
+        bio: "",
+        lat: 23,
+        lng: 34,
+        firstname: "",
       }
         }
       }
@@ -51,8 +54,13 @@ this.state = {
       }
    };
   render() {
-    let {username, userStatus} = this.props
-
+    let {username, userStatus, closeUsers} = this.props
+    console.log(closeUsers.length + " users");
+    let userGeoArr = []
+    closeUsers.map((user, index)=>{
+      userGeoArr.push({lat: user.lat, lng: user.lng})
+    })
+    console.log(userGeoArr);
     const style = {
       width: '100%',
       height: '100%'
@@ -73,10 +81,13 @@ this.state = {
                 }}
           onClick={this.onMapClicked}>
 
-        <Marker onClick={this.toggle}
-                onMouseover={this.onMouseoverMarker}
-                onMouseout={this.onMouseoverMarker}
-                name={username} />
+          {userGeoArr.map((value, index)=>{
+            return(
+              <Marker
+                  position={value} />
+
+            )
+          })}
 
 
                 <InfoWindow
