@@ -10,7 +10,7 @@ class UserstatusController < ApplicationController
         if status.valid?
             render json: status
             if params[:status] == 0
-             p Post.create(:user_id => params[:recipient_id], :post_status => 1, :poststring => "`#{current_user.username} wants to be your friend...`")
+             p Post.create(:user_id => params[:recipient_id], :post_status => 1, :poststring => "`#{current_user.username} wants to be your friend. Accept or Decline Here: /userprofile/#{params[:sender_id]}`")
          elsif params[:status] == 1
              p Post.create(:user_id => params[:recipient_id], :post_status => 1, :poststring => "`#{current_user.username} Accepted Your Friend Request`")
          elsif params[:status] == 3
