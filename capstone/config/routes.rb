@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+    resources :userstatus
     resources :posts
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
@@ -7,6 +7,9 @@ Rails.application.routes.draw do
       get 'allusers' => 'users/sessions#index'
       get 'users/:id' => 'users/sessions#oneuser'
       get 'friends' => 'users/sessions#friends'
+      get 'friendid' => 'users/sessions#friendid'
+      get 'pendingid' => 'users/sessions#pendingids'
+      get 'sentpendingid' => 'users/sessions#sentpendingids'
   end
 
 

@@ -16,17 +16,69 @@ class Users::SessionsController < Devise::SessionsController
   def friends
       i = 0
       friends = []
-      UserStatus.where(:status == 1).length.times do
-          if current_user.id == UserStatus.where(:status == 1)[i].recipient_id
-              friends << UserStatus.where(:status == 1)[i].sender
+      UserStatus.where("status = ?",1).length.times do
+          if current_user.id == UserStatus.where("status = ?",1)[i].recipient_id
+              friends << UserStatus.where("status = ?",1)[i].sender
               i = i + 1
-          elsif current_user.id == UserStatus.where(:status == 1)[i].sender_id
-              friends << UserStatus.where(:status == 1)[i].recipient
+          elsif current_user.id == UserStatus.where("status = ?",1)[i].sender_id
+              friends << UserStatus.where("status = ?",1)[i].recipient
+              i = i + 1
+          else
               i = i + 1
           end
       end
       # friend = status.username
       render json: friends
+  end
+
+  def friendid
+      i = 0
+      friends = []
+      UserStatus.where("status = ?",1).length.times do
+          if current_user.id == UserStatus.where("status = ?",1)[i].recipient_id
+              friends << UserStatus.where("status = ?",1)[i].sender_id
+              i = i + 1
+          elsif current_user.id == UserStatus.where("status = ?",1)[i].sender_id
+              friends << UserStatus.where("status = ?",1)[i].recipient_id
+              i = i + 1
+          else
+              i = i + 1
+          end
+      end
+      render json: friends
+  end
+
+  def pendingids
+      i = 0
+     pending = []
+      UserStatus.where("status = ?",0).length.times do
+          if current_user.id == UserStatus.where("status = ?",0)[i].recipient_id
+              pending << UserStatus.where("status = ?",0)[i].sender_id
+              i = i + 1
+          elsif current_user.id == UserStatus.where("status = ?",0)[i].sender_id
+              pending << UserStatus.where("status = ?",0)[i].recipient_id
+              i = i + 1
+
+          else
+              i = i + 1
+          end
+      end
+      render json: pending
+  end
+
+
+  def sentpendingids
+      i = 0
+     pending = []
+      UserStatus.where("status = ?",0).length.times do
+          if current_user.id == UserStatus.where("status = ?",0)[i].recipient_id
+              pending << UserStatus.where("status = ?",0)[i].sender_id
+              i = i + 1
+          else
+              i = i + 1
+          end
+      end
+      render json: pending
   end
 
   # GET /resource/sign_in
