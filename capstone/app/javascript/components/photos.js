@@ -6,7 +6,7 @@ class Photos extends Component {
     constructor(props){
         super(props)
         this.state = {
-            friendarr: [0,0,0,0,0,0]
+            friendarr: [0,0,0,0,0,0,0,0,0]
         }
 
     }
