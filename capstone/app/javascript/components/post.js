@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Container } from 'react-bootstrap'
+import { Container, Input, Form } from 'react-bootstrap'
 
 import {createPost} from '../api/index'
 
@@ -9,12 +9,18 @@ class CloudPost extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+
             user_id: this.props.current_user.id,
+        form: {
+
+           user_id: '',
+           username: '',
+           firstnamme: '',
+
            lat: '',
            lng: '',
            poststring: '',
            post_status: '',
-
 
           }
           this.handleNewPost = this.handleNewPost.bind(this);
@@ -42,11 +48,13 @@ class CloudPost extends React.Component {
 
 
   render() {
+
       // console.log(this.state.tags);
       console.log(this.state.poststring);
       console.log(this.state.post_status);
       console.log(this.state.lat);
       console.log(this.state.lng);
+
 
     return (
 
@@ -60,42 +68,55 @@ class CloudPost extends React.Component {
         <br/>
 
             <form id="postfeed" >
+
             <br/>
 
             <p><font color = 'orange'>Please tell us about your project!</font></p>
 
 
+            <input type='text' name='project type' onChange={this.handleChange} value={this.state.form.tags} placeholder=" project type ..."/>
+
 
             <br/>
             <br/>
+
 
             <input type='text' name='post content' onChange={this.handleChange} value={this.state.poststring} ref={(poststring) => this.poststring = poststring} placeholder=" post content ..."/>
+
 
             <br/>
             <br/>
 
             <input type='number' name='privacy level' onChange={this.handleChange} value={this.state.post_status} ref={(post_status) => this.post_status = post_status} placeholder=" privacy level ..."/>
 
+
             <br/>
             <br/>
 
             <input type='number' name='lat' onChange={this.handleChange} value={this.state.lat} ref={(lat) => this.lat = lat}placeholder=" latitude ..."/>
 
+
             <br/>
             <br/>
+
 
             <input type='number' name='lng' onChange={this.handleChange} value={this.state.lng} ref={(lng) => this.lng = lng} placeholder=" longitude ..."/>
 
+
             <br/>
             <br/>
 
-            <button type="submit"  onClick={this.handleNewPost} class="btn btn-secondary btn-sm">CREATE POST</button>
+
+            <button type="submit" onClick={this.handleNewPost} className="btn btn-secondary btn-sm">CREATE POST</button>
+
 
             <br/>
 
             <p align="center">[ <a className="" href="/feed"><font color = 'orange'>view feed</font></a> ]</p>
 
+
             </form>
+
 
         </center>
         </div>
