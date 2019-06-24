@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
-
+    resources :userstatus
+    resources :posts
   devise_for :users, controllers: { sessions: 'users/sessions' }
-  get '*path', to: 'pages#index', constraints: ->(request){ request.format.html? }
 
   devise_scope :user do
       get 'allusers' => 'users/sessions#index'
       get 'users/:id' => 'users/sessions#oneuser'
       get 'friends' => 'users/sessions#friends'
+      get 'friendid' => 'users/sessions#friendid'
+      get 'pendingid' => 'users/sessions#pendingids'
+      get 'sentpendingid' => 'users/sessions#sentpendingids'
   end
 
-  get 'feed' => 'posts#index'
 
+  get '*path', to: 'pages#index', constraints: ->(request){ request.format.html? }
 
 
   root to: 'pages#index'
