@@ -14,7 +14,6 @@ class CloudFeed extends React.Component {
     let{ statusFilterArr }=this.state
     if (statusFilterArr.includes(filterNum)){
         function checkval(num){
-          console.log(statusFilterArr);
           return num != filterNum
         }
     this.setState({statusFilterArr : statusFilterArr.filter(checkval)})
@@ -23,8 +22,9 @@ class CloudFeed extends React.Component {
   }
     this.setState(statusFilterArr)
   }
+
   render() {
-    let{posts}=this.props
+    let{posts, closeUsers}=this.props
     let {statusFilterArr}=this.state
     return (
 
@@ -47,7 +47,7 @@ class CloudFeed extends React.Component {
 
         <br/>
 
-        <p><font color = 'orange'><strong>{post.username}</strong></font> ({post.user_id}) ... @Starbucks:
+        <p><font color = 'orange'><strong>{closeUsers.length !=0 && closeUsers[0].username}</strong></font> ({post.user_id}) ... @Starbucks:
 
         <br/>
         <br/>

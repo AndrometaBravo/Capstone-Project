@@ -8,7 +8,7 @@ import { faCoffee, faCog } from '@fortawesome/free-solid-svg-icons'
 import{Card, CardImg, Button, CardTitle, CardBody, CardSubtitle, CardText} from 'reactstrap'
 import MapContainer from './mapcontainer'
 import CloudFeed from  './feed'
-
+import CloudPost from './post'
 import NewPostBox from './newPostBox'
 import{ geolocated } from 'react-geolocated'
 import UserModal from './userModal'
@@ -18,29 +18,44 @@ class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      closeUsers:[]
+      closeUsers:[],
+      posts:[]
     }
   }
-  componentDidMount(){
+  componentWillMount(){
     getCloseUsers()
       .then(APIusers => {
         this.setState({
           closeUsers: APIusers
         })
       })
+      this.setState({posts: this.props.posts})
   }
+  componentDidUpdate(prevProps){
+            debugger
+        if (this.props.posts.length != prevProps.posts.length) {
+          getPosts()
+            .then(APIposts => {
+              this.setState({
+                posts: APIposts
+              })
+            })
+          this.setState({posts: this.props.posts})
+     }
 
+   }
   render () {
-    let{ feed, currentLocation, closeUsers }=this.state
+    console.log(this.props.posts.length);
+    let{ feed, currentLocation, closeUsers, posts }=this.state
     let{ renderProfiles }=this
-    const{ posts, myLocation, statusFilter, getCloseUsers }=this.props
+    const{  myLocation, statusFilter, getCloseUsers, current_user }=this.props
     return (
 
         <div className="grid-container">
           <div className="Feed">
-          <FeedTopNav />
+          <FeedTopNav current_user={current_user} />
             <div className="Feed-Posts">
-              <CloudFeed posts={posts} statusFilter={statusFilter}/>
+              <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers}/>
             </div>
 
           </div>
@@ -50,10 +65,11 @@ class Home extends React.Component {
             closeUsers={closeUsers}
             feed={feed}
           />
-          <div className="Comment-Box">
-            <p>Compose New Post</p>
-            <Button>Submit</Button>
-          </div>
+          {current_user != null &&
+            <div className="Comment-Box">
+             <CloudPost current_user={current_user}/>
+            </div>
+          }
           <div className="Filter-Area">
           <p>Filter</p>
           { myLocation.length != 0 &&

@@ -140,7 +140,11 @@ text-align: center;
   grid-template-areas: "feed-top-nav feed-top-nav feed-top-nav" "Feed-Posts Feed-Posts Feed-Posts";
   grid-area: Feed;
 }
-
+.feed-top-nav{
+  grid-area: feed-top-nav;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+}
 .Feed-Posts {
   grid-area: Feed-Posts;
   height: 100vh;
@@ -151,7 +155,7 @@ text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
-  grid-template-areas: ". . . ." ". . . ." ". . . ." ". . . Filter-Area""Comment-Box Comment-Box . Filter-Area";
+  grid-template-areas: ". . . ." ". . . ." ". . . ." "Comment-Box Comment-Box . Filter-Area""Comment-Box Comment-Box . Filter-Area";
   grid-area: Map-Container;
   overflow: hidden;
 }
@@ -160,9 +164,9 @@ text-align: center;
   grid-area: Comment-Box;
   margin: 20px;
   border-radius: 20px;
+  padding: 10px;
   z-index: 1;
   background: white;
-  padding: 20px;
   box-shadow: 0px 5px 15px grey;
 
 }
