@@ -12,26 +12,28 @@ import CloudFeed from  './feed'
 import NewPostBox from './newPostBox'
 import{ geolocated } from 'react-geolocated'
 import UserModal from './userModal'
-
+import{ getCloseUsers } from './API'
 
 class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
+      closeUsers:[]
     }
   }
   componentDidMount(){
+    getCloseUsers()
+      .then(APIusers => {
+        this.setState({
+          closeUsers: APIusers
+        })
+      })
   }
-  menuShow=()=>{
-    console.log("menu show");
-  }
+
   render () {
-    let{ feed, currentLocation }=this.state
+    let{ feed, currentLocation, closeUsers }=this.state
     let{ renderProfiles }=this
-    const{ posts, myLocation, statusFilter }=this.props
-    if(myLocation){
-      console.log(myLocation)
-    }
+    const{ posts, myLocation, statusFilter, getCloseUsers }=this.props
     return (
 
         <div className="grid-container">
@@ -45,6 +47,7 @@ class Home extends React.Component {
           <div className="Map-Container">
           <MapContainer
             // myLocation={myLocation}
+            closeUsers={closeUsers}
             feed={feed}
           />
           <div className="Comment-Box">

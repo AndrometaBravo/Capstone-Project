@@ -12,7 +12,15 @@ this.state = {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: {},
-      modal:false
+      modal:false,
+      profile: {
+        picture_url: "",
+        username: "",
+        bio: "",
+        lat: 23,
+        lng: 34,
+        firstname: "",
+      }
         }
       }
 
@@ -46,8 +54,13 @@ this.state = {
       }
    };
   render() {
-    let {username, userStatus} = this.props
-
+    let {username, userStatus, closeUsers} = this.props
+    console.log(closeUsers.length + " users");
+    let userGeoArr = []
+    closeUsers.map((user, index)=>{
+      userGeoArr.push({lat: user.lat, lng: user.lng})
+    })
+    console.log(userGeoArr);
     const style = {
       width: '100%',
       height: '100%'
@@ -68,21 +81,30 @@ this.state = {
                 }}
           onClick={this.onMapClicked}>
 
-        <Marker onClick={this.toggle}
-                onMouseover={this.onMouseoverMarker}
-                onMouseout={this.onMouseoverMarker}
-                name={username} />
+          {userGeoArr.map((value, index)=>{
+            return(
+              <Marker
+                  position={value} />
+
+            )
+          })}
 
 
                 <InfoWindow
                   marker={this.state.activeMarker}
-                  visible={this.state.showingInfoWindow}>
+                  visible={this.state.showingInfoWindow}
+                  >
                     <div className = "map">
-                      <MapIcon/>
+                      <MapIcon profile={this.state.profile}/>
                     </div>
                 </InfoWindow>
       </Map>
-      <UserModal isOpen={this.state.modal} toggle = {this.toggle}/>
+
+      <UserModal
+          isOpen={this.state.modal}
+          toggle = {this.toggle}
+          profile = {this.state.profile}
+      />
       </div>
       </div>
 
