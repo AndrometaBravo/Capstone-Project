@@ -1,0 +1,2 @@
+class TagnamesController < ApplicationController
+end

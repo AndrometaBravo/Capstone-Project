@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
     resources :userstatus
     resources :posts
+    resources :tags
+    resources :tagnames
   devise_for :users, controllers: { sessions: 'users/sessions' }
 
   devise_scope :user do

@@ -24,7 +24,7 @@ class CloudFeed extends React.Component {
     this.setState(statusFilterArr)
   }
   render() {
-    let{posts}=this.props
+    let{posts, user}=this.props
     let {statusFilterArr}=this.state
     return (
 
@@ -47,7 +47,7 @@ class CloudFeed extends React.Component {
 
         <br/>
 
-        <p><font color = 'orange'><strong>{post.username}</strong></font> ({post.user_id}) ... @Starbucks:
+        <p><font color = 'orange'><strong>{post.user.username}</strong></font> ({post.user_id}) ... @Starbucks:
 
         <br/>
         <br/>

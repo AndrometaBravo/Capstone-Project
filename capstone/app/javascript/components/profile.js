@@ -49,6 +49,7 @@ class Profile extends Component {
                 status:3
             }
 
+
         }
          this.handleFriendRequest = this.handleFriendRequest.bind(this);
          this.handleAccept = this.handleAccept.bind(this);
