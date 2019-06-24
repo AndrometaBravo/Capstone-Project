@@ -52,21 +52,21 @@ user3.save!
 
 Post.create(
   user_id: 1,
-  post: 'this is like a really cool coffee shop anyone down to chat about how to setup react in rails??',
+  poststring: 'this is like a really cool coffee shop anyone down to chat about how to setup react in rails??',
   post_status: 1,
   lat: 32.708858,
   lng: -117.158563
 )
 Post.create(
   user_id: 2,
-  post: 'Anyone wanna grab a burger and chat about how devise works',
+  poststring: 'Anyone wanna grab a burger and chat about how devise works',
   post_status: 2,
   lat: 32.709026,
   lng: -117.156089
 )
 Post.create(
   user_id: 1,
-  post: 'hey anyone out there looking for some help with JS. looking for JS newbies to mentor just DM me',
+  poststring: 'hey anyone out there looking for some help with JS. looking for JS newbies to mentor just DM me',
   post_status: 3,
   lat: 32.708858,
   lng: -117.158563
