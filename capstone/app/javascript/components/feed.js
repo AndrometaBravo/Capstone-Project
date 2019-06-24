@@ -52,7 +52,7 @@ class CloudFeed extends React.Component {
         <br/>
         <br/>
 
-        {post.post}<font color = 'orange'></font> ({post.post_status})</p>
+        {post.poststring}<font color = 'orange'></font> ({post.post_status})</p>
 
         <div className = 'row'>
         <div className = 'col-4'>

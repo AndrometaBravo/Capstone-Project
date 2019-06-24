@@ -11,12 +11,6 @@ class CloudPost extends React.Component {
     this.state = {
 
             user_id: this.props.current_user.id,
-        form: {
-
-           user_id: '',
-           username: '',
-           firstnamme: '',
-
            lat: '',
            lng: '',
            poststring: '',
