@@ -2,8 +2,13 @@ class PostsController < ApplicationController
 
   def index
 
-    posts = Post.order('created_at desc')
-    render json: posts
+    @posts = []
+    Post.find_each do |post|
+        @posts << post.as_json(:include => {:user =>{}, :tags => {:include => :tagname}})
+    end
+    @use = @posts.reverse
+
+    render json: @use
 
   end
 
@@ -26,6 +31,11 @@ class PostsController < ApplicationController
      render :show
 
   end
+
+  def destroy
+
+  end
+
 
   def post_params
 

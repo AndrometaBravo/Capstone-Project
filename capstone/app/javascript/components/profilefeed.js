@@ -2,44 +2,25 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Container, ListGroup, Button, ButtonGroup } from 'react-bootstrap'
 
-class CloudFeed extends React.Component {
+class ProfileFeed extends React.Component {
   constructor(props){
     super(props)
     this.state={
-      statusFilterArr:[1,2,3],
       cSelected: [] ,
+      myPosts:[]
     }
-  }
-  handleFilterChange=(filterNum)=>{
-    let{ statusFilterArr }=this.state
-    if (statusFilterArr.includes(filterNum)){
-        function checkval(num){
-          return num != filterNum
-        }
-    this.setState({statusFilterArr : statusFilterArr.filter(checkval)})
-    }else
-    {statusFilterArr.push(filterNum)
-  }
-    this.setState(statusFilterArr)
   }
 
   render() {
-
     let{posts, user}=this.props
-
-    let {statusFilterArr}=this.state
+    let {myPosts}=this.state
     console.log(posts);
     return (
 
         <Container>
         <ListGroup id="postfeed">
-        <ButtonGroup>
-         <Button color="primary" onClick={() => this.handleFilterChange(1)} active={this.state.cSelected.includes(1)}>One</Button>
-         <Button color="primary" onClick={() => this.handleFilterChange(2)} active={this.state.cSelected.includes(2)}>Two</Button>
-         <Button color="primary" onClick={() => this.handleFilterChange(3)} active={this.state.cSelected.includes(3)}>Three</Button>
-       </ButtonGroup>
         {posts.map((post, index) =>{
-          if(statusFilterArr.includes(post.post_status)){
+          if(myPosts.includes(post)){
         return (
 
         <ListGroup.Item key={index}>
@@ -53,13 +34,12 @@ class CloudFeed extends React.Component {
 
         <br/>
 
-
         <p><font color = 'orange'><strong>{post.user.username}</strong></font> ({post.user_id}) ... @Starbucks:
 
         <br/>
         <br/>
 
-        {post.poststring}<font color = 'orange'></font> ({post.post_status})</p>
+        {post.post}<font color = 'orange'></font> ({post.post_status})</p>
 
         <div className = 'row'>
         <div className = 'col-4'>
@@ -94,4 +74,4 @@ class CloudFeed extends React.Component {
         </Container>
 )
 }}
-export default CloudFeed
+export default ProfileFeed
