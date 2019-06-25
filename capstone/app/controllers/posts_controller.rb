@@ -2,12 +2,9 @@ class PostsController < ApplicationController
 
   def index
 
-    # posts = Post.order('created_at desc')
-    # render json: posts
-
     @posts = []
     Post.find_each do |post|
-        @posts << post.as_json(include: :user)
+        @posts << post.as_json(:include => {:user =>{}, :tags => {:include => :tagname}})
     end
     @use = @posts.reverse
 
@@ -32,6 +29,10 @@ class PostsController < ApplicationController
      @post = Post.find(params[:id]) #probably would be current_user for you
      @post.update_attributes(user_params)
      render :show
+
+  end
+
+  def destroy
 
   end
 

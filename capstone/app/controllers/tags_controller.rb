@@ -4,14 +4,9 @@ class TagsController < ApplicationController
 
         @tags = []
         Tag.find_each do |tag|
-            if tag.user_id.valid?
-                @tags << tag.as_json(include: :user)
-            elsif tag.post_id.valid?
-                @tag << tag.as_json(include: :post)
-            end
+                @tags << tag.as_json(include: :post)
         end
-
-        render json: @posts
+        render json: @tags
 
       end
 
@@ -33,6 +28,18 @@ class TagsController < ApplicationController
          @tag.update_attributes(tag_params)
          render :show
 
+      end
+
+      def tagger
+          if Tagname.where('tag = ?', params[:tag]).blank?
+              caps = params[:tag]
+              caps.capitalize!
+              @newTagName = Tagname.create(params)
+              render json: @newTagName
+              Tag.create(tag_params)
+          else
+              Tag.create(tag_params)
+          end
       end
 
 
