@@ -4,8 +4,12 @@ class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
   def index
-      users = User.all
-      render json: users
+
+      @users = []
+      User.find_each do |user|
+          @users << user.as_json(:include => :posts)
+      end
+      render json: @users
   end
 
   def oneuser
