@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_202008) do
+ActiveRecord::Schema.define(version: 2019_06_25_181252) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,13 +33,11 @@ ActiveRecord::Schema.define(version: 2019_06_21_202008) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "posts_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tagname_id"
-    t.index ["posts_id"], name: "index_tags_on_posts_id"
-    t.index ["users_id"], name: "index_tags_on_users_id"
+    t.index ["post_id"], name: "index_tags_on_post_id"
   end
 
   create_table "user_statuses", force: :cascade do |t|
@@ -75,8 +73,7 @@ ActiveRecord::Schema.define(version: 2019_06_21_202008) do
   end
 
   add_foreign_key "posts", "users"
-  add_foreign_key "tags", "posts", column: "posts_id"
-  add_foreign_key "tags", "users", column: "users_id"
+  add_foreign_key "tags", "posts"
   add_foreign_key "user_statuses", "users", column: "recipient_id"
   add_foreign_key "user_statuses", "users", column: "sender_id"
 end
