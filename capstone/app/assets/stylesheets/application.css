@@ -158,14 +158,15 @@ text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
-  grid-template-areas: ". . . ." ". . . ." ". . . ." "Comment-Box Comment-Box . Filter-Area""Comment-Box Comment-Box . Filter-Area";
+  grid-template-areas: "Map Map Map Map" "Map Map Map Map" "Map Map Map Map" "Comment-Box Comment-Box . Filter-Area""Comment-Box Comment-Box . Filter-Area";
   grid-area: Map-Container;
   overflow: hidden;
 }
 #mapid {
-  height: 100vh;
-  
+  height: 100%;
+  width: 100%;
   z-index: 0;
+  grid-area: Map;
  }
 .Comment-Box {
   grid-area: Comment-Box;

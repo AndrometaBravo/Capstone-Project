@@ -52,6 +52,22 @@ class Home extends React.Component {
           id: 'mapbox.streets',
           accessToken: 'pk.eyJ1Ijoic3doaXRlMjEiLCJhIjoiY2p4YzJ0MHFrMW8zZzN5cnYxZXowaGI4cSJ9.Wv8XBXSDANxtBHWNsoFGOg'
       }).addTo(mymap);
+      mymap.locate({setView: true, maxZoom: 16});
+      function onLocationFound(e) {
+          var radius = e.accuracy;
+
+          L.marker(e.latlng).addTo(mymap)
+              .bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+          L.circle(e.latlng, radius).addTo(mymap);
+      }
+      function onLocationError(e) {
+          alert(e.message);
+      }
+
+      mymap.on('locationerror', onLocationError);
+
+      mymap.on('locationfound', onLocationFound);
 
       var hey = "here is some user date"
 
@@ -62,6 +78,8 @@ class Home extends React.Component {
       L.marker([32.713851, -117.159897]).addTo(mymap)
       .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
       .openPopup();
+
+
    }
    refreshLocation=()=>{
 
