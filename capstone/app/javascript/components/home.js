@@ -1,5 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
+import ReactDOM from 'react-dom'
 //sebastians map container
 // import MapContainer from "./googlemap.js"
 import FeedTopNav from "./feedTopNav.js"
@@ -13,6 +14,7 @@ import NewPostBox from './newPostBox'
 import{ geolocated } from 'react-geolocated'
 import UserModal from './userModal'
 import{ getCloseUsers } from './API'
+
 
 class Home extends React.Component {
   constructor(props){
@@ -32,7 +34,6 @@ class Home extends React.Component {
       this.setState({posts: this.props.posts})
   }
   componentDidUpdate(prevProps){
-            debugger
         if (this.props.posts.length != prevProps.posts.length) {
           getPosts()
             .then(APIposts => {
@@ -42,6 +43,17 @@ class Home extends React.Component {
             })
           this.setState({posts: this.props.posts})
      }
+   }
+   componentDidMount(){
+     var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 18,
+          id: 'mapbox.streets',
+          accessToken: 'pk.eyJ1Ijoic3doaXRlMjEiLCJhIjoiY2p4YzJ0MHFrMW8zZzN5cnYxZXowaGI4cSJ9.Wv8XBXSDANxtBHWNsoFGOg'
+      }).addTo(mymap);
+   }
+   refreshLocation=()=>{
 
    }
   render () {
@@ -52,46 +64,44 @@ class Home extends React.Component {
     return (
 
         <div className="grid-container">
-          <div className="Feed">
-          <FeedTopNav current_user={current_user} />
-            <div className="Feed-Posts">
-              <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers}/>
-            </div>
-
-          </div>
-          <div className="Map-Container">
-          <MapContainer
-            // myLocation={myLocation}
-            closeUsers={closeUsers}
-            feed={feed}
-          />
-          {current_user != null &&
-            <div className="Comment-Box">
-             <CloudPost current_user={current_user}/>
-            </div>
-          }
-          <div className="Filter-Area">
-          <p>Filter</p>
-          { myLocation.length != 0 &&
-            <p>Lat: {myLocation.location.lat}
-            Lng: {myLocation.location.lng}</p>
-          }
-          <ul className="list-group">
-                <li className="list-group-item d-flex justify-content-between align-items-center">
-                Total Posts
-                  <span className="badge badge-primary badge-pill">{posts.length}</span>
-                </li>
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-
-              <span className="badge badge-primary badge-pill">2</span>
-            </li>
-            <li className="list-group-item d-flex justify-content-between align-items-center">
-              Morbi leo risus
-              <span className="badge badge-primary badge-pill">1</span>
-            </li>
-            </ul>
-          </div>
-          </div>
+              <div className="Feed">
+                <FeedTopNav current_user={current_user} />
+                  <div className="Feed-Posts">
+                    <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers}/>
+                  </div>
+              </div>
+              <div className="Map-Container">
+                <div id="mapid">
+                </div>
+              {current_user != null &&
+                <div className="Comment-Box">
+                  <CloudPost current_user={current_user}/>
+                </div>
+              }
+              <div className="Filter-Area">
+                <p>Filter</p>
+                { myLocation.length != 0 &&
+                  <p>
+                    Lat: {myLocation.location.lat}
+                    Lng: {myLocation.location.lng}
+                  </p>
+                }
+                <Button>refresh location</Button>
+                <ul className="list-group">
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                      Total Posts
+                    <span className="badge badge-primary badge-pill">{posts.length}</span>
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                    <span className="badge badge-primary badge-pill">2</span>
+                    </li>
+                    <li className="list-group-item d-flex justify-content-between align-items-center">
+                      Morbi leo risus
+                    <span className="badge badge-primary badge-pill">1</span>
+                    </li>
+                </ul>
+              </div>
+        </div>
         </div>
 
        );
