@@ -45,13 +45,23 @@ class Home extends React.Component {
      }
    }
    componentDidMount(){
-     var mymap = L.map('mapid').setView([51.505, -0.09], 13);
+     var mymap = L.map('mapid').setView([32.711108, -117.157946], 13);
      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
           attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
           maxZoom: 18,
           id: 'mapbox.streets',
           accessToken: 'pk.eyJ1Ijoic3doaXRlMjEiLCJhIjoiY2p4YzJ0MHFrMW8zZzN5cnYxZXowaGI4cSJ9.Wv8XBXSDANxtBHWNsoFGOg'
       }).addTo(mymap);
+
+      var hey = "here is some user date"
+
+      L.marker([32.711108, -117.157946]).addTo(mymap)
+      .bindPopup(hey)
+      .openPopup();
+
+      L.marker([32.713851, -117.159897]).addTo(mymap)
+      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+      .openPopup();
    }
    refreshLocation=()=>{
 
@@ -71,8 +81,8 @@ class Home extends React.Component {
                   </div>
               </div>
               <div className="Map-Container">
-                <div id="mapid">
-                </div>
+              <div id="mapid">
+              </div>
               {current_user != null &&
                 <div className="Comment-Box">
                   <CloudPost current_user={current_user}/>
@@ -100,7 +110,8 @@ class Home extends React.Component {
                     <span className="badge badge-primary badge-pill">1</span>
                     </li>
                 </ul>
-              </div>
+                </div>
+
         </div>
         </div>
 
