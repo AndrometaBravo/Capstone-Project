@@ -1,8 +1,8 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Container, Input, Form } from 'react-bootstrap'
-
 import {createPost} from '../api/index'
+import{ getLocation } from './API'
 
 class CloudPost extends React.Component {
 
@@ -10,9 +10,10 @@ class CloudPost extends React.Component {
     super(props)
     this.state = {
 
-            user_id: this.props.current_user.id,
-           lat: '',
-           lng: '',
+          // user_id: this.props.current_user.id,
+            user_id: "3",
+           lat: '1',
+           lng: '2',
            poststring: '',
            post_status: '',
 
@@ -37,10 +38,17 @@ class CloudPost extends React.Component {
       // this.setState({ tags: this.tags.value })
       this.setState({ post_status: this.post_status.value })
   }
-
-
-
-
+  componentDidMount=()=>{
+    getLocation().then(ApiLocation => {
+    if (ApiLocation != null){
+    this.setState({ lat: ApiLocation.location.lat })
+    this.setState({ lng: ApiLocation.location.lng })
+  }else{
+    console.log("Geolocation data cannot be retrieved. Check API quotas");
+  }
+    })
+    this.setState({user_id: this.props.current_user.id})
+  }
   render() {
 
       // console.log(this.state.tags);
@@ -48,6 +56,8 @@ class CloudPost extends React.Component {
       console.log(this.state.post_status);
       console.log(this.state.lat);
       console.log(this.state.lng);
+      console.log(this.props.current_user);
+        console.log(this.state.myLocation);
 
 
     return (
@@ -56,10 +66,6 @@ class CloudPost extends React.Component {
 
         <div>
         <center>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
 
             <form id="postfeed" >
 
@@ -67,11 +73,6 @@ class CloudPost extends React.Component {
 
             <p><font color = 'orange'>Please tell us about your project!</font></p>
 
-
-            <input type='text' name='project type' onChange={this.handleChange} value={this.state.form.tags} placeholder=" project type ..."/>
-
-
-            <br/>
             <br/>
 
 
