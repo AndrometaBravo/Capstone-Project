@@ -1,14 +1,16 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { Container } from 'react-bootstrap'
+import { Container, Input, Form } from 'react-bootstrap'
 
 import {createPost} from '../api/index'
+import{ getLocation } from './API'
 
 class CloudPost extends React.Component {
 
   constructor(props) {
     super(props)
     this.state = {
+
             user_id: this.props.current_user.id,
            lat: '',
            lng: '',
@@ -36,15 +38,24 @@ class CloudPost extends React.Component {
       this.setState({ lng: this.lng.value })
       this.setState({ post_status: this.post_status.value })
   }
-
-
-
-
+  componentDidMount=()=>{
+    getLocation().then(ApiLocation => {
+    if (ApiLocation != null){
+    this.setState({ lat: ApiLocation.location.lat })
+    this.setState({ lng: ApiLocation.location.lng })
+  }else{
+    console.log("Geolocation data cannot be retrieved. Check API quotas");
+  }
+    })
+    this.setState({user_id: this.props.current_user.id})
+  }
   render() {
       console.log(this.state.poststring);
       console.log(this.state.post_status);
       console.log(this.state.lat);
       console.log(this.state.lng);
+      console.log(this.props.current_user);
+        console.log(this.state.myLocation);
 
     return (
 
@@ -52,17 +63,11 @@ class CloudPost extends React.Component {
 
         <div>
         <center>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
 
             <form id="postfeed" >
             <br/>
 
             <p><font color = 'orange'>Please tell us about your project!</font></p>
-
-
 
             <br/>
             <br/>

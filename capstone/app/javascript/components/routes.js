@@ -60,7 +60,7 @@ class Routes extends React.Component {
     return (
         <Switch>
 
-             <Route exact path="/" component={() => <Home statusFilter={statusFilter} posts={posts} myLocation={myLocation}/>} />
+             <Route exact path="/" component={() => <Home statusFilter={statusFilter} posts={posts} myLocation={myLocation} current_user={current_user} logged_in={logged_in}/>} />
              <Route exact path="/about" component= {() => <AboutUs />} />
              <Route exact path="/more" component={() => <LearnMore />} />
              <Route exact path="/userprofile/:id" component={(props) => <Profile {...props} users = {users} current_user = {current_user} edit_user = {edit_user} posts = {posts}/>} />

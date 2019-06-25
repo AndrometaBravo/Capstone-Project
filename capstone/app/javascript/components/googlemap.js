@@ -1,38 +1,33 @@
-import {Map, InfoWindow, Marker, GoogleApiWrapper} from 'google-maps-react';
-import React, {Component} from 'react'
+// @flow
+import React, { Component, createRef } from 'react'
+import { Map, TileLayer, Marker, Popup, LeafletMap } from 'react-leaflet'
 
-export class MapContainer extends Component {
-  onMarkerClick=()=>{
-    console.log("ran marker click");
+class Leaflet extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      lat: 51.505,
+      lng: -0.09,
+      zoom: 13
+    }
   }
+
   render() {
-    let{ myLocation, feed }=this.props
+    const position = [this.state.lat, this.state.lng];
     return (
-      <Map
-        google={this.props.google}
-        zoom={20}
-        initialCenter={{
-        lat: myLocation.lat,
-        lng: myLocation.lng
-      }}
-      >
-        <Marker onClick={this.onMarkerClick}
-                name={'My Location'}
-                title={'hello?'}
+
+      <LeafletMap center={position} zoom={this.state.zoom}>
+        <TileLayer
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         />
-      { feed.map((value,index)=>{
-          return(
-            <Marker
-            position={{lat: feed[index].lat, lng: feed[index].lng}}
-            />
-          )
-        })
-      }
-      </Map>
+        <Marker position={position}>
+          <Popup>
+            <span>A pretty CSS3 popup. <br/> Easily customizable.</span>
+          </Popup>
+        </Marker>
+      </LeafletMap>
     );
   }
 }
-
-export default GoogleApiWrapper({
-  apiKey: ("AIzaSyDwjy2BCmYxnLmCtH1QZtH4L88YErTeK6M")
-})(MapContainer)
+export default Leaflet
