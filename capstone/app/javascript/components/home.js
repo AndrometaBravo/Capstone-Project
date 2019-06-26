@@ -95,7 +95,7 @@ class Home extends React.Component {
               <div className="Feed">
                 <FeedTopNav current_user={current_user} />
                   <div className="Feed-Posts">
-                    <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers}/>
+                    <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers} getCloseUsers={getCloseUsers}/>
                   </div>
               </div>
               <div className="Map-Container">
