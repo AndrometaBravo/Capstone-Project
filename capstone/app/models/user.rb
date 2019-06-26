@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  after_initialize :init
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -21,4 +22,8 @@ class User < ApplicationRecord
 
          has_many :posts
          has_many :tags
+         # has_one_attached :picture_url
+      def init
+        self.picture_url || 'profilepic.jpeg'
+      end
 end
