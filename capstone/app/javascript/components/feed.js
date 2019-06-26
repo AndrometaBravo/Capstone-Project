@@ -39,8 +39,8 @@ class CloudFeed extends React.Component {
            if (user.posts.length > 0){
                return(
                    user.posts.map((post,index) => {
-                       console.log(user.posts);
-                       return(
+                       if(statusFilterArr.includes(post.post_status)){
+                           return(
 
 
         <ListGroup.Item key={index}>
@@ -82,7 +82,7 @@ class CloudFeed extends React.Component {
 
 
                        )
-                   })
+                   }})
                )
            }
        })}

@@ -21,7 +21,7 @@ class User < ApplicationRecord
          validates :email, presence: true
          validates :gender, presence: true
          validates :age, presence: true
-         validates :is_signed_in, inclusion: [true, false]
+         validates :is_signed_in, inclusion: [true, false, nil]
 
          validates :username, uniqueness: true
 
