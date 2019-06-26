@@ -2,18 +2,15 @@ import React from "react"
 import PropTypes from "prop-types"
 import ReactDOM from 'react-dom'
 //sebastians map container
-// import MapContainer from "./googlemap.js"
 import FeedTopNav from "./feedTopNav.js"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faCog } from '@fortawesome/free-solid-svg-icons'
 import{Card, CardImg, Button, CardTitle, CardBody, CardSubtitle, CardText} from 'reactstrap'
-import MapContainer from './mapcontainer'
 import CloudFeed from  './feed'
 import CloudPost from './post'
 import NewPostBox from './newPostBox'
-import{ geolocated } from 'react-geolocated'
-import UserModal from './userModal'
 import{ getCloseUsers } from './API'
+import UserMap from './userMap'
 
 
 class Home extends React.Component {
@@ -44,23 +41,15 @@ class Home extends React.Component {
           this.setState({posts: this.props.posts})
      }
    }
-   componentDidMount(){
-     var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-     L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-          maxZoom: 18,
-          id: 'mapbox.streets',
-          accessToken: 'pk.eyJ1Ijoic3doaXRlMjEiLCJhIjoiY2p4YzJ0MHFrMW8zZzN5cnYxZXowaGI4cSJ9.Wv8XBXSDANxtBHWNsoFGOg'
-      }).addTo(mymap);
-   }
-   refreshLocation=()=>{
 
-   }
+   // refreshLocation=()=>{
+   //
+   // }
   render () {
     console.log(this.props.posts.length);
-    let{ feed, currentLocation, closeUsers, posts }=this.state
+    let{ feed, closeUsers, posts }=this.state
     let{ renderProfiles }=this
-    const{  myLocation, statusFilter, getCloseUsers, current_user }=this.props
+    const{ statusFilter, current_user, myLocation }=this.props
     return (
 
         <div className="grid-container">
@@ -71,8 +60,7 @@ class Home extends React.Component {
                   </div>
               </div>
               <div className="Map-Container">
-                <div id="mapid">
-                </div>
+              <UserMap closeUsers= {closeUsers}/>
               {current_user != null &&
                 <div className="Comment-Box">
                   <CloudPost current_user={current_user}/>
