@@ -36,7 +36,7 @@ class PostsController < ApplicationController
       @online = []
       User.find_each do |user|
           if user.is_signed_in == true
-              @online << user
+              @online << user.as_json(include: :posts)
           end
       end
       render json: @online

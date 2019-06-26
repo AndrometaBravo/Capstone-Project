@@ -11,11 +11,11 @@ class User < ApplicationRecord
         Pusher.trigger('activity', 'login', self.as_json)
       end
 
-      def as_json(options={})
-        super(
-          only: [:id, :email, :username]
-        )
-      end
+      # def as_json(options={})
+      #   super(
+      #
+      #   )
+      # end
 
          validates :username, presence: true , uniqueness: { case_sensitive: false }
          validates :email, presence: true
