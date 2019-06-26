@@ -24,9 +24,8 @@ class CloudFeed extends React.Component {
     this.setState(statusFilterArr)
   }
   render() {
-    let{posts, user}=this.props
+    let{posts, user, closeUsers}=this.props
     let {statusFilterArr}=this.state
-    console.log(posts);
     return (
 
         <Container>
@@ -36,13 +35,15 @@ class CloudFeed extends React.Component {
          <Button color="primary" onClick={() => this.handleFilterChange(2)} active={this.state.cSelected.includes(2)}>Two</Button>
          <Button color="primary" onClick={() => this.handleFilterChange(3)} active={this.state.cSelected.includes(3)}>Three</Button>
        </ButtonGroup>
-        {posts.map((post, index) =>{
-          if(statusFilterArr.includes(post.post_status)){
-        return (
+       {closeUsers.map((user, index) => {
+           if (user.posts.length > 0){
+               return(
+                   user.posts.map((post,index) => {
+                       console.log(user.posts);
+                       return(
+
 
         <ListGroup.Item key={index}>
-
-
 
 
         <hr/>
@@ -51,7 +52,7 @@ class CloudFeed extends React.Component {
 
         <br/>
 
-        <p><font color = 'orange'><strong>{post.user.username}</strong></font> ({post.user_id}) ... @Starbucks:
+        <p><font color = 'orange'><strong>{user.username}</strong></font> ({post.user_id}) ... @Starbucks:
 
         <br/>
         <br/>
@@ -79,9 +80,13 @@ class CloudFeed extends React.Component {
         <hr/>
         </ListGroup.Item>
 
-        )
-        }
-        })}
+
+                       )
+                   })
+               )
+           }
+       })}
+
 
         </ListGroup>
         <br/>
