@@ -1,0 +1,27 @@
+$(document).ready =>
+      <%# function for adding a user to the DOM when they log in %>
+      addLoggenInUser = (user) ->
+        $('.left').append """
+          <p class="active-user bg-white" data-id="#{user.id}">
+            <span class="online-icon d-inline-block bg-success"></span>
+            <span class="username">@#{user.username}</span>
+          </p>
+        """
+        return
+      <%# function for removing a user from the DOM when they log out %>
+      removeLoggedOutUser = (user) ->
+        user = $ 'p[data-id=\'' + user.id + '\']'
+        $(user).remove()
+        return
+
+      <%# subscribe our Pusher client to the activity channel and if there's a login or logout event, call the necessary function %>
+      pusher = new Pusher('<%= ENV["PUSHER_KEY"] %>',
+        cluster: '<%= ENV["PUSHER_CLUSTER"] %>'
+        encrypted: true)
+      channel = pusher.subscribe('activity')
+      channel.bind 'login', (data) ->
+        addLoggenInUser data
+      channel.bind 'logout', (data) ->
+        removeLoggedOutUser data
+        return
+      return
