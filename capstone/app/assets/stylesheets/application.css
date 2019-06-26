@@ -195,3 +195,95 @@ text-align: center;
   z-index: 5;
 }
 .Filter-Area { grid-area: Filter-Area; }
+
+
+
+/* DEVISE VIEWS STYLING */
+
+
+/*  LOGIN */
+.login{
+  background: white;
+  max-width: 400px;;
+  margin: auto;
+  border-radius: 25px;
+  padding: 20px;
+  border-style: solid;
+  border-color: grey;
+}
+.login-contents{
+  margin: auto;
+}
+/*  EDI PROFILE WRAPPER*/
+.edit-profile-wrapper{
+  background: white;
+  max-width: 600px;;
+  margin: auto;
+  border-radius: 25px;
+  padding: 20px;
+  border-style: solid;
+  border-color: grey;
+}
+
+
+
+#sign-in-form{
+  background: white;
+  max-width: 600px;
+  margin: auto;
+  border-radius: 25px;
+  padding: 20px;
+  border-style: solid;
+  border-color: grey;
+}
+.devise-title{
+  color: white;
+  text-align: center;
+}
+.user-login-wrapper{
+  background: linear-gradient(to top right, #33ccff 0%, #9999ff 100%);
+  padding:2em;
+  width: 100vw;
+  height: 100vh;
+}
+.form-area {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-areas: "firstname firstname lastname lastname lastname" "email email username username username" ". gender age age ." "password password bio bio bio" "confirm-password confirm-password bio bio bio" ". login . submit .";
+  grid-area: form-area;
+}
+.firstname{
+  grid-area: firstname;
+}
+.lastname{
+  grid-area: lastname;
+}
+.email{
+  grid-area: email;
+}
+.username{
+  grid-area: username;
+}
+.gender{
+  grid-area: gender;
+}
+.age{
+  grid-area: age;
+}
+.password{
+  grid-area: password;
+}
+.confirm-password{
+  grid-area: confirm-password;
+}
+.bio{
+  margin:auto;
+  grid-area: bio;
+}
+.submit{
+  grid-area: submit;
+}
+.login{
+  grid-area: login;
+}
