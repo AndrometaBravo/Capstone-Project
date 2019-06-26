@@ -7,6 +7,7 @@ componentDidUpdate(prevProps) {
     return true
   }
 
+
   var mymap = L.map('mapid').setView([32.7167, -117.1661], 13);
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -20,9 +21,13 @@ componentDidUpdate(prevProps) {
    const {closeUsers} = this.props
      if(closeUsers.length != 0) {
          closeUsers.map((user, index) => {
-           var latt = user.lat
-           var long = user.lng
-           L.marker([latt, long]).addTo(mymap)
+           var latt = user.lat;
+           var long = user.lng;
+          var marker = L.marker([latt, long]).addTo(mymap);
+              marker.bindPopup(
+              "<img className = 'popupPic' height='100' width='100' src=" + user.picture_url + "/>" +
+              "<p><b>" + user.username + "</b></p>" + "<p>" + user.userStatus + "</p>"
+           ).openPopup();
          })
       }else{
            return null
