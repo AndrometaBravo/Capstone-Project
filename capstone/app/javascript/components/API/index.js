@@ -24,3 +24,16 @@ let getCloseUsers = function(){
 export{
   getCloseUsers
 }
+let getClosePosts = function(){
+  return fetch('/onlineposts',{
+    method: 'GET'
+  })
+  .then(function(response) {
+    let json = response.json()
+    return json
+
+  })
+}
+export{
+  getClosePosts
+}

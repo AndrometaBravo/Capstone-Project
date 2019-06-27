@@ -14,6 +14,7 @@ import NewPostBox from './newPostBox'
 import{ geolocated } from 'react-geolocated'
 import UserModal from './userModal'
 import{ getCloseUsers } from './API'
+import{ getClosePosts } from './API'
 
 
 class Home extends React.Component {
@@ -21,6 +22,7 @@ class Home extends React.Component {
     super(props)
     this.state={
       closeUsers:[],
+      closePosts: [],
       posts:[]
     }
   }
@@ -31,7 +33,12 @@ class Home extends React.Component {
           closeUsers: APIusers
         })
       })
-      this.setState({posts: this.props.posts})
+      getClosePosts()
+        .then(APIposts => {
+            this.setState({
+                closePosts: APIposts
+            })
+        })
   }
   componentDidUpdate(prevProps){
         if (this.props.posts.length != prevProps.posts.length) {
@@ -86,7 +93,7 @@ class Home extends React.Component {
    }
   render () {
     console.log(this.props.posts.length);
-    let{ feed, currentLocation, closeUsers, posts }=this.state
+    let{ feed, currentLocation, closeUsers, posts, closePosts}=this.state
     let{ renderProfiles }=this
     const{  myLocation, statusFilter, getCloseUsers, current_user }=this.props
     return (
@@ -95,7 +102,7 @@ class Home extends React.Component {
               <div className="Feed">
                 <FeedTopNav current_user={current_user} />
                   <div className="Feed-Posts">
-                    <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers} getCloseUsers={getCloseUsers}/>
+                    <CloudFeed posts={posts} statusFilter={statusFilter} closePosts={closePosts} getClosePosts={getClosePosts}/>
                   </div>
               </div>
               <div className="Map-Container">

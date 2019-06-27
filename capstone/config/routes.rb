@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     resources :userstatus
         get 'destroyfriendship/:user_id' => 'userstatus#customdelete'
     resources :posts
-        get 'onlineusers' => 'posts#onlineposts'
+        get 'onlineusers' => 'posts#onlineusers'
+        get 'onlineposts' => 'posts#onlinePosts'
+        post 'taggedpost/:tagid' => 'posts#createtagged'
     resources :tags
     resources :tagnames
 
