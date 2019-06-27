@@ -14,6 +14,8 @@ import NewPostBox from './newPostBox'
 import{ geolocated } from 'react-geolocated'
 import UserModal from './userModal'
 import{ getCloseUsers } from './API'
+import Avatar from './avatar'
+import ChangeAvatar from './changeAvatar'
 
 
 class Home extends React.Component {
@@ -21,7 +23,8 @@ class Home extends React.Component {
     super(props)
     this.state={
       closeUsers:[],
-      posts:[]
+      posts:[],
+      test: "it worked"
     }
   }
   componentWillMount(){
@@ -31,6 +34,7 @@ class Home extends React.Component {
           closeUsers: APIusers
         })
       })
+
       this.setState({posts: this.props.posts})
   }
   componentDidUpdate(prevProps){
@@ -44,6 +48,7 @@ class Home extends React.Component {
           this.setState({posts: this.props.posts})
      }
    }
+
    componentDidMount(){
      var mymap = L.map('mapid').setView([32.711108, -117.157946], 13);
      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
@@ -53,11 +58,12 @@ class Home extends React.Component {
           accessToken: 'pk.eyJ1Ijoic3doaXRlMjEiLCJhIjoiY2p4YzJ0MHFrMW8zZzN5cnYxZXowaGI4cSJ9.Wv8XBXSDANxtBHWNsoFGOg'
       }).addTo(mymap);
       mymap.locate({setView: true, maxZoom: 16});
+
       function onLocationFound(e) {
           var radius = e.accuracy;
 
           L.marker(e.latlng).addTo(mymap)
-              .bindPopup("You are within " + radius + " meters from this point").openPopup();
+              .bindPopup(`You are within ${radius} meters of this spot`).openPopup();
 
           L.circle(e.latlng, radius).addTo(mymap);
       }
@@ -69,10 +75,12 @@ class Home extends React.Component {
 
       mymap.on('locationfound', onLocationFound);
 
-      var hey = "here is some user date"
+      function setMapLocation(){
+        console.log("map set");
+      }
 
       L.marker([32.711108, -117.157946]).addTo(mymap)
-      .bindPopup(hey)
+      .bindPopup()
       .openPopup();
 
       L.marker([32.713851, -117.159897]).addTo(mymap)
@@ -88,14 +96,14 @@ class Home extends React.Component {
     console.log(this.props.posts.length);
     let{ feed, currentLocation, closeUsers, posts }=this.state
     let{ renderProfiles }=this
-    const{  myLocation, statusFilter, getCloseUsers, current_user }=this.props
+    const{  myLocation, statusFilter, getCloseUsers, current_user, sign_in, sign_out, logged_in }=this.props
     return (
 
         <div className="grid-container">
               <div className="Feed">
-                <FeedTopNav current_user={current_user} />
+                <FeedTopNav current_user={current_user} sign_in={sign_in} sign_out={sign_out} logged_in={logged_in}/>
                   <div className="Feed-Posts">
-                    <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers}/>
+                    <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers} getCloseUsers={getCloseUsers}/>
                   </div>
               </div>
               <div className="Map-Container">
@@ -114,20 +122,7 @@ class Home extends React.Component {
                     Lng: {myLocation.location.lng}
                   </p>
                 }
-                <Button>refresh location</Button>
-                <ul className="list-group">
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      Total Posts
-                    <span className="badge badge-primary badge-pill">{posts.length}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                    <span className="badge badge-primary badge-pill">2</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      Morbi leo risus
-                    <span className="badge badge-primary badge-pill">1</span>
-                    </li>
-                </ul>
+                <Button>{!current_user.lat && "Confirm Location" || "Hide my Location"}</Button>
                 </div>
 
         </div>

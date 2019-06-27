@@ -32,6 +32,17 @@ class PostsController < ApplicationController
 
   end
 
+  def onlineposts
+      @online = []
+      User.find_each do |user|
+          if user.is_signed_in == true
+              @online << user.as_json(:include => {:posts => {:include => {:tags =>{:include => :tagname}}}})
+          end
+      end
+      render json: @online
+  end
+
+
   def destroy
 
   end
