@@ -205,7 +205,7 @@
           grid-template-columns: 1fr 1fr 1fr 1fr;
           grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
           grid-template-areas:
-          "Map Map Map Map" 
+          "Map Map Map Map"
           "Map Map Map Map"
           "Map Map Map Map"
           "Comment-Box Comment-Box . Filter-Area"
