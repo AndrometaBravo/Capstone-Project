@@ -35,7 +35,7 @@ componentDidUpdate(prevProps) {
            var long = user.lng;
           var marker = L.marker([latt, long]).addTo(mymap);
           var dialog = L.control.dialog()
-                      .setContent("<img className = 'popupPic' height='100' width='100' src=" + user.picture_url + "/>" +
+                      .setContent("<img className = 'modalPic' height='190' width='190' src=" + user.picture_url + "/>" +
                       "<p><b>" + user.username + "</b></p>" + "<p>" + user.userStatus + "</p>")
                       // .setLocation([100,100])
 
