@@ -10,6 +10,8 @@ import CloudFeed from  './feed'
 import CloudPost from './post'
 import NewPostBox from './newPostBox'
 import{ getCloseUsers } from './API'
+import Avatar from './avatar'
+import ChangeAvatar from './changeAvatar'
 import UserMap from './userMap'
 
 
@@ -20,7 +22,9 @@ class Home extends React.Component {
     this.state={
       closeUsers:[],
       posts:[],
+      test: "it worked",
       visible: "modalHide"
+
     }
   }
   componentWillMount(){
@@ -30,6 +34,7 @@ class Home extends React.Component {
           closeUsers: APIusers
         })
       })
+
       this.setState({posts: this.props.posts})
   }
   componentDidUpdate(prevProps){
@@ -48,12 +53,12 @@ class Home extends React.Component {
     console.log(this.props.posts.length);
     let{ feed, closeUsers, posts }=this.state
     let{ renderProfiles }=this
-    const{ statusFilter, current_user, myLocation }=this.props
+    const{  myLocation, statusFilter, getCloseUsers, current_user, sign_in, sign_out, logged_in }=this.props
     return (
 
         <div className="grid-container">
               <div className="Feed">
-                <FeedTopNav current_user={current_user} />
+                <FeedTopNav current_user={current_user} sign_in={sign_in} sign_out={sign_out} logged_in={logged_in}/>
                   <div className="Feed-Posts">
                     <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers} getCloseUsers={getCloseUsers}/>
                   </div>
@@ -75,20 +80,8 @@ class Home extends React.Component {
                     Lng: {myLocation.location.lng}
                   </p>
                 }
-                <Button>refresh location</Button>
-                <ul className="list-group">
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      Total Posts
-                    <span className="badge badge-primary badge-pill">{posts.length}</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                    <span className="badge badge-primary badge-pill">2</span>
-                    </li>
-                    <li className="list-group-item d-flex justify-content-between align-items-center">
-                      Morbi leo risus
-                    <span className="badge badge-primary badge-pill">1</span>
-                    </li>
-                </ul>
+                <p>this button does not work currently</p>
+                <Button>{current_user && "Confirm Location" || "Hide my Location"}</Button>
                 </div>
 
         </div>

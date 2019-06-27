@@ -16,7 +16,22 @@ componentDidUpdate(prevProps) {
        id: 'mapbox.streets',
        accessToken: 'pk.eyJ1Ijoic3doaXRlMjEiLCJhIjoiY2p4YzJ0MHFrMW8zZzN5cnYxZXowaGI4cSJ9.Wv8XBXSDANxtBHWNsoFGOg'
    }).addTo(mymap);
+   mymap.locate({setView: true, maxZoom: 16});
+   function onLocationFound(e) {
+         var radius = e.accuracy;
 
+         L.marker(e.latlng).addTo(mymap)
+             .bindPopup(`You are within ${radius} meters of this spot`).openPopup();
+
+         L.circle(e.latlng, radius).addTo(mymap);
+     }
+     function onLocationError(e) {
+         alert(e.message);
+     }
+
+     mymap.on('locationerror', onLocationError);
+
+     mymap.on('locationfound', onLocationFound);
    // console.log(this.state.closeUsers);
    const {closeUsers} = this.props
      if(closeUsers.length != 0) {

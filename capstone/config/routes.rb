@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     resources :tags
     resources :tagnames
 
-
   devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_scope :user do
       get 'allusers' => 'users/sessions#index'
@@ -17,6 +16,9 @@ Rails.application.routes.draw do
       get 'pendingid' => 'users/sessions#pendingids'
       get 'sentpendingid' => 'users/sessions#sentpendingids'
   end
+
+  get 'avatar/:id' => 'users#showavatar'
+  put 'updateavatar/:id' => 'users#updateavatar'
 
 
   get '*path', to: 'pages#index', constraints: ->(request){ request.format.html? }

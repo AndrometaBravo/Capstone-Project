@@ -48,7 +48,7 @@ class CloudFeed extends React.Component {
 
         <hr/>
 
-        <a align="left" href=""><img className="feed-avatar" id="postfeed" src ={post.picture_url} alt=''/></a>
+        <a align="left" href=""><img className="feed-avatar" id="postfeed" src ={user.picture_url} alt=''/></a>
 
         <br/>
 
@@ -57,7 +57,7 @@ class CloudFeed extends React.Component {
         <br/>
         <br/>
 
-        {post.post}<font color = 'orange'></font> ({post.post_status})</p>
+        {post.poststring}<font color = 'orange'></font> ({post.post_status})</p>
 
         <div className = 'row'>
         <div className = 'col-4'>
