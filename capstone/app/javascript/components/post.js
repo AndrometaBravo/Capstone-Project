@@ -30,14 +30,13 @@ class CloudPost extends React.Component {
           this.handleChange = this.handleChange.bind(this);
           this.handleIdChange = this.handleIdChange.bind(this);
           this.tagtoggle = this.tagtoggle.bind(this);
-          this.statustoggle = this.statustoggle.bind(this);
           this.tagselect = this.tagselect.bind(this);
-          this.statusselect = this.statusselect.bind(this);
 
       }
 
       handleNewPost(){
           createPost(this.state.form, this.state.tag_id).then(successPost => {
+              this.setState({post_status_display: "available"})
               alert("Post Submitted")
               console.log("submitted");
           })
@@ -60,24 +59,12 @@ class CloudPost extends React.Component {
           tagdropdownOpen: !prevState.tagdropdownOpen
         }));
       }
-      statustoggle() {
-        this.setState(prevState => ({
-          statusdropdownOpen: !prevState.statusdropdownOpen
-        }));
-      }
 
 
       tagselect(event) {
         this.setState({
           tagdropdownOpen: !this.state.tagdropdownOpen,
           tag_id: event.target.value
-        });
-      }
-
-      statusselect(event) {
-        this.setState({
-          statusdropdownOpen: !this.state.statusdropdownOpen,
-          post_status: event.target.value
         });
       }
 

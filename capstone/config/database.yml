@@ -24,5 +24,4 @@ test:
   database: capstone_test
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  url: <%= ENV['DATABASE_URL'] %>

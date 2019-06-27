@@ -329,56 +329,6 @@
 //end of mapicon
 
 
-///////////////////nav//////////////////////////
-.navbar{
-    background-color: white;
-    position: fixed;
-    top: 0;
-    left:0;
-    overflow: hidden;
-    height: 100px;
-    width: 100%;
-    opacity: .5;
-    padding-top:40px;
-    z-index: -2;
-
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto;
-    grid-template-areas:
-    "home profile about learn signInOut username";
-}
-    .navbar:hover{
-        opacity: 1;
-        z-index: 5;
-    }
-    nav a{
-        padding: 30px;
-    }
-
-    .navbar .home{
-        grid-area: home;
-
-    }
-
-    .navbar .profile{
-        grid-area: profile;
-    }
-    .navbar .about{
-        grid-area:about;
-    }
-    .navbar .learn{
-        grid-area: learn;
-    }
-    .navbar .signInOut{
-        grid-area:signInOut;
-    }
-    .navbar .username{
-        grid-area:username;
-    }
-
-//end of navbar
-
 
 //////////////////profile page//////////////////////////////
 
@@ -392,6 +342,58 @@
     "info body im"
     "photos body im"
     "friends body im"
+}
+
+.intro {
+background: url(http://www.alcortech.com/wp3/wp-content/uploads/2016/08/Cloud.jpg);
+ position: relative;
+ width: auto;
+ height: auto;
+ color: #fff;
+ background-color: #111;
+ min-height: 600px;
+ padding: 0;
+ background-size: cover;
+ background-position: center center;
+ overflow: visible;
+ background-attachment: fixed;
+
+//   text-align: center;
+
+ padding: 20px;
+ background-color: #f2f2f2;
+ margin:20px;
+}
+
+.overlay {
+ position: absolute;
+ width: 100%;
+ height: auto;
+ left: 0;
+ top: 0;
+ background: #000;
+ z-index: 2;
+ opacity: 0.6;
+ border-width: 10px;
+ border-style: double;
+ border-color: grey;
+ padding-left:10px;
+}
+
+
+#title {
+ padding-top: 5px;
+//   border: 1px solid white;
+ opacity: 1;
+//   width: 240px;
+ border-radius: 5%;
+ margin-bottom: 0.5rem;
+ font-family: "Montserrat", sans-serif;
+ font-weight: 700;
+ line-height: 1.44;
+ color: inherit;
+ text-transform: uppercase;
+ letter-spacing: 0.2em;
 }
 /* header or in the header */
     .header{

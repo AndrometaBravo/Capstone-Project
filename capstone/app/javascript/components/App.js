@@ -5,7 +5,6 @@ import { BrowserRouter as  Router } from 'react-router-dom'
 import {getUsers} from '../api/api'
 import {myFriends} from '../api/api'
 
-import Navbar from './nav'
 import Routes from './routes'
 
 
@@ -30,13 +29,6 @@ export default class App extends React.Component {
     return (
 
         <Router>
-            <Navbar
-                logged_in = {logged_in}
-                sign_in = {sign_in}
-                sign_out = {sign_out}
-                current_user = {current_user}
-            />
-            <div className = "top"></div>
            <Routes
                logged_in = {logged_in}
                sign_in = {sign_in}
