@@ -28,19 +28,23 @@ componentDidUpdate(prevProps) {
              marker.closePopup()
            }
            function openModal(){
-             dialog.open()
+
+             dialog.addTo(mymap).setLocation([100,100]).open()
            }
            var latt = user.lat;
            var long = user.lng;
           var marker = L.marker([latt, long]).addTo(mymap);
+          var dialog = L.control.dialog()
+                      .setContent("<img className = 'popupPic' height='100' width='100' src=" + user.picture_url + "/>" +
+                      "<p><b>" + user.username + "</b></p>" + "<p>" + user.userStatus + "</p>")
+                      // .setLocation([100,100])
+
               marker.bindPopup(
               "<img className = 'popupPic' height='100' width='100' src=" + user.picture_url + "/>" +
               "<p><b>" + user.username + "</b></p>" + "<p>" + user.userStatus + "</p>"
            )
 
-           var dialog = L.control.dialog()
-           .setContent("<p>Hello! Welcome to your nice new dialog box!</p>")
-           .addTo(mymap);
+
 
               marker.on('mouseover', onMouseOver)
               marker.on('mouseout', onMouseOut)
