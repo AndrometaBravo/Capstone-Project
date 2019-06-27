@@ -13,6 +13,7 @@ import Profile from './profile'
 import LearnMore from './learnmore'
 
 import { getPosts } from '../api/index.js'
+import {getCloseUsers} from './API'
 
 
 
@@ -60,12 +61,14 @@ class Routes extends React.Component {
     return (
         <Switch>
 
+
              <Route exact path="/" component={() => <Home
                statusFilter={statusFilter}
                posts={posts}
                myLocation={myLocation}
                current_user={current_user}
                logged_in={logged_in}/>} />
+
              <Route exact path="/about" component= {() => <AboutUs />} />
              <Route exact path="/more" component={() => <LearnMore />} />
              <Route exact path="/userprofile/:id" component={(props) => <Profile

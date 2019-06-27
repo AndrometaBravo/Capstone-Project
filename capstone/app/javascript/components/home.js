@@ -44,9 +44,6 @@ class Home extends React.Component {
      }
    }
 
-   // refreshLocation=()=>{
-   //
-   // }
   render () {
     console.log(this.props.posts.length);
     let{ feed, closeUsers, posts }=this.state
@@ -58,11 +55,13 @@ class Home extends React.Component {
               <div className="Feed">
                 <FeedTopNav current_user={current_user} />
                   <div className="Feed-Posts">
-                    <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers}/>
+                    <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers} getCloseUsers={getCloseUsers}/>
                   </div>
               </div>
               <div className="Map-Container">
+
               <UserMap closeUsers= {closeUsers} />
+
               {current_user != null &&
                 <div className="Comment-Box">
                   <CloudPost current_user={current_user}/>
@@ -90,7 +89,8 @@ class Home extends React.Component {
                     <span className="badge badge-primary badge-pill">1</span>
                     </li>
                 </ul>
-              </div>
+                </div>
+
         </div>
         </div>
 

@@ -152,13 +152,15 @@ text-align: center;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
-  grid-template-areas: ". . . ." ". . . ." ". . . ." "Comment-Box Comment-Box . Filter-Area""Comment-Box Comment-Box . Filter-Area";
+  grid-template-areas: "Map Map Map Map" "Map Map Map Map" "Map Map Map Map" "Comment-Box Comment-Box . Filter-Area""Comment-Box Comment-Box . Filter-Area";
   grid-area: Map-Container;
   overflow: hidden;
 }
 #mapid {
-  height: 100vh;
-  width: 100vh;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+  grid-area: Map;
  }
 .Comment-Box {
   grid-area: Comment-Box;
@@ -174,7 +176,7 @@ text-align: center;
   grid-area: Comment-Box;
   margin: 20px;
   border-radius: 20px;
-  z-index: 1;
+  z-index: 99;
   background: white;
   padding: 20px;
   box-shadow: 0px 0px 10px grey;

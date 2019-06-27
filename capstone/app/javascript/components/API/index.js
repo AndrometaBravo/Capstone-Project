@@ -12,7 +12,7 @@ export{
 }
 
 let getCloseUsers = function(){
-  return fetch('/allusers',{
+  return fetch('/onlineusers',{
     method: 'GET'
   })
   .then(function(response) {

@@ -13,18 +13,18 @@ class CloudFeed extends React.Component {
   handleFilterChange=(filterNum)=>{
     let{ statusFilterArr }=this.state
     if (statusFilterArr.includes(filterNum)){
-        function checkval(num){
-          return num != filterNum
-        }
-    this.setState({statusFilterArr : statusFilterArr.filter(checkval)})
-    }else
-    {statusFilterArr.push(filterNum)
+      function checkval(num){
+        console.log(statusFilterArr);
+        return num != filterNum
+      }
+      this.setState({statusFilterArr : statusFilterArr.filter(checkval)})
+    }else{
+    statusFilterArr.push(filterNum)
   }
     this.setState(statusFilterArr)
   }
-
   render() {
-    let{posts, closeUsers}=this.props
+    let{posts, user, closeUsers}=this.props
     let {statusFilterArr}=this.state
     return (
 
@@ -35,11 +35,16 @@ class CloudFeed extends React.Component {
          <Button color="primary" onClick={() => this.handleFilterChange(2)} active={this.state.cSelected.includes(2)}>Two</Button>
          <Button color="primary" onClick={() => this.handleFilterChange(3)} active={this.state.cSelected.includes(3)}>Three</Button>
        </ButtonGroup>
-        {posts.map((post, index) =>{
-          if(statusFilterArr.includes(post.post_status)){
-        return (
+       {closeUsers.map((user, index) => {
+           if (user.posts.length > 0){
+               return(
+                   user.posts.map((post,index) => {
+                       console.log(user.posts);
+                       return(
+
 
         <ListGroup.Item key={index}>
+
 
         <hr/>
 
@@ -47,12 +52,12 @@ class CloudFeed extends React.Component {
 
         <br/>
 
-        <p><font color = 'orange'><strong>{closeUsers.length !=0 && closeUsers[0].username}</strong></font> ({post.user_id}) ... @Starbucks:
+        <p><font color = 'orange'><strong>{user.username}</strong></font> ({post.user_id}) ... @Starbucks:
 
         <br/>
         <br/>
 
-        {post.poststring}<font color = 'orange'></font> ({post.post_status})</p>
+        {post.post}<font color = 'orange'></font> ({post.post_status})</p>
 
         <div className = 'row'>
         <div className = 'col-4'>
@@ -62,7 +67,7 @@ class CloudFeed extends React.Component {
         </div>
         <div className = 'col-4'>
 
-        <p align="center">project: <font color = 'orange'>{post.tags}</font></p>
+        <p align="center">project: <font color = 'orange'>{post.tags.length > 0 && post.tags[0].tagname.tag || "no tags" }</font></p>
 
         </div>
         <div className = 'col-4'>
@@ -75,9 +80,13 @@ class CloudFeed extends React.Component {
         <hr/>
         </ListGroup.Item>
 
-        )
-        }
-        })}
+
+                       )
+                   })
+               )
+           }
+       })}
+
 
         </ListGroup>
         <br/>

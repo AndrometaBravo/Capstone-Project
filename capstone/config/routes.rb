@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
-    resources :userstatus
-    resources :posts
-  devise_for :users, controllers: { sessions: 'users/sessions' }
 
+    resources :userstatus
+        get 'destroyfriendship/:user_id' => 'userstatus#customdelete'
+    resources :posts
+        get 'onlineusers' => 'posts#onlineposts'
+    resources :tags
+    resources :tagnames
+
+
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_scope :user do
       get 'allusers' => 'users/sessions#index'
       get 'users/:id' => 'users/sessions#oneuser'

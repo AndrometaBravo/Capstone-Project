@@ -3,6 +3,7 @@ class UserstatusController < ApplicationController
       def index
         status = UserStatus.all
         render json: status
+
       end
 
       def create
@@ -30,6 +31,44 @@ class UserstatusController < ApplicationController
          @status = UserStatus.find(params[:id])
          @status.update_attributes(status_params)
          render :show
+      end
+
+      def destroy
+          @friends = []
+          UserStatus.find_each do |status|
+            if current_user.id == status.sender_id && status.status == 1
+                if status.recipient_id == params[:user_id]
+                    @friends  << status.id
+                end
+            elsif current_user.id == status.recipient_id && status.status == 1
+                if status.sender_id == params[:user_id]
+                    @friends  << status.id
+                end
+            end
+
+          end
+          deleteme =  UserStatus.find(@friends[0])
+          deleteme.destroy
+          render json: @friends
+      end
+
+      def customdelete
+          @friends = []
+          UserStatus.find_each do |status|
+            if current_user.id == status.sender_id && status.status == 1
+                if status.recipient_id == params[:user_id]
+                    @friends  << status.id
+                end
+            elsif current_user.id == status.recipient_id && status.status == 1
+                if status.sender_id == params[:user_id]
+                    @friends  << status.id
+                end
+            end
+
+          end
+          deleteme =  UserStatus.find(@friends[0])
+          deleteme.destroy
+          render json: @friends
       end
 
       def status_params

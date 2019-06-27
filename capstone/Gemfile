@@ -66,3 +66,6 @@ gem "webpacker", "~> 4.0"
 gem "react-rails", "~> 2.5"
 
 gem "devise", "~> 4.6"
+gem 'jquery-rails'
+gem 'pusher'
+gem 'figaro'

@@ -338,16 +338,15 @@
     overflow: hidden;
     height: 100px;
     width: 100%;
-    opacity: 1;
+    opacity: .5;
     padding-top:40px;
-    z-index: 2;
+    z-index: -2;
 
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas:
     "home profile about learn signInOut username";
-    display:none;
 }
     .navbar:hover{
         opacity: 1;
