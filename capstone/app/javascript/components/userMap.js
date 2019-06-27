@@ -34,7 +34,7 @@ componentDidUpdate(prevProps) {
      mymap.on('locationfound', onLocationFound);
    // console.log(this.state.closeUsers);
    const {closeUsers} = this.props
-     if(closeUsers.length != 0) {
+     if(closeUsers.length != 0 || null) {
          closeUsers.map((user, index) => {
            function onMouseOver(e) {
              marker.openPopup()
@@ -48,6 +48,7 @@ componentDidUpdate(prevProps) {
            }
            var latt = user.lat;
            var long = user.lng;
+           if(latt || long != null){
           var marker = L.marker([latt, long]).addTo(mymap);
           var dialog = L.control.dialog()
                       .setContent("<img className = 'popupPic' height='100' width='100' src=" + user.picture_url + "/>" +
@@ -58,12 +59,10 @@ componentDidUpdate(prevProps) {
               "<img className = 'popupPic' height='100' width='100' src=" + user.picture_url + "/>" +
               "<p><b>" + user.username + "</b></p>" + "<p>" + user.userStatus + "</p>"
            )
-
-
-
               marker.on('mouseover', onMouseOver)
               marker.on('mouseout', onMouseOut)
               marker.on('click', openModal)
+            }
          })
       }else{
            return null

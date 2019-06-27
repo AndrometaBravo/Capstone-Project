@@ -11,10 +11,10 @@ amazon:
   service: S3
   # access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
   # secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-  access_key_id: ASK SEBASTIAN ABOUT THE KEY
-  secret_access_key: ASK SEBASTIAN ABOUT THE KEY
+  access_key_id: ASK SEBASTIAN ABOUT KEY
+  secret_access_key: ASK SEBASTIAN ABOUT KEY
   region: us-east-2
-  bucket: ASK SEBASTIAN ABOUT THE BUCKET
+  bucket: active-storage-cloud-culture
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
