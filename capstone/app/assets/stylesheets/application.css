@@ -40,7 +40,12 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
-    grid-template-areas: "Map Map Map Map" "Map Map Map Map" "Map Map Map Map" "Map Map Map Map""Map Map Map Map";
+    grid-template-areas:
+    "Map Map Map Map"
+    "Map Map Map Map"
+    "Map Map Map Map"
+    "Map Map Map Map"
+    "Map Map Map Map";
     grid-area: Map-Container;
   }
   .Comment-Box{
@@ -199,7 +204,12 @@
           display: grid;
           grid-template-columns: 1fr 1fr 1fr 1fr;
           grid-template-rows: 20vh 20vh 20vh 20vh 20vh;
-          grid-template-areas: "Map Map Map Map" "Map Map Map Map" "Map Map Map Map" "Comment-Box Comment-Box . Filter-Area""Comment-Box Comment-Box . Filter-Area";
+          grid-template-areas:
+          "Map Map Map Map" 
+          "Map Map Map Map"
+          "Map Map Map Map"
+          "Comment-Box Comment-Box . Filter-Area"
+          "Comment-Box Comment-Box . Filter-Area";
           grid-area: Map-Container;
           overflow: hidden;
         }
