@@ -18,7 +18,6 @@
 @import url("https://unpkg.com/leaflet@1.5.1/dist/leaflet.css");
 @import url("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
 
-
  #map-holder{
    display: grid;
    grid-template-columns: 500px auto;
@@ -102,11 +101,6 @@ text-align: center;
 #cog-dropdown{
 }
 
-
-
-.mapIcon {
-  background-color: white;
-}
 
 
 

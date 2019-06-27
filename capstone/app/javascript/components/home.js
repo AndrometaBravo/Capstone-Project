@@ -13,12 +13,14 @@ import{ getCloseUsers } from './API'
 import UserMap from './userMap'
 
 
+
 class Home extends React.Component {
   constructor(props){
     super(props)
     this.state={
       closeUsers:[],
-      posts:[]
+      posts:[],
+      visible: "modalHide"
     }
   }
   componentWillMount(){
@@ -60,7 +62,7 @@ class Home extends React.Component {
                   </div>
               </div>
               <div className="Map-Container">
-              <UserMap closeUsers= {closeUsers}/>
+              <UserMap closeUsers= {closeUsers} />
               {current_user != null &&
                 <div className="Comment-Box">
                   <CloudPost current_user={current_user}/>
