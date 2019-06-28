@@ -1,4 +1,5 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
+import Button from 'react-bootstrap/Button'
 
 
 export default class UserMap extends Component {
@@ -44,15 +45,18 @@ componentDidUpdate(prevProps) {
            }
            function openModal(){
 
-             dialog.addTo(mymap).setLocation([100,100]).open()
+             dialog.addTo(mymap).setLocation([100,100]).open().hideResize()
+           }
+           function closeModal(){
+             dialog.close()
            }
            var latt = user.lat;
            var long = user.lng;
            if(latt || long != null){
           var marker = L.marker([latt, long]).addTo(mymap);
           var dialog = L.control.dialog()
-                      .setContent("<img className = 'popupPic' height='100' width='100' src=" + user.picture_url + "/>" +
-                      "<p><b>" + user.username + "</b></p>" + "<p>" + user.userStatus + "</p>")
+                      .setContent("<img className = 'modalPic' height='190' width='190' src=" + user.picture_url + "/>" +
+                      "<p className = 'username'><b>" + user.username + "</b></p>" + "<p className='showstatus'>" + user.userStatus + "</p>" + "<p>" + "<Button variant='success'>Request a Meet</Button>" + "</p>")
                       // .setLocation([100,100])
 
               marker.bindPopup(
@@ -62,7 +66,9 @@ componentDidUpdate(prevProps) {
               marker.on('mouseover', onMouseOver)
               marker.on('mouseout', onMouseOut)
               marker.on('click', openModal)
-            }
+
+              mymap.on('click', closeModal)
+
          })
       }else{
            return null
