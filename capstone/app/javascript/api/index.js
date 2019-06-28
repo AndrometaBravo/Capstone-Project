@@ -15,10 +15,10 @@ export {
 }
 
 
-let createPost = function(post) {
-	console.log(post);
-	return fetch('/posts', {
-		body: JSON.stringify(post),
+let createPost = function(post,tagid) {
+	console.log(post,tagid);
+	return fetch(`/taggedpost/${tagid}`, {
+		body: JSON.stringify(post,tagid),
 		headers: {
 			'Content-Type': 'application/json'
 		},

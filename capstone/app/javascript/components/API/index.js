@@ -12,7 +12,7 @@ export{
 }
 
 let getCloseUsers = function(){
-  return fetch('/allusers',{
+  return fetch('/onlineusers',{
     method: 'GET'
   })
   .then(function(response) {
@@ -23,4 +23,17 @@ let getCloseUsers = function(){
 }
 export{
   getCloseUsers
+}
+let getClosePosts = function(){
+  return fetch('/onlineposts',{
+    method: 'GET'
+  })
+  .then(function(response) {
+    let json = response.json()
+    return json
+
+  })
+}
+export{
+  getClosePosts
 }

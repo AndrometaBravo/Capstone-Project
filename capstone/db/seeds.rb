@@ -18,6 +18,7 @@ user.lat = 32.708858
 user.lng = -117.158563
 user.firstname = 'John'
 user.lastname = 'Dogh'
+user.is_signed_in = true
 user.save!
 
 user2 = User.new
@@ -33,6 +34,7 @@ user2.lat = 32.709752
 user2.lng = -117.156170
 user2.firstname = 'Jane'
 user2.lastname = 'Dogh'
+user2.is_signed_in = true
 user2.save!
 
 user3 = User.new

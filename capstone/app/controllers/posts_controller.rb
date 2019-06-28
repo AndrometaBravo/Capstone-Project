@@ -2,8 +2,13 @@ class PostsController < ApplicationController
 
   def index
 
-    posts = Post.order('created_at desc')
-    render json: posts
+    @posts = []
+    Post.find_each do |post|
+        @posts << post.as_json(:include => {:user =>{}, :tags => {:include => :tagname}})
+    end
+    @use = @posts.reverse
+
+    render json: @use
 
   end
 
@@ -11,10 +16,24 @@ class PostsController < ApplicationController
 
     post = Post.create(post_params)
     if post.valid?
-    render json: post
+        Tag.create(:post_id => post.id, :tagname_id => params[:tagid])
+        render json: post
     else
-    render json: post.errors, status: :unprocessable_entity
-    p post.errors
+        render json: post.errors, status: :unprocessable_entity
+        p post.errors
+    end
+
+  end
+
+  def createtagged
+
+    post = Post.create(post_params)
+    if post.valid?
+        Tag.create(:post_id => post.id, :tagname_id => params[:tagid])
+        render json: post
+    else
+        render json: post.errors, status: :unprocessable_entity
+        p post.errors
     end
 
   end
@@ -26,6 +45,36 @@ class PostsController < ApplicationController
      render :show
 
   end
+
+  def onlineusers
+      @online = []
+      User.find_each do |user|
+          if user.is_signed_in == true
+              @online << user.as_json(:include => {:posts => {:include => {:tags =>{:include => :tagname}}}})
+          end
+      end
+      render json: @online
+  end
+
+  def onlinePosts
+      @online = []
+      @posts = []
+      Post.find_each do |post|
+          @posts << post.as_json(:include => {:user => {}, :tags =>{:include => :tagname}})
+          if post.user.is_signed_in == true
+              @online << post.as_json(:include => {:user => {}, :tags =>{:include => :tagname}})
+          end
+      end
+      @use = @online.reverse
+
+      render json: @use
+  end
+
+
+  def destroy
+
+  end
+
 
   def post_params
 

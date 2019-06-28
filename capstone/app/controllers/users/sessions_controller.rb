@@ -2,10 +2,34 @@
 
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
+  after_action :notify_pusher_login, only: :create
+  before_action :notify_pusher_logout, only: :destroy
+
+    def notify_pusher_login
+        user = User.find(current_user.id)
+        user.update(is_signed_in: true)
+        notify_pusher 'login'
+    end
+
+    def notify_pusher_logout
+        user = User.find(current_user.id)
+        user.update(is_signed_in: false)
+        notify_pusher 'logout'
+    end
+
+    def notify_pusher(activity_type)
+        Pusher.trigger('activity', activity_type, current_user.as_json)
+    end
+
+
 
   def index
-      users = User.all
-      render json: users
+
+      @users = []
+      User.find_each do |user|
+          @users << user.as_json(:include => :posts)
+      end
+      render json: @users
   end
 
   def oneuser
@@ -80,6 +104,8 @@ class Users::SessionsController < Devise::SessionsController
       end
       render json: pending
   end
+
+  
 
   # GET /resource/sign_in
   def new

@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_202008) do
+ActiveRecord::Schema.define(version: 2019_06_26_204533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.bigint "byte_size", null: false
+    t.string "checksum", null: false
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
 
   create_table "posts", force: :cascade do |t|
     t.bigint "user_id"
@@ -26,6 +47,15 @@ ActiveRecord::Schema.define(version: 2019_06_21_202008) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "sessions", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.text "data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
   create_table "tagnames", force: :cascade do |t|
     t.string "tag"
     t.datetime "created_at", null: false
@@ -33,13 +63,11 @@ ActiveRecord::Schema.define(version: 2019_06_21_202008) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.bigint "users_id"
-    t.bigint "posts_id"
+    t.bigint "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "tagname_id"
-    t.index ["posts_id"], name: "index_tags_on_posts_id"
-    t.index ["users_id"], name: "index_tags_on_users_id"
+    t.index ["post_id"], name: "index_tags_on_post_id"
   end
 
   create_table "user_statuses", force: :cascade do |t|
@@ -69,14 +97,20 @@ ActiveRecord::Schema.define(version: 2019_06_21_202008) do
     t.decimal "lng", precision: 10, scale: 6
     t.string "firstname"
     t.string "lastname"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.boolean "is_signed_in", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "posts", "users"
-  add_foreign_key "tags", "posts", column: "posts_id"
-  add_foreign_key "tags", "users", column: "users_id"
+  add_foreign_key "tags", "posts"
   add_foreign_key "user_statuses", "users", column: "recipient_id"
   add_foreign_key "user_statuses", "users", column: "sender_id"
 end

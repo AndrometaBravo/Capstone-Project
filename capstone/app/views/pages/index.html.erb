@@ -1,4 +1,23 @@
 
+  <!-- Bootstrap CSS-->
+   <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+   <!-- Font Awesome CSS-->
+   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+
+   <!-- Google fonts - Montserrat for headings, Cardo for copy-->
+   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700%7CCardo:400,400italic,700">
+   <!-- theme stylesheet-->
+   <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+   <!-- Custom stylesheet - for your changes-->
+   <link rel="stylesheet" href="css/custom.css">
+   <!-- Favicon-->
+   <link rel="shortcut icon" href="img/cloudblue.png">
+   <!-- Leaflet CSS - For the map-->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css">
+   <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+
 <%= react_component("App", {
     logged_in: user_signed_in?,
     sign_out:  destroy_user_session_path,
@@ -6,3 +25,10 @@
     current_user: current_user,
     edit_user: edit_user_registration_path
 } ) %>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
+   <script src="vendor/lightbox2/js/lightbox.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"> </script>
+   <script src="js/front.js"></script>
