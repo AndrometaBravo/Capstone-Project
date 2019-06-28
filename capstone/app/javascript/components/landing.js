@@ -6,13 +6,13 @@ class Landing extends React.Component {
     return (
 
   <div>
-
+  <body>
     <section id="intro" className="intro">
       <div className="overlay"></div>
       <div className="content">
         <div className="container clearfix">
           <div className="row">
-            <div className="col-lg-8 col-md-12 mx-auto">
+            <div className="col-lg-8 col-md-12 mx-auto" id = "titlediv">
               <p className="italic"></p>
               <h1>Cloud Culture</h1>
               <p className="italic">Cloud Culture is a collaborative networking platform for web workers.</p>
@@ -52,13 +52,7 @@ class Landing extends React.Component {
                 <a href="#services" className="nav-link link-scroll">Team</a>
               </li>
               <li className="nav-item">
-                <a href="#portfolio" className="nav-link link-scroll">Timeline</a>
-              </li>
-              <li className="nav-item">
                 <a href="/map" className="nav-link link-scroll">Map</a>
-              </li>
-              <li className="nav-item">
-                <a href="#contact" className="nav-link link-scroll">Contact</a>
               </li>
               <li className="nav-item">
                 <a href = {logged_in && sign_out || sign_in}
@@ -149,7 +143,7 @@ class Landing extends React.Component {
         </div>
       </div>
     </footer>
-
+</body>
 
 
   </div>
