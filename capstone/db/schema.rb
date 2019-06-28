@@ -47,15 +47,6 @@ ActiveRecord::Schema.define(version: 2019_06_26_204533) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
-  create_table "sessions", force: :cascade do |t|
-    t.string "session_id", null: false
-    t.text "data"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
-    t.index ["updated_at"], name: "index_sessions_on_updated_at"
-  end
-
   create_table "tagnames", force: :cascade do |t|
     t.string "tag"
     t.datetime "created_at", null: false
