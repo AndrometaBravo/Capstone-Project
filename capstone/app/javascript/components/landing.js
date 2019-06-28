@@ -6,7 +6,7 @@ class Landing extends React.Component {
     return (
 
   <div>
-  <body>
+
     <section id="intro" className="intro">
       <div className="overlay"></div>
       <div className="content">
@@ -143,7 +143,7 @@ class Landing extends React.Component {
         </div>
       </div>
     </footer>
-</body>
+
 
 
   </div>

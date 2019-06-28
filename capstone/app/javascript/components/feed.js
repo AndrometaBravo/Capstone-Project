@@ -46,7 +46,7 @@ class CloudFeed extends React.Component {
 
         <hr/>
 
-        <a align="left" href=""><img className="feed-avatar" id="postfeed" src ={user.picture_url} alt=''/></a>
+        <a align="left" href=""><img className="feed-avatar" id="postfeed" src ={post.user.picture_url} alt=''/></a>
 
         <br/>
 
