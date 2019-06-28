@@ -449,7 +449,7 @@ section {
 .overlay {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: auto;
   left: 0;
   top: 0;
   background: #000;
@@ -548,14 +548,13 @@ INTRO SECTION
   background: url(cloud.jpg);
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
   color: #fff;
   background-color: #111;
   min-height: 600px;
   padding: 0;
   background-size: cover;
   background-position: center center;
-  overflow: hidden;
   background-attachment: fixed;
 }
 

@@ -187,7 +187,6 @@ class Profile extends Component {
            </h4>
 
            <ProfileFeed
-                key = {posts}
                 posts = {posts}
                 user = {user}
            />
