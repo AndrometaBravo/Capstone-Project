@@ -63,9 +63,23 @@ class Routes extends React.Component {
         <Switch>
 
 
-             <Route exact path="/" component={() => <Landing logged_in={logged_in} sign_in = {sign_in} sign_out = {sign_out}/>} />
-             <Route exact path="/map" component={() => <Home statusFilter={statusFilter} posts={posts} myLocation={myLocation} getCloseUsers ={getCloseUsers} current_user={current_user} logged_in={logged_in}/>} />
-    
+             <Route exact path="/"
+             component={() => <Landing
+                 logged_in={logged_in}
+                 sign_in = {sign_in}
+                 sign_out = {sign_out}/>} />
+
+             <Route exact path="/map"
+                component={() => <Home
+                 statusFilter={statusFilter}
+                 posts={posts}
+                 myLocation={myLocation}
+                 getCloseUsers ={getCloseUsers}
+                 current_user={current_user}
+                 logged_in={logged_in}
+                 sign_in = {sign_in}
+                 sign_out = {sign_out}/>} />
+
              <Route exact path="/about" component= {() => <AboutUs />} />
              <Route exact path="/more" component={() => <LearnMore />} />
              <Route exact path="/userprofile/:id" component={(props) => <Profile

@@ -51,10 +51,10 @@ class FeedTopNav extends React.Component {
               </DropdownItem>
               <DropdownItem>
               <a
-              className = "signInOut"
-              href = {logged_in && sign_out || sign_in}>
-              {logged_in && "Sign Out"}
-              {!logged_in && "Sign In"}
+                  className = "signInOut"
+                  href = {logged_in && sign_out || sign_in}>
+                  {logged_in && "Sign Out"}
+                  {!logged_in && "Sign In"}
               </a>
               </DropdownItem>
             </DropdownMenu>
