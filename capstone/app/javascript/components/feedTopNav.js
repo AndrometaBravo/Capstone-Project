@@ -3,18 +3,23 @@ import PropTypes from "prop-types"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faCog, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { DropdownMenu, DropdownToggle, UncontrolledDropdown, DropdownItem } from 'reactstrap'
+import ChangeAvatar from './changeAvatar'
 
 class FeedTopNav extends React.Component {
   gearClick=()=>{
     console.log("gearClickran");
   }
   render () {
+    const{sign_in, sign_out, logged_in, current_user}=this.props
+    console.log(sign_in, logged_in, sign_out);
     return (
       <div className="feed-top-nav">
 
-      <a href="/users/sign_out"><FontAwesomeIcon icon={faArrowLeft} color="grey" size="lg"/></a>
+      <a href={logged_in && `/userprofile/${current_user.id}` || sign_in}><FontAwesomeIcon icon={faArrowLeft} color="grey" size="lg"/></a>
       <div id="user-icon-section">
-        <img className="feed-avatar-small" src="https://i0.wp.com/zblogged.com/wp-content/uploads/2019/02/FakeDP.jpeg?resize=567%2C580&ssl=1" alt="Card image cap" />
+      {current_user != null &&
+        <ChangeAvatar current_user={current_user}/>
+      }
       </div>
       <div id="feed-username">{
         this.props.current_user != null && this.props.current_user.firstname
@@ -45,10 +50,12 @@ class FeedTopNav extends React.Component {
                   </a>
               </DropdownItem>
               <DropdownItem>
-                  <a
-                     href="/users/sign_in">
-                     Sign in
-                  </a>
+              <a
+              className = "signInOut"
+              href = {logged_in && sign_out || sign_in}>
+              {logged_in && "Sign Out"}
+              {!logged_in && "Sign In"}
+              </a>
               </DropdownItem>
             </DropdownMenu>
        </UncontrolledDropdown>
