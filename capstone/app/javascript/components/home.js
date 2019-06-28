@@ -10,6 +10,8 @@ import CloudFeed from  './feed'
 import CloudPost from './post'
 import NewPostBox from './newPostBox'
 import{ getCloseUsers } from './API'
+
+import{ getClosePosts } from './API'
 import Avatar from './avatar'
 import ChangeAvatar from './changeAvatar'
 import UserMap from './userMap'
@@ -21,6 +23,7 @@ class Home extends React.Component {
     super(props)
     this.state={
       closeUsers:[],
+      closePosts: [],
       posts:[],
       test: "it worked",
       visible: "modalHide"
@@ -34,6 +37,12 @@ class Home extends React.Component {
           closeUsers: APIusers
         })
       })
+      getClosePosts()
+        .then(APIposts => {
+            this.setState({
+                closePosts: APIposts
+            })
+        })
 
       this.setState({posts: this.props.posts})
   }
@@ -51,7 +60,9 @@ class Home extends React.Component {
 
   render () {
     console.log(this.props.posts.length);
-    let{ feed, closeUsers, posts }=this.state
+    
+    let{ feed, currentLocation, closeUsers, posts, closePosts}=this.state
+
     let{ renderProfiles }=this
     const{  myLocation, statusFilter, getCloseUsers, current_user, sign_in, sign_out, logged_in }=this.props
     return (
@@ -60,7 +71,7 @@ class Home extends React.Component {
               <div className="Feed">
                 <FeedTopNav current_user={current_user} sign_in={sign_in} sign_out={sign_out} logged_in={logged_in}/>
                   <div className="Feed-Posts">
-                    <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers} getCloseUsers={getCloseUsers}/>
+                    <CloudFeed posts={posts} statusFilter={statusFilter} closePosts={closePosts} getClosePosts={getClosePosts}/>
                   </div>
               </div>
               <div className="Map-Container">
