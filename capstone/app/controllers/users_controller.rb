@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def updateavatar
-    user = User.find(params[:id]) #probably would be current_user for you
+    user = User.find(params[:id]) 
      user.update_attributes(user_params)
      user.update_attributes(picture_url: url_for(user.avatar))
     render :show
