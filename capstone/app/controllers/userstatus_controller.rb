@@ -59,7 +59,8 @@ class UserstatusController < ApplicationController
                 if status.recipient_id == params[:user_id]
                     @friends  << status.id
                 end
-            elsif current_user.id == status.recipient_id && status.status == 1
+            end
+            if current_user.id == status.recipient_id && status.status == 1
                 if status.sender_id == params[:user_id]
                     @friends  << status.id
                 end
