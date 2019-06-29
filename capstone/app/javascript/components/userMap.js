@@ -4,6 +4,8 @@ import React, {Component} from 'react';
 export default class UserMap extends Component {
 
 componentDidUpdate(prevProps) {
+  let{setLatLng}=this.props
+
   if(prevProps.closeUsers===this.props.closeUsers){
     return true
   }
@@ -19,7 +21,7 @@ componentDidUpdate(prevProps) {
    mymap.locate({setView: true, maxZoom: 16});
    function onLocationFound(e) {
          var radius = e.accuracy;
-
+         setLatLng(e.latlng)
          L.marker(e.latlng).addTo(mymap)
              .bindPopup(`You are within ${radius} meters of this spot`).openPopup();
 

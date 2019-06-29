@@ -24,3 +24,23 @@ let getCloseUsers = function(){
 export{
   getCloseUsers
 }
+
+let updatelocation = function(coords) {
+	console.log(coords);
+	return fetch(`/updatelocation`, {
+		body: JSON.stringify(coords),
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		method: "PATCH"
+	})
+		.then((resp) => {
+			let json = resp.json()
+			console.log(json);
+			return json
+		})
+}
+
+export  {
+	updatelocation
+}

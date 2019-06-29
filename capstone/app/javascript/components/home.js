@@ -9,7 +9,7 @@ import{Card, CardImg, Button, CardTitle, CardBody, CardSubtitle, CardText} from 
 import CloudFeed from  './feed'
 import CloudPost from './post'
 import NewPostBox from './newPostBox'
-import{ getCloseUsers } from './API'
+import{ getCloseUsers, updatelocation } from './API'
 import Avatar from './avatar'
 import ChangeAvatar from './changeAvatar'
 import UserMap from './userMap'
@@ -23,7 +23,13 @@ class Home extends React.Component {
       closeUsers:[],
       posts:[],
       test: "it worked",
-      visible: "modalHide"
+      visible: "modalHide",
+      userLocationData:
+        {
+          lat: "",
+          lng: "",
+          user_id: "",
+          }
 
     }
   }
@@ -34,26 +40,44 @@ class Home extends React.Component {
           closeUsers: APIusers
         })
       })
-
       this.setState({posts: this.props.posts})
   }
-  componentDidUpdate(prevProps){
-        if (this.props.posts.length != prevProps.posts.length) {
-          getPosts()
-            .then(APIposts => {
-              this.setState({
-                posts: APIposts
-              })
-            })
-          this.setState({posts: this.props.posts})
+   componentDidMount(){
+     let{current_user}=this.props
+     if(current_user != null){
+       this.setState(prevState => ({
+            userLocationData: {
+                ...prevState.userLocationData,
+                user_id: this.props.current_user.id,
+            }
+        }))
+     }else{
+       console.log("You are not logged in");
      }
    }
+   setLatLng=(latLng)=>{
+     let formattedLat = latLng.lat.toFixed(6)
+     let formattedLng = latLng.lng.toFixed(6)
+     this.setState(prevState => ({
+          userLocationData: {
+              ...prevState.userLocationData,
+              lat: formattedLat,
+              lng: formattedLng
+          }
+      }))
+   }
 
+   currentLocationFetch=()=>{
+     updatelocation(this.state.userLocationData).then(successPost => {
+         alert(`location submitted to DB lat is ${this.state.userLocationData.lat}`)
+     })
+   }
   render () {
-    console.log(this.props.posts.length);
+    console.log();
     let{ feed, closeUsers, posts }=this.state
-    let{ renderProfiles }=this
+    let{ renderProfiles, setLatLng }=this
     const{  myLocation, statusFilter, getCloseUsers, current_user, sign_in, sign_out, logged_in }=this.props
+
     return (
 
         <div className="grid-container">
@@ -65,7 +89,7 @@ class Home extends React.Component {
               </div>
               <div className="Map-Container">
 
-              <UserMap closeUsers= {closeUsers} />
+              <UserMap setLatLng={setLatLng} closeUsers= {closeUsers} />
 
               {current_user != null &&
                 <div className="Comment-Box">
@@ -80,8 +104,7 @@ class Home extends React.Component {
                     Lng: {myLocation.location.lng}
                   </p>
                 }
-                <p>this button does not work currently</p>
-                <Button>{current_user && "Confirm Location" || "Hide my Location"}</Button>
+                <Button onClick={this.currentLocationFetch}>{current_user && "Confirm Location" || "Hide my Location"}</Button>
                 </div>
 
         </div>
