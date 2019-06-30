@@ -189,6 +189,7 @@ class Profile extends Component {
            <ProfileFeed
                 posts = {posts}
                 user = {user}
+                current_user = {current_user}
            />
 
          </div>

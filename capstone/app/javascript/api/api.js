@@ -140,6 +140,8 @@ export {
 
 
 
+
+
 //////////tagnames////////////
 
 let allTagNames = function() {
@@ -153,4 +155,16 @@ let allTagNames = function() {
 
 export  {
 	allTagNames
+}
+
+let createTagName = function(tagname){
+	return fetch(`/newtagname/${tagname}`)
+	.then((resp) => {
+		let json = resp.json()
+		console.log(json);
+		return json
+	})
+}
+export {
+	createTagName
 }

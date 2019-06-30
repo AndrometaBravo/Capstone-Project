@@ -7,17 +7,18 @@ class ProfileFeed extends React.Component {
     super(props)
     this.state={
       cSelected: [] ,
-      myPosts:[]
+      myPosts:[],
+      statusdisp:["Available", "Working", "Busy", "Friend Request", "Friended", "Rejected", "Blocked"],
     }
   }
 
   render() {
-    let{posts, user}=this.props
+    let{posts, user, current_user}=this.props
     let {myPosts}=this.state
         let allmyposts = posts.map((post, index) =>{
           if(post.user_id == user.id){
                 return (
-                        <h4>{post.poststring}</h4>
+                        <li id = "profilePost">{post.created_at.substring(0, 10)} - {post.poststring}</li>
                 )}})
             return(
                 <div>

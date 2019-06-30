@@ -7,7 +7,7 @@ class CloudFeed extends React.Component {
     super(props)
     this.state={
       statusFilterArr:[1,2,3],
-      statusdisp:["Available", "Working", "Busy"],
+      statusdisp:["Available", "Working", "Busy", "Friend Request", "Friended", "Rejected", "Blocked"],
       cSelected: [] ,
     }
   }
