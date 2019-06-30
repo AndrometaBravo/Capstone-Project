@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
     resources :userstatus
-        get 'destroyfriendship/:user_id' => 'userstatus#customdelete'
+        delete 'destroyfriendship/:user_id' => 'userstatus#customdelete'
     resources :posts
         get 'onlineusers' => 'posts#onlineusers'
         get 'onlineposts' => 'posts#onlinePosts'

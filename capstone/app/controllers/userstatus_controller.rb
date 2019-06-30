@@ -57,18 +57,19 @@ class UserstatusController < ApplicationController
           UserStatus.find_each do |status|
             if current_user.id == status.sender_id && status.status == 1
                 if status.recipient_id == params[:user_id]
-                    @friends  << status.id
+                    deleteme =  UserStatus.find(status.id)
+                    deleteme[0].destroy
                 end
             end
             if current_user.id == status.recipient_id && status.status == 1
                 if status.sender_id == params[:user_id]
-                    @friends  << status.id
+                    deleteme =  UserStatus.find(status.id)
+                    deleteme[0].destroy
                 end
             end
 
           end
-          deleteme =  UserStatus.find(@friends[0])
-          deleteme.destroy
+
           render json: @friends
       end
 
