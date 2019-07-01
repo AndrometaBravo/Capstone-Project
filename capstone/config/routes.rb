@@ -21,7 +21,6 @@ Rails.application.routes.draw do
 
   get 'avatar/:id' => 'users#showavatar'
   put 'updateavatar/:id' => 'users#updateavatar'
-  patch 'updatelocation' => 'users#updatelocation'
 
 
   get '*path', to: 'pages#index', constraints: ->(request){ request.format.html? }
