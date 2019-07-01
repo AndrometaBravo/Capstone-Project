@@ -44,43 +44,20 @@ class CloudPost extends React.Component {
 
     return (
 
-      <Container>
-
-        <div>
-        <center>
-
+      <div id="post-container">
             <form id="postfeed" >
-            <br/>
-
-            <p><font color = 'orange'>Please tell us about your project!</font></p>
+            <textarea className="post-comment-text" name='post content' onChange={this.handleChange} value={this.state.poststring} ref={(poststring) => this.poststring = poststring} placeholder=" post content ..."></textarea>
 
 
-
-            <br/>
-            <br/>
-
-            <input type='text' name='post content' onChange={this.handleChange} value={this.state.poststring} ref={(poststring) => this.poststring = poststring} placeholder=" post content ..."/>
-
-            <br/>
-            <br/>
 
             <input type='number' name='privacy level' onChange={this.handleChange} value={this.state.post_status} ref={(post_status) => this.post_status = post_status} placeholder=" privacy level ..."/>
 
-            <br/>
-            <br/>
 
-            <button type="submit"  onClick={this.handleNewPost} class="btn btn-secondary btn-sm">CREATE POST</button>
 
-            <br/>
-
-            <p align="center">[ <a className="" href="/feed"><font color = 'orange'>view feed</font></a> ]</p>
+            <button type="submit"  onClick={this.handleNewPost} id="post-submit-btn"className="btn btn-secondary btn-sm">CREATE POST</button>
 
             </form>
-
-        </center>
-        </div>
-
-      </Container>
+      </div>
 
     )
   }

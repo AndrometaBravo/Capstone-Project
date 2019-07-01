@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 import FeedTopNav from "./feedTopNav.js"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee, faCog } from '@fortawesome/free-solid-svg-icons'
-import{Card, CardImg, Button, CardTitle, CardBody, CardSubtitle, CardText} from 'reactstrap'
+import{Card, CardImg, Button, CardTitle, Collapse, CardBody, CardSubtitle, CardText} from 'reactstrap'
 import CloudFeed from  './feed'
 import CloudPost from './post'
 import NewPostBox from './newPostBox'
@@ -19,6 +19,8 @@ import UserMap from './userMap'
 class Home extends React.Component {
   constructor(props){
     super(props)
+    this.toggle = this.toggle.bind(this);
+    this.state = { collapse: false };
     this.state={
       closeUsers:[],
       posts:[],
@@ -72,12 +74,15 @@ class Home extends React.Component {
          alert(`location submitted to DB lat is ${this.state.userLocationData.lat}`)
      })
    }
+   toggle() {
+    this.setState(state => ({ collapse: !state.collapse }));
+  }
   render () {
     console.log();
     let{ feed, closeUsers, posts }=this.state
     let{ renderProfiles, setLatLng }=this
     const{  myLocation, statusFilter, getCloseUsers, current_user, sign_in, sign_out, logged_in }=this.props
-
+      console.log(closeUsers);
     return (
 
         <div className="grid-container">
@@ -91,20 +96,24 @@ class Home extends React.Component {
 
               <UserMap setLatLng={setLatLng} closeUsers= {closeUsers} />
 
+
               {current_user != null &&
-                <div className="Comment-Box">
+                <div className="Comment-Box" >
+                <Button id="post-toggle" color="primary" onClick={this.toggle}>New Post</Button>
+                  <Collapse isOpen={this.state.collapse}>
                   <CloudPost current_user={current_user}/>
+                  </Collapse>
+
                 </div>
               }
+
               <div className="Filter-Area">
-                <p>Filter</p>
-                { myLocation.length != 0 &&
-                  <p>
-                    Lat: {myLocation.location.lat}
-                    Lng: {myLocation.location.lng}
-                  </p>
-                }
+                <p className="mid-title">Your Location</p>
                 <Button onClick={this.currentLocationFetch}>{current_user && "Confirm Location" || "Hide my Location"}</Button>
+                <div>
+                  </div>
+                <div>
+                </div>
                 </div>
 
         </div>
