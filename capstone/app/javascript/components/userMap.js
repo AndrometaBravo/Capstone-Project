@@ -52,6 +52,7 @@ componentDidUpdate(prevProps) {
            }
            var latt = user.lat;
            var long = user.lng;
+           if(latt != null && long != null){
           var marker = L.marker([latt, long]).addTo(mymap);
           var dialog = L.control.dialog().setContent(
                       `<img className = 'modalPic' height='190' width='190' src=${user.picture_url}/>
@@ -66,6 +67,7 @@ componentDidUpdate(prevProps) {
               marker.on('click', openModal)
 
               mymap.on('click', closeModal)
+            }
 
          })
       }else{
