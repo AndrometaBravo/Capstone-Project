@@ -1,21 +1,46 @@
 import React from "react"
 import PropTypes from "prop-types"
 
+import {createTag} from '../api/index'
+
 class NewTag extends React.Component {
   constructor(props){
         super(props)
             this.state={
+                tagname: ""
             }
+            this.handleNewTag = this.handleNewTag.bind(this)
+            this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event){
+      const {form} = this.state
+      this.setState({tagname: this.tagname.value})
+  }
+
+  handleNewTag(){
+      createTag(this.state.tagname).then(successPost => {
+          alert("Tag Created")
+      })
   }
 
   render() {
     return (
         <div>
+            <br/>
             <form>
-                <input>
+                <input
+                    type='text'
+                    name='tagname'
+                    onChange={this.handleChange}
+                    value={this.state.tagname}
+                    ref={(tagname) => this.tagname = tagname}
+                    placeholder=" enter tag name">
                 </input>
-                <button>
-                    Click Me
+                <button
+                    type="submit"
+                    onClick={this.handleNewTag}
+                    className="btn btn-secondary btn-sm">CREATE TAG
                 </button>
             </form>
         </div>

@@ -16,7 +16,6 @@ export {
 
 
 let createPost = function(post,tagid) {
-	console.log(post,tagid);
 	return fetch(`/taggedpost/${tagid}`, {
 		body: JSON.stringify(post,tagid),
 		headers: {
@@ -33,4 +32,29 @@ let createPost = function(post,tagid) {
 
 export  {
 	createPost
+}
+
+
+
+
+////////tags
+
+
+let createTag = function(tag) {
+	return fetch(`/newtagname/${tag}`, {
+		body: JSON.stringify(tag),
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		method: "POST"
+	})
+		.then((resp) => {
+			let json = resp.json()
+			console.log(json);
+			return json
+		})
+}
+
+export  {
+	createTag
 }
