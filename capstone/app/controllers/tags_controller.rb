@@ -4,7 +4,7 @@ class TagsController < ApplicationController
 
         @tags = []
         Tag.find_each do |tag|
-                @tags << tag.as_json(include: :post)
+                @tags << tag.as_json(:include =>{:post=> {}, :tagname => {}})
         end
         render json: @tags
 

@@ -21,7 +21,7 @@ class Users::SessionsController < Devise::SessionsController
         Pusher.trigger('activity', activity_type, current_user.as_json)
     end
 
-    
+
 
   def index
 
@@ -104,6 +104,8 @@ class Users::SessionsController < Devise::SessionsController
       end
       render json: pending
   end
+
+  
 
   # GET /resource/sign_in
   def new

@@ -155,78 +155,47 @@ class Profile extends Component {
         } = this.state
 
     return (
-    <div className = "profilepage">
 
-        <div className = "header">
+    <section id="intro" className="intro">
 
-            <div className = "profilebuffer"></div>
+         <div className="overlay">
 
-            <div className = "profilepicdiv">
-                <button id = "inputs"> Change Profile Pic</button>
-                <div className = "picoverlay"></div>
-            </div>
+           <div id ='title'>
+            <h1>CLOUD CULTURE</h1>
+            <hr/>
+         </div>
 
-            <h1>{user.username}</h1>
+               <a align="left" href=""><img className="feed-avatar" id="postfeed" src ="https://cdn3.iconfinder.com/data/icons/back-to-the-future/512/marty-mcfly-512.png" alt=''/></a>
+           <h3>{user.firstname} {user.lastname} ({user.username})<br/></h3>
 
-            <div className = "blank"></div>
+           <div className = "buttons">
+               {!friendsids.includes(user.id) && sentpendingids.includes(user.id) && <button onClick = {this.handleAccept}>Accept</button>}
+               {!friendsids.includes(user.id) && sentpendingids.includes(user.id) && <button onClick = {this.handleReject}>Reject</button>}
+               {friendsids.includes(user.id) && <button>UnFriend</button> || current_user.id != user.id && !pendingids.includes(user.id) && <button onClick = {this.handleFriendRequest}>Send a friend Request</button> }
+               {current_user.id != user.id && <button>Send a Message</button>}
+               {current_user.id == user.id && <button><a href = {edit_user}>Edit Profile</a></button>}
+               {current_user.id == user.id && <button>Other Button</button>}
+           </div>
 
-            <div className = "buttons">
-                {!friendsids.includes(user.id) && sentpendingids.includes(user.id) && <button onClick = {this.handleAccept}>Accept</button>}
-                {!friendsids.includes(user.id) && sentpendingids.includes(user.id) && <button onClick = {this.handleReject}>Reject</button>}
-                {friendsids.includes(user.id) && <button onClick = {this.destroyFriendship}>UnFriend</button> || current_user.id != user.id && !pendingids.includes(user.id) && <button onClick = {this.handleFriendRequest}>Send a friend Request</button> }
-                {current_user.id != user.id && <button>Send a Message</button>}
-                {current_user.id == user.id && <button><a href = {edit_user}>Edit Profile</a></button>}
-                {current_user.id == user.id && <button>Other Button</button>}
-            </div>
+           <h4>
+               About {user.firstname}:<br/>
+               '{user.bio}'<br/><br/>
+               Current Cloud:<br/>
+               {user.lat} / {user.lng}<br/><br/>
+               Age: {user.age}<br/><br/>
+               Recent Posts:<br/><br/>
+           </h4>
 
-        </div>
-
-        <div className = "info">
-            <Userinfo
+           <ProfileFeed
+                key = {posts}
+                posts = {posts}
                 user = {user}
-            />
-        </div>
+           />
 
-        <div className = "photos">
-            <hr/>
-            <h3>Photos</h3>
-                <Photos
-                />
-        </div>
+         </div>
 
-        <div className = "friends">
-            <hr/>
-            <h3>Friends</h3>
-            <Friendpic
-                friends = {friends}
-            />
-        </div>
+   </section>
 
-        <div className = "body">
-            <div>
-                { current_user.id == user.id &&
-                <CloudPost
-                    posts = {posts}
-                    current_user = {current_user}
-                    handleNewPost = {this.handleNewPost}
-                 />}
-
-                <ProfileFeed
-                    posts = {posts}
-                 />
-
-            </div>
-        </div>
-
-        <div className = 'im'>
-            <Imbar
-                users = {users}
-                current_user = {current_user}
-                friends = {friends}
-            />
-        </div>
-
-    </div>
       )
     }
 }

@@ -132,3 +132,25 @@ export {
 // export {
 // 	goodbyeToYou
 // }
+
+
+
+
+
+
+
+
+//////////tagnames////////////
+
+let allTagNames = function() {
+	return fetch('/tagnames.json')
+		.then((resp) => {
+			let json = resp.json()
+			console.log(json);
+			return json
+		})
+}
+
+export  {
+	allTagNames
+}

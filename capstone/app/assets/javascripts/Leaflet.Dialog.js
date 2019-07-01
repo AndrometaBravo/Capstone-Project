@@ -1,6 +1,6 @@
 L.Control.Dialog = L.Control.extend({
   options: {
-    size: [ 300, 300 ],
+    size: [ 500, 500 ],
     minSize: [ 100, 100 ],
     maxSize: [ 350, 350 ],
     anchor: [ 250, 250 ],
@@ -206,7 +206,7 @@ L.Control.Dialog = L.Control.extend({
       className + "-grabber"
     ));
     var grabberIcon = L.DomUtil.create("i", "fa fa-arrows");
-    grabberNode.appendChild(grabberIcon);
+    grabberNode.appendChild(innerContainer);
 
     L.DomEvent.on(grabberNode, "mousedown", this._handleMoveStart, this);
 

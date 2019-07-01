@@ -4,5 +4,5 @@ class TagnamesController < ApplicationController
         render json: tagnames
     end
 
-    
+
 end
