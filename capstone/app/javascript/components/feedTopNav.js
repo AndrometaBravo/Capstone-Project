@@ -26,7 +26,7 @@ class FeedTopNav extends React.Component {
       }
     </div>
       <div id="cog-dropdown">
-      <UncontrolledDropdown id="feed-navdropdown">
+      <UncontrolledDropdown>
             <DropdownToggle caret>
               <FontAwesomeIcon icon={faCog} color="white" size="lg" pull="right"/>
             </DropdownToggle>
