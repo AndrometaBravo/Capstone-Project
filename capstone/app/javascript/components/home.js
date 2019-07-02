@@ -9,7 +9,7 @@ import{Card, CardImg, Button, CardTitle, Collapse, CardBody, CardSubtitle, CardT
 import CloudFeed from  './feed'
 import CloudPost from './post'
 import NewPostBox from './newPostBox'
-import{ getCloseUsers, updatelocation } from './API'
+import{ getCloseUsers, updatelocation, getClosePosts } from './API'
 import Avatar from './avatar'
 import ChangeAvatar from './changeAvatar'
 import UserMap from './userMap'
@@ -22,6 +22,7 @@ class Home extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = { collapse: false };
     this.state={
+      closePosts:[],
       closeUsers:[],
       posts:[],
       test: "it worked",
@@ -43,6 +44,12 @@ class Home extends React.Component {
         })
       })
       this.setState({posts: this.props.posts})
+    getClosePosts()
+    .then(APIposts => {
+      this.setState({
+        closePosts: APIposts
+      })
+    })
   }
    componentDidMount(){
      let{current_user}=this.props
@@ -79,7 +86,7 @@ class Home extends React.Component {
   }
   render () {
     console.log();
-    let{ feed, closeUsers, posts }=this.state
+    let{ feed, closeUsers, posts, closePosts}=this.state
     let{ renderProfiles, setLatLng }=this
     const{  myLocation, statusFilter, getCloseUsers, current_user, sign_in, sign_out, logged_in }=this.props
       console.log(closeUsers);
@@ -87,9 +94,9 @@ class Home extends React.Component {
 
         <div className="grid-container">
               <div className="Feed">
-                <FeedTopNav current_user={current_user} sign_in={sign_in} sign_out={sign_out} logged_in={logged_in}/>
+                <FeedTopNav current_user={current_user} sign_in={sign_in} sign_out={sign_out} logged_in={logged_in} />
                   <div className="Feed-Posts">
-                    <CloudFeed posts={posts} statusFilter={statusFilter} closeUsers={closeUsers} getCloseUsers={getCloseUsers}/>
+                    <CloudFeed posts={posts} statusFilter={statusFilter} sign_in={sign_in}  logged_in={logged_in} closeUsers={closeUsers} getCloseUsers={getCloseUsers} closePosts={closePosts}/>
                   </div>
               </div>
               <div className="Map-Container">

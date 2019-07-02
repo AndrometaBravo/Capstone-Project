@@ -52,6 +52,16 @@ user3.firstname = 'howy'
 user3.lastname = 'Dogh'
 user3.save!
 
+Tagname.create(
+  tag: "Rails"
+)
+Tagname.create(
+  tag: "JavaScript"
+)
+Tagname.create(
+  tag: "Ruby"
+)
+
 Post.create(
   user_id: 1,
   poststring: 'this is like a really cool coffee shop anyone down to chat about how to setup react in rails??',
@@ -59,6 +69,11 @@ Post.create(
   lat: 32.708858,
   lng: -117.158563
 )
+Tag.create(
+  post_id: 1,
+  tagname_id: 1
+)
+
 Post.create(
   user_id: 2,
   poststring: 'Anyone wanna grab a burger and chat about how devise works',
@@ -66,10 +81,19 @@ Post.create(
   lat: 32.709026,
   lng: -117.156089
 )
+Tag.create(
+  post_id: 2,
+  tagname_id: 2
+)
+
 Post.create(
   user_id: 1,
   poststring: 'hey anyone out there looking for some help with JS. looking for JS newbies to mentor just DM me',
   post_status: 3,
   lat: 32.708858,
   lng: -117.158563
+)
+Tag.create(
+  post_id: 3,
+  tagname_id: 3
 )

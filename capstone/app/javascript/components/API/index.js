@@ -44,3 +44,16 @@ let updatelocation = function(coords) {
 export  {
 	updatelocation
 }
+
+let getClosePosts = function(){
+ return fetch('/onlineposts',{
+   method: 'GET'
+ })
+ .then(function(response) {
+   let json = response.json()
+   return json
+ })
+}
+export{
+ getClosePosts
+}

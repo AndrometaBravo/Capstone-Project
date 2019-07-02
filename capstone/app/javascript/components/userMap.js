@@ -12,6 +12,20 @@ componentDidUpdate(prevProps) {
 
 
   var mymap = L.map('mapid').setView([32.7167, -117.1661], 13);
+  // create the geocoding control and add it to the map
+      var searchControl = L.esri.Geocoding.geosearch().addTo(mymap);
+
+      // create an empty layer group to store the results and add it to the map
+      var results = L.layerGroup().addTo(mymap);
+
+      // listen for the results event and add every result to the map
+      searchControl.on("results", function(data) {
+          results.clearLayers();
+          for (var i = data.results.length - 1; i >= 0; i--) {
+              results.addLayer(L.marker(data.results[i].latlng));
+          }
+      });
+
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
        maxZoom: 18,

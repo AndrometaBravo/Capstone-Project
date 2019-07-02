@@ -4,5 +4,13 @@ class TagnamesController < ApplicationController
         render json: tagnames
     end
 
-    
+    def createtag
+       @caps = params[:tagname]
+       @use = @caps.capitalize!
+       if Tagname.where("tag = ?" , @use).blank?
+           @new = Tagname.create(tag: @use)
+           p @use
+       end
+       render json: @new
+   end
 end

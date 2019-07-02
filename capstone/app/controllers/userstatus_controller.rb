@@ -11,13 +11,13 @@ class UserstatusController < ApplicationController
         if status.valid?
             render json: status
             if params[:status] == 0
-             p Post.create(:user_id => params[:recipient_id], :post_status => 1, :poststring => "`#{current_user.username} wants to be your friend. Accept or Decline Here: /userprofile/#{params[:sender_id]}`")
+             p Post.create(:user_id => params[:recipient_id], :post_status => 4, :poststring => "`#{current_user.username} wants to be your friend. Accept or Decline Here: /userprofile/#{params[:sender_id]}`")
          elsif params[:status] == 1
-             p Post.create(:user_id => params[:recipient_id], :post_status => 1, :poststring => "`#{current_user.username} Accepted Your Friend Request`")
+             p Post.create(:user_id => params[:recipient_id], :post_status => 5, :poststring => "`#{current_user.username} Accepted Your Friend Request`")
          elsif params[:status] == 3
-             p Post.create(:user_id => params[:sender_id], :post_status => 1, :poststring => "You Blocked A User")
+             p Post.create(:user_id => params[:sender_id], :post_status => 7, :poststring => "You Blocked A User")
          else
-             p Post.create(:user_id => params[:recipient_id], :post_status => 1, :poststring => "`#{current_user.username} Rejected Your Friend Request`")
+             p Post.create(:user_id => params[:recipient_id], :post_status => 6, :poststring => "`#{current_user.username} Rejected Your Friend Request`")
              p UserStatus.where(:sender_id => params[:recipient_id], :recipient_id => params[:sender_id], :status => 0).delete_all
          end
 
@@ -52,24 +52,35 @@ class UserstatusController < ApplicationController
           render json: @friends
       end
 
-      def customdelete
-          @friends = []
-          UserStatus.find_each do |status|
-            if current_user.id == status.sender_id && status.status == 1
-                if status.recipient_id == params[:user_id]
-                    @friends  << status.id
-                end
-            elsif current_user.id == status.recipient_id && status.status == 1
-                if status.sender_id == params[:user_id]
-                    @friends  << status.id
-                end
-            end
 
-          end
-          deleteme =  UserStatus.find(@friends[0])
-          deleteme.destroy
+      def customdelete
+         @friends = []
+         p params[:userstatus][:_json]
+         UserStatus.find_each do |status|
+             p status.status
+           if current_user.id == status.sender_id
+               if status.recipient_id == params[:userstatus][:_json] && status.status == 1
+                   deleteme =  UserStatus.find(status.id)
+                   deleteme.destroy
+               end
+               if status.recipient_id == params[:userstatus][:_json] && status.status == 0
+                   deleteme =  UserStatus.find(status.id)
+                   deleteme.destroy
+               end
+           end
+           if current_user.id == status.recipient_id
+               if status.sender_id == params[:userstatus][:_json] && status.status == 1
+                   deleteme =  UserStatus.find(status.id)
+                   deleteme.destroy
+               end
+               if status.sender_id == params[:userstatus][:_json] && status.status == 0
+                   deleteme =  UserStatus.find(status.id)
+                   deleteme.destroy
+               end
+           end
+        end
           render json: @friends
-      end
+     end
 
       def status_params
 
