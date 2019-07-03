@@ -50,8 +50,10 @@ componentDidUpdate(prevProps) {
      mymap.on('locationfound', onLocationFound);
    // console.log(this.state.closeUsers);
    const {closeUsers} = this.props
-     if(closeUsers.length != 0 || null) {
+     if(closeUsers.length != 0 || closeUsers.length != null) {
          closeUsers.map((user, index) => {
+           const {userStatus} = this.props
+           console.log(user);
            function onMouseOver(e) {
              marker.openPopup()
            }
@@ -67,16 +69,16 @@ componentDidUpdate(prevProps) {
            }
            var latt = user.lat;
            var long = user.lng;
-           if(latt || long != null){
+           if(latt != null || long != null){
           var marker = L.marker([latt, long]).addTo(mymap);
           var dialog = L.control.dialog()
                       .setContent(`<img className = 'modalPic' height='190' width='190' src=${user.picture_url}/>
-                     <p className = 'username'><b> ${user.username} </b></p><p className='showstatus'>${user.userStatus}</p><p><Button href='/userprofile/${user.id}'>Request a Meet</Button></p>`)
+                     <p className = 'username'><b> ${user.username} </b></p><p className='showstatus'>${userStatus}</p><p><Button href='/userprofile/${user.id}'>Request a Meet</Button></p>`)
                       // .setLocation([100,100])
 
               marker.bindPopup(
                 `<img className = 'popupPic' height='100' width='100' src=${user.picture_url}/>
-                       <p className = 'username'><b> ${user.username} </b></p><p className='showstatus'>${user.userStatus}</p><p><Button href='/userprofile/${user.id}'>Request a Meet</Button></p>`
+                       <p className = 'username'><b> ${user.username} </b></p><p className='showstatus'>${userStatus}</p><p><Button href='/userprofile/${user.id}'>Request a Meet</Button></p>`
            )
               marker.on('mouseover', onMouseOver)
               marker.on('mouseout', onMouseOut)

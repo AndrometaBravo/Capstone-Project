@@ -26,10 +26,10 @@ user2.email = 'tester@example.com'
 user2.password = 'valid_password'
 user2.password_confirmation = 'valid_password'
 user2.username = 'TestUser2'
-user2.gender = 'female'
+user2.gender = 'male'
 user2.age = 31
 user2.bio = 'im a fullstack web developer currently working freelance'
-user2.picture_url = 'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg'
+user2.picture_url = 'https://i2.wp.com/zblogged.com/wp-content/uploads/2015/12/2.jpg?w=400&ssl=1'
 user2.lat = 32.709752
 user2.lng = -117.156170
 user2.firstname = 'Jane'
@@ -45,11 +45,12 @@ user3.username = 'TestUser3'
 user3.gender = 'female'
 user3.age = 31
 user3.bio = 'im a fullstack web developer currently working freelance'
-user3.picture_url = 'https://www.rd.com/wp-content/uploads/2017/09/01-shutterstock_476340928-Irina-Bg-1024x683.jpg'
+user3.picture_url = 'https://i0.wp.com/zblogged.com/wp-content/uploads/2015/10/4.jpg?w=343&ssl=1'
 user3.lat = 32.712247
 user3.lng = -117.158009
 user3.firstname = 'howy'
 user3.lastname = 'Dogh'
+user3.is_signed_in = true
 user3.save!
 
 Tagname.create(

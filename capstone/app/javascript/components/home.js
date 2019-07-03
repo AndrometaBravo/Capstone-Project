@@ -27,6 +27,7 @@ class Home extends React.Component {
       posts:[],
       test: "it worked",
       visible: "modalHide",
+      userStatus: "available",
       userLocationData:
         {
           lat: "",
@@ -86,7 +87,7 @@ class Home extends React.Component {
   }
   render () {
     console.log();
-    let{ feed, closeUsers, posts, closePosts}=this.state
+    let{ feed, closeUsers, posts, closePosts, userStatus}=this.state
     let{ renderProfiles, setLatLng }=this
     const{  myLocation, statusFilter, getCloseUsers, current_user, sign_in, sign_out, logged_in }=this.props
       console.log(closeUsers);
@@ -101,7 +102,7 @@ class Home extends React.Component {
               </div>
               <div className="Map-Container">
 
-              <UserMap setLatLng={setLatLng} closeUsers= {closeUsers} />
+              <UserMap setLatLng={setLatLng} userStatus = {userStatus} closeUsers= {closeUsers} />
 
 
               {current_user != null &&
