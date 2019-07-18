@@ -21,10 +21,7 @@ class CloudPost extends React.Component {
 
            tag_id: "",
            tagdropdownOpen: false,
-           statusdropdownOpen: false,
            tagnames: [],
-
-
           }
           this.handleNewPost = this.handleNewPost.bind(this);
           this.handleChange = this.handleChange.bind(this);
@@ -36,7 +33,6 @@ class CloudPost extends React.Component {
 
       handleNewPost(){
           createPost(this.state.form, this.state.tag_id).then(successPost => {
-              this.setState({post_status_display: "available"})
               alert("Post Submitted")
               console.log("submitted");
           })
@@ -118,7 +114,7 @@ class CloudPost extends React.Component {
                 <br/>
 
                 <Dropdown as={ButtonGroup} isOpen={this.state.tagdropdownOpen} toggle={this.tagtoggle} onClick = {this.tagselect}>
-                    <Button variant="success">Tags</Button>
+                    <Button variant="success" disabled >Tags</Button>
 
                     <DropdownToggle split variant="success" id="dropdown-split-basic" />
 

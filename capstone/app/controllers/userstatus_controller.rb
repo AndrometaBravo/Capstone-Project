@@ -54,17 +54,27 @@ class UserstatusController < ApplicationController
 
       def customdelete
           @friends = []
+          p params[:userstatus][:_json]
           UserStatus.find_each do |status|
-            if current_user.id == status.sender_id && status.status == 1
-                if status.recipient_id == params[:user_id]
+              p status.status
+            if current_user.id == status.sender_id
+                if status.recipient_id == params[:userstatus][:_json] && status.status == 1
                     deleteme =  UserStatus.find(status.id)
-                    deleteme[0].destroy
+                    deleteme.destroy
+                end
+                if status.recipient_id == params[:userstatus][:_json] && status.status == 0
+                    deleteme =  UserStatus.find(status.id)
+                    deleteme.destroy
                 end
             end
-            if current_user.id == status.recipient_id && status.status == 1
-                if status.sender_id == params[:user_id]
+            if current_user.id == status.recipient_id
+                if status.sender_id == params[:userstatus][:_json] && status.status == 1
                     deleteme =  UserStatus.find(status.id)
-                    deleteme[0].destroy
+                    deleteme.destroy
+                end
+                if status.sender_id == params[:userstatus][:_json] && status.status == 0
+                    deleteme =  UserStatus.find(status.id)
+                    deleteme.destroy
                 end
             end
 

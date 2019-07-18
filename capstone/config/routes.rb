@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
 
     resources :userstatus
-        delete 'destroyfriendship/:user_id' => 'userstatus#customdelete'
+        delete 'destroyfriendship' => 'userstatus#customdelete'
     resources :posts
         get 'onlineusers' => 'posts#onlineusers'
         get 'onlineposts' => 'posts#onlinePosts'
         post 'taggedpost/:tagid' => 'posts#createtagged'
     resources :tags
     resources :tagnames
-        post 'newtagname/:tagname' => 'tagnames#createtag'
+        post 'newtagname' => 'tagnames#createtag'
 
   devise_for :users, controllers: { sessions: 'users/sessions' }
   devise_scope :user do

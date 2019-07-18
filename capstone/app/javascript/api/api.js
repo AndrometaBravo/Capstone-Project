@@ -1,4 +1,3 @@
-
 //////// users fetches/////////////
 
 
@@ -116,7 +115,7 @@ export {
 // }
 
 let goodbyeToYou = function(id){
-	return fetch(`/destroyfriendship/${id}`,{
+	return fetch(`/destroyfriendship`,{
 		body: JSON.stringify(id),
 		headers: {
 			'Content-Type': 'application/json'
@@ -158,12 +157,18 @@ export  {
 }
 
 let createTagName = function(tagname){
-	return fetch(`/newtagname/${tagname}`)
-	.then((resp) => {
-		let json = resp.json()
-		console.log(json);
-		return json
+	return fetch(`/newtagname`, {
+		body: JSON.stringify(tagname),
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		method: "POST"
 	})
+		.then((resp) => {
+			let json = resp.json()
+			console.log(json);
+			return json
+		})
 }
 export {
 	createTagName

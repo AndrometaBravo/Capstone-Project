@@ -45,7 +45,7 @@ class FeedTopNav extends React.Component {
               </DropdownItem>
               <DropdownItem>
                   <a
-                     href="/newtag">
+                     href="/createtag">
                      Create Tag
                   </a>
               </DropdownItem>

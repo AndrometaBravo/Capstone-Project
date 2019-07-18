@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 
-import {createTag} from '../api/index'
+import {createTagName} from '../api/api'
 
 class NewTag extends React.Component {
   constructor(props){
@@ -19,7 +19,7 @@ class NewTag extends React.Component {
   }
 
   handleNewTag(){
-      createTag(this.state.tagname).then(successPost => {
+      createTagName(this.state).then(successPost => {
           alert("Tag Created")
       })
   }

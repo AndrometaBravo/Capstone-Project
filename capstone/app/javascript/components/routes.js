@@ -78,7 +78,7 @@ class Routes extends React.Component {
                  sign_in = {sign_in}
                  sign_out = {sign_out}/>} />
 
-             <Route exact path="/newtag" component= {() => <NewTag />} />
+             <Route exact path="/createtag" component= {() => <NewTag />} />
 
              <Route exact path="/about" component= {() => <AboutUs />} />
              <Route exact path="/more" component={() => <LearnMore />} />

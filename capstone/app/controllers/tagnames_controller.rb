@@ -6,14 +6,14 @@ class TagnamesController < ApplicationController
 
 
     def createtag
-        @caps = params[:tagname]
+        @lower = params[:tagname]
+        @caps = @lower.downcase
         @use = @caps.capitalize!
-        if Tagname.where(":tag = ?" , @use).blank?
-            Tagname.create(":tag = ?" , @use)
-            redirect_to '/map'
-        else
-            redirect_to '/map'
+        if Tagname.where("tag = ?" , @use).blank?
+            @new = Tagname.create(tag: @use)
+            render "/map"
         end
+        render json: @new
     end
 
 
