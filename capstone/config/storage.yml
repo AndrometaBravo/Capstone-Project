@@ -9,10 +9,10 @@ local:
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 amazon:
   service: S3
-  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
-  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
-  region: us-east-2
-  bucket: active-storage-cloud-culture
+  access_key_id: AKIA3QKGP6NMWFPOP27E
+ secret_access_key: MnVgB23fQxz+j9+Vq82HFRC1Vsqj5Dw7Eiu1DWE6
+ region: us-east-2
+ bucket: active-storage-cloud-culture
 
 # Remember not to checkin your GCS keyfile to a repository
 # google:
