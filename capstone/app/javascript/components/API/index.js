@@ -57,3 +57,16 @@ let getClosePosts = function(){
 export{
  getClosePosts
 }
+
+let getAddress = function(){
+  return fetch('https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=41.8842,-87.6388&mode=retrieveAddress&app_id=cMIr2JjzkoYTvnLEn57K&app_code=fbM5AKlYS7YHhCnMhmtVhQ',{
+    method: 'GET'
+  })
+  .then(function(response) {
+    let json = response.json()
+    return json
+  })
+}
+export{
+  getAddress
+}

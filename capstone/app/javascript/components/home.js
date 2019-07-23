@@ -13,6 +13,7 @@ import{ getCloseUsers, updatelocation, getClosePosts } from './API'
 import Avatar from './avatar'
 import ChangeAvatar from './changeAvatar'
 import UserMap from './userMap'
+import {getAddress} from './API'
 
 
 
@@ -22,6 +23,7 @@ class Home extends React.Component {
     this.toggle = this.toggle.bind(this);
     this.state = { collapse: false };
     this.state={
+      myAddress:[],
       closePosts:[],
       closeUsers:[],
       posts:[],
@@ -50,6 +52,12 @@ class Home extends React.Component {
         closePosts: APIposts
       })
     })
+    getAddress()
+    .then(APIaddress => {
+      this.setState({
+        myAddress: APIaddress
+      })
+    })
   }
    componentDidMount(){
      let{current_user}=this.props
@@ -63,6 +71,7 @@ class Home extends React.Component {
      }else{
        console.log("You are not logged in");
      }
+
    }
    setLatLng=(latLng)=>{
      let formattedLat = latLng.lat.toFixed(6)
@@ -85,11 +94,12 @@ class Home extends React.Component {
     this.setState(state => ({ collapse: !state.collapse }));
   }
   render () {
-    console.log();
     let{ feed, closeUsers, posts, closePosts}=this.state
     let{ renderProfiles, setLatLng }=this
     const{  myLocation, statusFilter, getCloseUsers, current_user, sign_in, sign_out, logged_in }=this.props
-      console.log(closeUsers);
+    if(this.state.myAddress.length != 0){
+      console.log(this.state.myAddress.Response.View[0].Result[0].Location.Address.Label);
+    }
     return (
 
         <div className="grid-container">
